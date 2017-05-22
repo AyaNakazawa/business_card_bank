@@ -122,6 +122,10 @@ main {
   margin-bottom: 0;
 }
 
+.content .help-icon {
+  cursor: pointer;
+}
+
 /* Tablet */
 
 @media (min-width: 768px) {
