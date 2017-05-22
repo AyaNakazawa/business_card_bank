@@ -1,4 +1,4 @@
 
 $(() => {
-  
+  PS = new BCBProcess();
 });
