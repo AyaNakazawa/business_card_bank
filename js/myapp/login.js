@@ -124,4 +124,10 @@ class LoginEvent extends CommonEvent {
     BCBProcess.initPopover();
   }
   
+  submitLogin() {
+    Log.logClassKey(this.NAME, 'Login', 'submit');
+    this.LOGIN = true;
+    this.ID = 'aya';
+    this.generateLoginArea();
+  }
 }
