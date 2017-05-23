@@ -49,6 +49,17 @@
       </p>
     </footer>
     <!-- template -->
+    <!-- logined-template -->
+    <script type="text/template" id="logined-template">
+      <div class="content-item" id="logined-message">
+        <label for="logined-id">ID</label>
+        <span class="help-icon fa fa-question-circle" id="logined-id-help"></span>
+        <input type="text" id="logined-id" class="form-control" value="<%- id %>" disabled>
+      </div>
+      <div class="content-item form-group" id="logined-logout-area">
+        <button class="btn btn-default" id="logined-logout"><i class="fa fa-sign-out" aria-hidden="true"></i> ログアウト</button>
+      </div>
+    </script>
     <!-- not-login-template -->
     <script type="text/template" id="not-login-template">
       <div class="content-item" id="login-id-area">
