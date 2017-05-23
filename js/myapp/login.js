@@ -132,10 +132,22 @@ class LoginEvent extends CommonEvent {
     BCBProcess.initPopover();
   }
   
+  generateLoading() {
+    const template = this.CONTROLLER.model.$LOADING_TEMPLATE.text();
+    const compiled = _.template(template);
+    const model = {
+      header: this.ID,
+      message: 'ログイン中...'
+    };
+    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.empty();
+    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.html(compiled(model));
+  }
+  
   submitLogin() {
     Log.logClassKey(this.NAME, 'Login', 'submit');
     this.LOGIN = true;
     this.ID = $(this.CONTROLLER.model.LOGIN_ID_SELECTOR).val();
+    this.generateLoading();
     this.generateLoginArea();
   }
   
