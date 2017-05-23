@@ -179,7 +179,7 @@ class LoginEvent extends CommonEvent {
   }
   
   submitLogin() {
-    Log.logClassKey(this.NAME, 'Login', 'submit');
+    Log.logClassKey(this.NAME, 'submit', 'Login');
     this.ID = $(this.CONTROLLER.model.LOGIN_ID_SELECTOR).val();
     this.PASSWORD = $(this.CONTROLLER.model.LOGIN_PASSWORD_SELECTOR).val();
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
@@ -224,7 +224,7 @@ class LoginEvent extends CommonEvent {
   }
   
   submitLogout() {
-    Log.logClassKey(this.NAME, 'Logout', 'submit');
+    Log.logClassKey(this.NAME, 'submit', 'Logout');
     this.LOGIN = false;
     this.ID = null;
     this.PASSWORD = null;
