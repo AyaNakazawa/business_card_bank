@@ -11,7 +11,8 @@ class PopoverModel extends CommonModel {
   } = {})
   {
     super({
-      name: name
+      name: name,
+      echoPermission: false
     });
     
     this.NAME = name;
