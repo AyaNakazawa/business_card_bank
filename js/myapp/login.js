@@ -135,14 +135,14 @@ class LoginEvent extends CommonEvent {
   submitLogin() {
     Log.logClassKey(this.NAME, 'Login', 'submit');
     this.LOGIN = true;
-    this.ID = 'aya';
+    this.ID = $(this.CONTROLLER.model.LOGIN_ID_SELECTOR).val();
     this.generateLoginArea();
   }
   
   submitLogout() {
     Log.logClassKey(this.NAME, 'Logout', 'submit');
     this.LOGIN = false;
-    this.ID = null;
     this.generateLoginArea();
+    this.ID = null;
   }
 }
