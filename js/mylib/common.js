@@ -67,7 +67,7 @@ class CommonClass {
 class CommonModel extends CommonClass {
   constructor({
     name = null,
-    echoPermission = true
+    echoPermission = false
   } = {})
   {
     super();
