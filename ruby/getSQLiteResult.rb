@@ -11,7 +11,7 @@ _query = objCgi["query"] + ';'
 result = {}
 
 # データベースを開く
-db = SQLite3::Database.new("../db/payday2.sqlite3")
+db = SQLite3::Database.new("../db/bcb.sqlite3")
 
 # ハッシュで返るようにする
 db.results_as_hash = true
