@@ -5,15 +5,15 @@ class BCBProcess extends CommonProcess {
       name: `${Project.NAME} Process`
     });
     
-    this.initProcess();
+    BCBProcess.initProcess();
   }
   
-  initProcess() {
-    this.initPopover();
-    this.initEvent();
+  static initProcess() {
+    BCBProcess.initPopover();
+    BCBProcess.initEvent();
   }
   
-  initPopover() {
+  static initPopover() {
     {
       new PopoverController({
         name: 'ID Popover',
@@ -38,7 +38,7 @@ class BCBProcess extends CommonProcess {
     }
   }
   
-  initEvent() {
+  static initEvent() {
     new LoginEvent();
   }
 }
