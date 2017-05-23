@@ -30,11 +30,8 @@ class LoginModel extends SwitchModel {
     this.LOGOUT_SELECTOR = logoutSelector;
     
     this.LOGIN_ID_SELECTOR = loginIdSelector;
-    this.$LOGIN_ID_SELECTOR = $(this.LOGIN_ID_SELECTOR);
     this.LOGIN_PASSWORD_SELECTOR = loginPasswordSelector;
-    this.$LOGIN_PASSWORD_SELECTOR = $(this.LOGIN_PASSWORD_SELECTOR);
     // this.LOGIN_CHECK_SELECTOR = '#login-check';
-    // this.$LOGIN_CHECK_SELECTOR = $(this.LOGIN_CHECK_SELECTOR);
     
     this.LOGIN_AREA_SELECTOR = '#login-area';
     this.$LOGIN_AREA_SELECTOR = $(this.LOGIN_AREA_SELECTOR);
