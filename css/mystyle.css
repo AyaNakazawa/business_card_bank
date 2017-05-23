@@ -126,6 +126,12 @@ main {
   cursor: pointer;
 }
 
+/* other */
+
+.checkbox {
+  display: inline-table;
+}
+
 /* Tablet */
 
 @media (min-width: 768px) {
