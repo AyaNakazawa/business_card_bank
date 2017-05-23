@@ -117,16 +117,19 @@ class LoginEvent extends CommonEvent {
       // ログインしているとき
       Log.logClass(this.NAME, 'Logined');
       template = this.CONTROLLER.model.$TEMPLATE_LOGINED_SELECTOR.text();
+      $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('Logout');
       
     } else {
       // ログインしていないとき
       Log.logClass(this.NAME, 'Not login');
       template = this.CONTROLLER.model.$TEMPLATE_NOT_LOGIN_SELECTOR.text();
+      $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('Login');
       
     }
     const compiled = _.template(template);
     const model = {
-      id: this.ID
+      id: this.ID,
+      password: this.PASSWORD
     };
     
     this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.empty();
@@ -184,7 +187,7 @@ class LoginEvent extends CommonEvent {
         password: this.PASSWORD_HASH
       },
       success: (_data) => {
-        Log.logClass('loginUser ajax success', _data);
+        Log.logClass(this.NAME, 'loginUser ajax success');
         if (_data.length > 0) {
           this.ID = _data;
           this.LOGIN = true;
@@ -194,6 +197,7 @@ class LoginEvent extends CommonEvent {
         }
       },
       error: () => {
+        Log.logClass(this.NAME, 'loginUser ajax failed');
         this.generateLoginArea('danger', 'ajax通信に失敗しました。');
       }
     });
@@ -202,7 +206,8 @@ class LoginEvent extends CommonEvent {
   submitLogout() {
     Log.logClassKey(this.NAME, 'Logout', 'submit');
     this.LOGIN = false;
-    this.generateLoginArea('success', 'ログアウトしました。');
     this.ID = null;
+    this.PASSWORD = null;
+    this.generateLoginArea('success', 'ログアウトしました。');
   }
 }
