@@ -71,7 +71,9 @@ class LoginEvent extends CommonEvent {
       name: 'Login Switch',
       lsKeyView: 'login',
       triggerSelector: '#action-login',
-      switchSelector: '#login-area'
+      switchSelector: '#login-area',
+      loginSelector: '#login-submit',
+      logoutSelector: '#logined-logout'
     });
   }
   
