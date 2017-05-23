@@ -29,6 +29,11 @@ class BCBProcess extends CommonProcess {
         selector: '#login-check-help',
         help: '共有デバイスでは設定に注意してください。'
       });
+      new PopoverController({
+        name: 'Logined ID Popover',
+        selector: '#logined-id-help',
+        help: 'ログインしている ID です。'
+      });
     }
   }
 }
