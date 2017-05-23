@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/* common */
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background: #fff;
+  font-size: 16px;
+	font-family: Verdana, Arial, sans-serif;
+}
+
+a {
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.display-none {
+  display: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+img {
+  box-shadow: 0 0 2px 2px #eee inset;
+}
+
+.btn {
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+}
+
+.btn * {
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+}

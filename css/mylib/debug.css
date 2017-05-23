@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+ /*debug */
+
+body:before {
+  content: '- Mobile -';
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  body:before {
+    content: '- Tablet -';
+  }
+}
+@media (min-width: 992px) {
+  body:before {
+    content: '- Medium desktop -';
+  }
+}
+@media (min-width: 1200px) {
+  body:before {
+    content: '- Large desktop -';
+  }
+}

@@ -1,49 +1,5 @@
 @charset "utf-8";
 
-/* common */
-
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  color: #333;
-  background: #fff;
-  font-size: 16px;
-	font-family: Verdana, Arial, sans-serif;
-}
-
-a {
-  transition: all .3s;
-  -webkit-transition: all .3s;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-.display-none {
-  display: none;
-}
-
-textarea {
-  resize: vertical;
-}
-
-img {
-  box-shadow: 0 0 2px 2px #eee inset;
-}
-
-.btn {
-  transition: all .3s;
-  -webkit-transition: all .3s;
-}
-
-.btn * {
-  transition: all .3s;
-  -webkit-transition: all .3s;
-}
-
 /* header */
 
 header {
@@ -117,12 +73,42 @@ main {
 
 .content-item {
   width: 100%;
-  margin-bottom: 16px;
-  padding: auto;
+  padding: 8px;
   overflow: hidden;
 }
 
-.content-item:last-child {
+.content-item li {
+  margin: 8px;
+}
+
+.content-header {
+  width: 100%;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.content-header button {
+  margin-left: 8px;
+}
+
+.content-item-name {
+  width: 100%;
+  padding-bottom: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.content-item-keys {
+  width: 100%;
+  padding: 8px 16px;
+}
+.content-item-key {
+  margin-bottom: 8px;
+}
+
+.content-item-key:last-child {
   margin-bottom: 0;
 }
 
@@ -130,22 +116,8 @@ main {
   cursor: pointer;
 }
 
-/* other */
-
-.checkbox {
+.content-item .checkbox {
   display: inline-table;
-}
-
-/* Tablet */
-
-@media (min-width: 768px) {
-  
-}
-
-/* Medium desktop */
-
-@media (min-width: 992px) {
-  
 }
 
 /* Large desktop */
@@ -180,32 +152,5 @@ main {
   
   .content {
     width: 1064px;
-  }
-}
-
- /*debug */
-
-body:before {
-  content: '- Mobile -';
-  position: fixed;
-  top: 8px;
-  left: 8px;
-  z-index: 9999;
-  overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  body:before {
-    content: '- Tablet -';
-  }
-}
-@media (min-width: 992px) {
-  body:before {
-    content: '- Medium desktop -';
-  }
-}
-@media (min-width: 1200px) {
-  body:before {
-    content: '- Large desktop -';
   }
 }
