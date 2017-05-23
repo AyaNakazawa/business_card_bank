@@ -7,7 +7,11 @@ class LoginModel extends SwitchModel {
     name,
     lsKeyView,
     triggerSelector,
-    switchSelector
+    switchSelector,
+    loginTrigger = 'click',
+    loginSelector = null,
+    logoutTrigger = 'click',
+    logoutSelector = null
   } = {}) {
     super({
       name: name,
@@ -15,6 +19,13 @@ class LoginModel extends SwitchModel {
       triggerSelector: triggerSelector,
       switchSelector: switchSelector
     });
+    
+    this.NAME = name;
+    this.LOGIN_TRIGGER = loginTrigger;
+    this.LOGIN_SELECTOR = loginSelector;
+    
+    this.LOGOUT_TRIGGER = logoutTrigger;
+    this.LOGOUT_SELECTOR = logoutSelector;
     
     this.LOGIN_AREA_SELECTOR = '#login-area';
     this.$LOGIN_AREA_SELECTOR = $(this.LOGIN_AREA_SELECTOR);
