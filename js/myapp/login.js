@@ -10,6 +10,8 @@ class LoginModel extends SwitchModel {
     switchSelector,
     loginTrigger = 'click',
     loginSelector = null,
+    loginIdSelector = null,
+    loginPasswordSelector = null,
     logoutTrigger = 'click',
     logoutSelector = null
   } = {}) {
@@ -26,6 +28,13 @@ class LoginModel extends SwitchModel {
     
     this.LOGOUT_TRIGGER = logoutTrigger;
     this.LOGOUT_SELECTOR = logoutSelector;
+    
+    this.LOGIN_ID_SELECTOR = loginIdSelector;
+    this.$LOGIN_ID_SELECTOR = $(this.LOGIN_ID_SELECTOR);
+    this.LOGIN_PASSWORD_SELECTOR = loginPasswordSelector;
+    this.$LOGIN_PASSWORD_SELECTOR = $(this.LOGIN_PASSWORD_SELECTOR);
+    // this.LOGIN_CHECK_SELECTOR = '#login-check';
+    // this.$LOGIN_CHECK_SELECTOR = $(this.LOGIN_CHECK_SELECTOR);
     
     this.LOGIN_AREA_SELECTOR = '#login-area';
     this.$LOGIN_AREA_SELECTOR = $(this.LOGIN_AREA_SELECTOR);
@@ -73,6 +82,8 @@ class LoginEvent extends CommonEvent {
       triggerSelector: '#action-login',
       switchSelector: '#login-area',
       loginSelector: '#login-submit',
+      loginIdSelector: '#login-id',
+      loginPasswordSelector: '#login-password',
       logoutSelector: '#logined-logout'
     });
     
