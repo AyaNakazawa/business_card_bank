@@ -80,6 +80,7 @@ class LoginEvent extends CommonEvent {
     this.ID = null;
     
     this.setOn();
+    this.generateLoginArea();
   }
   
   setOn() {
@@ -97,6 +98,30 @@ class LoginEvent extends CommonEvent {
         this.submitLogout();
       }
     );
+  }
+  
+  generateLoginArea() {
+    let template = null;
+    if (this.LOGIN) {
+      // ログインしているとき
+      Log.logClass(this.NAME, 'Logined');
+      template = this.CONTROLLER.model.$TEMPLATE_LOGINED_SELECTOR.text();
+      
+    } else {
+      // ログインしていないとき
+      Log.logClass(this.NAME, 'Not login');
+      template = this.CONTROLLER.model.$TEMPLATE_NOT_LOGIN_SELECTOR.text();
+      
+    }
+    const compiled = _.template(template);
+    const model = {
+      id: this.ID
+    };
+    
+    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.empty();
+    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.html(compiled(model));
+    
+    BCBProcess.initPopover();
   }
   
 }
