@@ -260,13 +260,9 @@ class SetEvent {
     func = () => {}
   ) {
     if (selector != null) {
-      $(document).on(trigger, selector, () => {
-        func();
-      });
+      $(document).on(trigger, selector, func);
     } else {
-      $(document).on(trigger, () => {
-        func();
-      });
+      $(document).on(trigger, func);
     }
   }
   
