@@ -108,7 +108,7 @@ class LoginEvent extends CommonEvent {
     );
   }
   
-  generateLoginArea() {
+  generateLoginArea(_loginFailed = false) {
     let template = null;
     if (this.LOGIN) {
       // ログインしているとき
@@ -127,7 +127,7 @@ class LoginEvent extends CommonEvent {
     };
     
     this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.empty();
-    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.html(compiled(model));
+    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.append(compiled(model));
     
     BCBProcess.initPopover();
   }
@@ -145,10 +145,28 @@ class LoginEvent extends CommonEvent {
   
   submitLogin() {
     Log.logClassKey(this.NAME, 'Login', 'submit');
-    this.LOGIN = true;
     this.ID = $(this.CONTROLLER.model.LOGIN_ID_SELECTOR).val();
+    this.PASSWORD = $(this.CONTROLLER.model.LOGIN_PASSWORD_SELECTOR).val();
+    
     this.generateLoading();
-    this.generateLoginArea();
+    
+    $.ajax({
+      url: 'ruby/getSQLiteResult.rb',
+      data: {
+        query: `SELECT name FROM User where name = '${this.ID}' and password = '${this.PASSWORD}';`
+      },
+      dataType: 'json',
+      success: (_data) => {
+        if (_data != null) {
+          this.ID = _data['name'];
+          this.LOGIN = true;
+        }
+        this.generateLoginArea();
+      },
+      error: () => {
+        this.generateLoginArea(true);
+      }
+    });
   }
   
   submitLogout() {
