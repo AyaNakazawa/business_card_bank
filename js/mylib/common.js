@@ -66,7 +66,8 @@ class CommonClass {
 
 class CommonModel extends CommonClass {
   constructor({
-    name = null
+    name = null,
+    echoPermission = true
   } = {})
   {
     super();
@@ -83,7 +84,7 @@ class CommonModel extends CommonClass {
     this.ALERT_TEMPLATE = '#alert-template';
     this.$ALERT_TEMPLATE = $(this.ALERT_TEMPLATE);
     
-    if (name != null) {
+    if (name != null && echoPermission) {
       super.viewNameModel(name);
     }
   }
