@@ -80,6 +80,8 @@ class CommonModel extends CommonClass {
     this.$BODY = $(this.BODY);
     this.LOADING_TEMPLATE = '#loading-template';
     this.$LOADING_TEMPLATE = $(this.LOADING_TEMPLATE);
+    this.ALERT_TEMPLATE = '#alert-template';
+    this.$ALERT_TEMPLATE = $(this.ALERT_TEMPLATE);
     
     if (name != null) {
       super.viewNameModel(name);
