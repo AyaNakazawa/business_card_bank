@@ -75,6 +75,9 @@ class LoginEvent extends CommonEvent {
       loginSelector: '#login-submit',
       logoutSelector: '#logined-logout'
     });
+    
+    this.LOGIN = false;
+    this.ID = null;
   }
   
 }
