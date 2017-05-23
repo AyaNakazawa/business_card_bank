@@ -11,6 +11,7 @@ class BCBProcess extends CommonProcess {
   static initProcess() {
     BCBProcess.initPopover();
     BCBProcess.initEvent();
+    BCBProcess.initController();
   }
   
   static initPopover() {
@@ -40,5 +41,13 @@ class BCBProcess extends CommonProcess {
   
   static initEvent() {
     new LoginEvent();
+  }
+  static initController() {
+    new SwitchController({
+      name: 'Desc Switch',
+      lsKeyView: 'desc',
+      triggerSelector: '#action-desc',
+      switchSelector: '#desc-area'
+    });
   }
 }
