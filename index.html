@@ -41,19 +41,21 @@
     <main>
     <!-- login -->
     <div class="content" id="login-area">
-      <div class="content-item">
+      <div class="content-item" id="login-id-area">
         <label for="login-id">ID</label>
-        <span class="help-icon fa fa-question-circle"></span>
+        <span class="help-icon fa fa-question-circle" id="login-id-help"></span>
         <input type="text" id="login-id" class="form-control" placeholder="Enter your ID">
       </div>
       <div class="content-item form-group" id="login-password-area">
         <label for="login-password">パスワード</label>
-        <span class="help-icon fa fa-question-circle"></span>
+        <span class="help-icon fa fa-question-circle" id="login-password-help"></span>
         <input type="password" id="login-password" placeholder="Enter your password" class="form-control">
       </div>
-      <div class="content-item checkbox" id="login-check-area">
-        <label><input type="checkbox" id="login-check">ログインしたままにする</label>
-        <span class="help-icon fa fa-question-circle"></span>
+      <div class="content-item" id="login-check-area">
+        <span class="checkbox">
+          <label><input type="checkbox" id="login-check">ログインしたままにする</label>
+        </span>
+        <span class="help-icon fa fa-question-circle" id="login-check-help"></span>
       </div>
       <div class="content-item form-group" id="login-area-submit">
         <button class="btn btn-default" id="login-submit-login"><i class="fa fa-sign-in" aria-hidden="true"></i> ログイン</button>
