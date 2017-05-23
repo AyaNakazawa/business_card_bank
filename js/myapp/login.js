@@ -130,4 +130,11 @@ class LoginEvent extends CommonEvent {
     this.ID = 'aya';
     this.generateLoginArea();
   }
+  
+  submitLogout() {
+    Log.logClassKey(this.NAME, 'Logout', 'submit');
+    this.LOGIN = false;
+    this.ID = null;
+    this.generateLoginArea();
+  }
 }
