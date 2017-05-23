@@ -10,6 +10,7 @@ class BCBProcess extends CommonProcess {
   
   initProcess() {
     this.initPopover();
+    this.initEvent();
   }
   
   initPopover() {
@@ -35,5 +36,9 @@ class BCBProcess extends CommonProcess {
         help: 'ログインしている ID です。'
       });
     }
+  }
+  
+  initEvent() {
+    new LoginEvent();
   }
 }
