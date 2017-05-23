@@ -108,7 +108,7 @@ class LoginEvent extends CommonEvent {
     );
   }
   
-  generateLoginArea(_loginFailed = false) {
+  generateLoginArea(_loginAlert = 'success', _loginFailedMessage = null) {
     let template = null;
     if (this.LOGIN) {
       // ログインしているとき
@@ -127,12 +127,12 @@ class LoginEvent extends CommonEvent {
     };
     
     this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.empty();
-    if (_loginFailed) {
+    if (_loginFailedMessage != null) {
       const alertTemplate = this.CONTROLLER.model.$ALERT_TEMPLATE.text();
       const alertCompiled = _.template(alertTemplate);
       const alertModel = {
-        type: 'danger',
-        message: 'ログインに失敗しました。'
+        type: _loginAlert,
+        message: _loginFailedMessage
       };
       this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.append(alertCompiled(alertModel));
     }
@@ -166,14 +166,16 @@ class LoginEvent extends CommonEvent {
       },
       dataType: 'json',
       success: (_data) => {
-        if (_data != null) {
-          this.ID = _data['name'];
+        if (Object.keys(_data).length > 0) {
+          this.ID = Object.keys(_data)[0];
           this.LOGIN = true;
+          this.generateLoginArea('success', `ユーザー ${this.ID} でログインしました。`);
+        } else {
+          this.generateLoginArea('danger', 'IDとパスワードの組み合わせが正しくありません。');
         }
-        this.generateLoginArea();
       },
       error: () => {
-        this.generateLoginArea(true);
+        this.generateLoginArea('danger', 'ajax通信に失敗しました。');
       }
     });
   }
@@ -181,7 +183,7 @@ class LoginEvent extends CommonEvent {
   submitLogout() {
     Log.logClassKey(this.NAME, 'Logout', 'submit');
     this.LOGIN = false;
-    this.generateLoginArea();
+    this.generateLoginArea('success', 'ログアウトしました。');
     this.ID = null;
   }
 }
