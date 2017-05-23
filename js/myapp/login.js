@@ -109,6 +109,24 @@ class LoginEvent extends CommonEvent {
         this.submitLogout();
       }
     );
+    SetEvent.setOn(
+      'keypress',
+      this.CONTROLLER.model.LOGIN_ID_SELECTOR,
+      (e) => {
+        if (e.keyCode == 13) {
+          $(this.CONTROLLER.model.LOGIN_PASSWORD_SELECTOR).focus();
+        }
+      }
+    );
+    SetEvent.setOn(
+      'keypress',
+      this.CONTROLLER.model.LOGIN_PASSWORD_SELECTOR,
+      (e) => {
+        if (e.keyCode == 13) {
+          $(this.CONTROLLER.model.LOGIN_SELECTOR).trigger(this.CONTROLLER.model.LOGIN_TRIGGER);
+        }
+      }
+    );
   }
   
   generateLoginArea(_loginAlert = 'success', _loginFailedMessage = null) {
@@ -143,6 +161,8 @@ class LoginEvent extends CommonEvent {
       this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.append(alertCompiled(alertModel));
     }
     this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.append(compiled(model));
+    
+    $(this.CONTROLLER.model.LOGIN_ID_SELECTOR).focus();
     
     BCBProcess.initPopover();
   }
