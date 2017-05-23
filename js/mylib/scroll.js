@@ -38,11 +38,13 @@ class ScrollView extends CommonView {
   
   setOn() {
     if (this.model.SCROLL_SELECTOR != null) {
-      if (this.model.TRIGGER_SELECTOR != null) {
-        $(document).on(this.model.EVENT, this.model.TRIGGER_SELECTOR, () => {this.scroll()});
-      } else {
-        $(document).on(this.model.EVENT, () => {this.scroll()});
-      }
+      SetEvent.setOn(
+        this.model.TRIGGER_SELECTOR,
+        this.model.EVENT,
+        () => {
+          this.scroll();
+        }
+      );
     }
   }
   
