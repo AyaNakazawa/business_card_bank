@@ -42,6 +42,7 @@ class BCBProcess extends CommonProcess {
   static initEvent() {
     new LoginEvent();
   }
+  
   static initController() {
     new SwitchController({
       name: 'Desc Switch',
