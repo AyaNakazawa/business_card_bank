@@ -127,6 +127,15 @@ class LoginEvent extends CommonEvent {
     };
     
     this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.empty();
+    if (_loginFailed) {
+      const alertTemplate = this.CONTROLLER.model.$ALERT_TEMPLATE.text();
+      const alertCompiled = _.template(alertTemplate);
+      const alertModel = {
+        type: 'danger',
+        message: 'ログインに失敗しました。'
+      };
+      this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.append(alertCompiled(alertModel));
+    }
     this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.append(compiled(model));
     
     BCBProcess.initPopover();
