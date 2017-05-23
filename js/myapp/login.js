@@ -15,6 +15,13 @@ class LoginModel extends SwitchModel {
       triggerSelector: triggerSelector,
       switchSelector: switchSelector
     });
+    
+    this.LOGIN_AREA_SELECTOR = '#login-area';
+    this.$LOGIN_AREA_SELECTOR = $(this.LOGIN_AREA_SELECTOR);
+    this.TEMPLATE_LOGINED_SELECTOR = '#logined-template';
+    this.$TEMPLATE_LOGINED_SELECTOR = $(this.TEMPLATE_LOGINED_SELECTOR);
+    this.TEMPLATE_NOT_LOGIN_SELECTOR = '#not-login-template';
+    this.$TEMPLATE_NOT_LOGIN_SELECTOR = $(this.TEMPLATE_NOT_LOGIN_SELECTOR);
   }
 }
 
