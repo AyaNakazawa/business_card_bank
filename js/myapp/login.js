@@ -136,7 +136,7 @@ class LoginEvent extends CommonEvent {
     const template = this.CONTROLLER.model.$LOADING_TEMPLATE.text();
     const compiled = _.template(template);
     const model = {
-      header: this.ID,
+      header: `${this.ID} でログイン`,
       message: 'ログイン中...'
     };
     this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.empty();
