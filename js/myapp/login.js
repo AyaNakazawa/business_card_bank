@@ -78,6 +78,25 @@ class LoginEvent extends CommonEvent {
     
     this.LOGIN = false;
     this.ID = null;
+    
+    this.setOn();
+  }
+  
+  setOn() {
+    SetEvent.setOn(
+      this.CONTROLLER.model.LOGIN_TRIGGER,
+      this.CONTROLLER.model.LOGIN_SELECTOR,
+      () => {
+        this.submitLogin();
+      }
+    );
+    SetEvent.setOn(
+      this.CONTROLLER.model.LOGOUT_TRIGGER,
+      this.CONTROLLER.model.LOGOUT_SELECTOR,
+      () => {
+        this.submitLogout();
+      }
+    );
   }
   
 }
