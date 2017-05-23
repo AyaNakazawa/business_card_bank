@@ -67,6 +67,15 @@
         <button class="btn btn-default" id="logined-logout"><i class="fa fa-sign-out" aria-hidden="true"></i> ログアウト</button>
       </div>
     </script>
+    <!-- alert-template -->
+    <script type="text/template" id="alert-template">
+      <div class="alert alert-<%- type %> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+          <span class="fa fa-close" aria-hidden="true"></span>
+        </button>
+        <%- message %>
+      </div>
+    </script>
     <!-- not-login-template -->
     <script type="text/template" id="not-login-template">
       <div class="content-item" id="login-id-area">
