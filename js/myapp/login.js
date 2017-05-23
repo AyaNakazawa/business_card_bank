@@ -156,18 +156,20 @@ class LoginEvent extends CommonEvent {
     Log.logClassKey(this.NAME, 'Login', 'submit');
     this.ID = $(this.CONTROLLER.model.LOGIN_ID_SELECTOR).val();
     this.PASSWORD = $(this.CONTROLLER.model.LOGIN_PASSWORD_SELECTOR).val();
+    this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
     this.generateLoading();
     
     $.ajax({
-      url: 'ruby/getSQLiteResult.rb',
+      url: 'ruby/loginUser.rb',
       data: {
-        query: `SELECT name FROM User where name = '${this.ID}' and password = '${this.PASSWORD}';`
+        id: this.ID,
+        password: this.PASSWORD_HASH
       },
-      dataType: 'json',
       success: (_data) => {
-        if (Object.keys(_data).length > 0) {
-          this.ID = Object.keys(_data)[0];
+        Log.logClass('loginUser ajax success', _data);
+        if (_data.length > 0) {
+          this.ID = _data;
           this.LOGIN = true;
           this.generateLoginArea('success', `ユーザー ${this.ID} でログインしました。`);
         } else {
