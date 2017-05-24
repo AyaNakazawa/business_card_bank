@@ -180,12 +180,12 @@ class UserEvent extends CommonEvent {
     BCBProcess.initPopover();
   }
   
-  generateLoading() {
+  generateLoading(_header = null, _message = null) {
     const template = this.CONTROLLER.model.$LOADING_TEMPLATE.text();
     const compiled = _.template(template);
     const model = {
-      header: `${this.ID} でログイン`,
-      message: 'ログイン中...'
+      header: _header,
+      message: _message
     };
     this.CONTROLLER.model.$USER_AREA_SELECTOR.empty();
     this.CONTROLLER.model.$USER_AREA_SELECTOR.html(compiled(model));
@@ -219,7 +219,7 @@ class UserEvent extends CommonEvent {
     
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
-    this.generateLoading();
+    this.generateLoading(`${this.ID} でログイン`, 'ログイン中...');
     
     $.ajax({
       url: 'ruby/loginUser.rb',
@@ -254,6 +254,14 @@ class UserEvent extends CommonEvent {
   
   submitSignup() {
     Log.logClassKey(this.NAME, 'Submit', 'Sign Up');
+    
+    if (!this.checkValidate()) {
+      return;
+    }
+    
+    this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
+    
+    this.generateLoading(`${this.ID} でユーザー登録`,'登録中...');
     
   }
 }
