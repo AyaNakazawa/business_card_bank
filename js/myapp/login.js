@@ -1,17 +1,17 @@
 
 // ----------------------------------------------------------------
-// Login Class
+// User Class
 
-class LoginModel extends SwitchModel {
+class UserModel extends SwitchModel {
   constructor({
     name,
     lsKeyView,
     triggerSelector,
     switchSelector,
+    userIdSelector = null,
+    userPasswordSelector = null,
     loginTrigger = 'click',
     loginSelector = null,
-    loginIdSelector = null,
-    loginPasswordSelector = null,
     logoutTrigger = 'click',
     logoutSelector = null
   } = {}) {
@@ -29,12 +29,12 @@ class LoginModel extends SwitchModel {
     this.LOGOUT_TRIGGER = logoutTrigger;
     this.LOGOUT_SELECTOR = logoutSelector;
     
-    this.LOGIN_ID_SELECTOR = loginIdSelector;
-    this.LOGIN_PASSWORD_SELECTOR = loginPasswordSelector;
+    this.USER_ID_SELECTOR = userIdSelector;
+    this.USER_PASSWORD_SELECTOR = userPasswordSelector;
     // this.LOGIN_CHECK_SELECTOR = '#login-check';
     
-    this.LOGIN_AREA_SELECTOR = '#login-area';
-    this.$LOGIN_AREA_SELECTOR = $(this.LOGIN_AREA_SELECTOR);
+    this.USER_AREA_SELECTOR = '#user-area';
+    this.$USER_AREA_SELECTOR = $(this.USER_AREA_SELECTOR);
     this.TEMPLATE_LOGINED_SELECTOR = '#logined-template';
     this.$TEMPLATE_LOGINED_SELECTOR = $(this.TEMPLATE_LOGINED_SELECTOR);
     this.TEMPLATE_NOT_LOGIN_SELECTOR = '#not-login-template';
@@ -45,8 +45,8 @@ class LoginModel extends SwitchModel {
   }
 }
 
-class LoginView extends SwitchView {
-  constructor(_model = new LoginModel()) {
+class UserView extends SwitchView {
+  constructor(_model = new UserModel()) {
     super(_model);
   }
 }
@@ -54,21 +54,21 @@ class LoginView extends SwitchView {
 // ----------------------------------------------------------------
 // Controller
 
-class LoginController extends CommonController {
+class UserController extends CommonController {
   constructor(_obj) {
     super(_obj);
     
-    this.model = new LoginModel(_obj);
-    this.view = new LoginView(this.model);
+    this.model = new UserModel(_obj);
+    this.view = new UserView(this.model);
   }
 }
 
 // ----------------------------------------------------------------
 // Event
 
-class LoginEvent extends CommonEvent {
+class UserEvent extends CommonEvent {
   constructor({
-    name = 'Login Event'
+    name = 'User Event'
   } = {})
   {
     super({
@@ -76,14 +76,14 @@ class LoginEvent extends CommonEvent {
     });
     
     this.NAME = name;
-    this.CONTROLLER = new LoginController({
-      name: 'Login Switch',
-      lsKeyView: 'login',
-      triggerSelector: '#action-login',
-      switchSelector: '#login-area',
+    this.CONTROLLER = new UserController({
+      name: 'User Switch',
+      lsKeyView: 'user',
+      triggerSelector: '#action-user',
+      switchSelector: '#user-area',
+      userIdSelector: '#user-id',
+      userPasswordSelector: '#user-password',
       loginSelector: '#login-submit',
-      loginIdSelector: '#login-id',
-      loginPasswordSelector: '#login-password',
       logoutSelector: '#logined-logout'
     });
     
@@ -91,7 +91,7 @@ class LoginEvent extends CommonEvent {
     this.ID = null;
     
     this.setOn();
-    this.generateLoginArea();
+    this.generateUserArea();
   }
   
   setOn() {
@@ -111,16 +111,16 @@ class LoginEvent extends CommonEvent {
     );
     SetEvent.setOn(
       'keypress',
-      this.CONTROLLER.model.LOGIN_ID_SELECTOR,
+      this.CONTROLLER.model.USER_ID_SELECTOR,
       (e) => {
         if (e.keyCode == 13) {
-          $(this.CONTROLLER.model.LOGIN_PASSWORD_SELECTOR).focus();
+          $(this.CONTROLLER.model.USER_PASSWORD_SELECTOR).focus();
         }
       }
     );
     SetEvent.setOn(
       'keypress',
-      this.CONTROLLER.model.LOGIN_PASSWORD_SELECTOR,
+      this.CONTROLLER.model.USER_PASSWORD_SELECTOR,
       (e) => {
         if (e.keyCode == 13) {
           $(this.CONTROLLER.model.LOGIN_SELECTOR).trigger(this.CONTROLLER.model.LOGIN_TRIGGER);
@@ -129,11 +129,11 @@ class LoginEvent extends CommonEvent {
     );
   }
   
-  generateLoginArea(_loginAlert = 'success', _loginFailedMessage = null) {
+  generateUserArea(_loginAlert = 'success', _loginFailedMessage = null) {
     let template = null;
     if (this.LOGIN) {
       // ログインしているとき
-      Log.logClass(this.NAME, 'Logined');
+      Log.logClass(this.NAME, 'Usered');
       template = this.CONTROLLER.model.$TEMPLATE_LOGINED_SELECTOR.text();
       $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('Logout');
       
@@ -141,7 +141,7 @@ class LoginEvent extends CommonEvent {
       // ログインしていないとき
       Log.logClass(this.NAME, 'Not login');
       template = this.CONTROLLER.model.$TEMPLATE_NOT_LOGIN_SELECTOR.text();
-      $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('Login');
+      $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('User');
       
     }
     const compiled = _.template(template);
@@ -150,7 +150,7 @@ class LoginEvent extends CommonEvent {
       password: this.PASSWORD
     };
     
-    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.empty();
+    this.CONTROLLER.model.$USER_AREA_SELECTOR.empty();
     if (_loginFailedMessage != null) {
       const alertTemplate = this.CONTROLLER.model.$ALERT_TEMPLATE.text();
       const alertCompiled = _.template(alertTemplate);
@@ -158,11 +158,11 @@ class LoginEvent extends CommonEvent {
         type: _loginAlert,
         message: _loginFailedMessage
       };
-      this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.append(alertCompiled(alertModel));
+      this.CONTROLLER.model.$USER_AREA_SELECTOR.append(alertCompiled(alertModel));
     }
-    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.append(compiled(model));
+    this.CONTROLLER.model.$USER_AREA_SELECTOR.append(compiled(model));
     
-    $(this.CONTROLLER.model.LOGIN_ID_SELECTOR).focus();
+    $(this.CONTROLLER.model.USER_ID_SELECTOR).focus();
     
     BCBProcess.initPopover();
   }
@@ -174,27 +174,27 @@ class LoginEvent extends CommonEvent {
       header: `${this.ID} でログイン`,
       message: 'ログイン中...'
     };
-    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.empty();
-    this.CONTROLLER.model.$LOGIN_AREA_SELECTOR.html(compiled(model));
+    this.CONTROLLER.model.$USER_AREA_SELECTOR.empty();
+    this.CONTROLLER.model.$USER_AREA_SELECTOR.html(compiled(model));
   }
   
   submitLogin() {
     Log.logClassKey(this.NAME, 'submit', 'Login');
-    this.ID = $(this.CONTROLLER.model.LOGIN_ID_SELECTOR).val();
-    this.PASSWORD = $(this.CONTROLLER.model.LOGIN_PASSWORD_SELECTOR).val();
+    this.ID = $(this.CONTROLLER.model.USER_ID_SELECTOR).val();
+    this.PASSWORD = $(this.CONTROLLER.model.USER_PASSWORD_SELECTOR).val();
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
     if (this.ID.length == 0) {
-      this.generateLoginArea('danger', 'ID を入力してください。');
+      this.generateUserArea('danger', 'ID を入力してください。');
       return;
     } else if (this.ID.length < this.CONTROLLER.model.ID_LENGTH_MIN) {
-      this.generateLoginArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MIN} 文字以上で入力してください。`);
+      this.generateUserArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MIN} 文字以上で入力してください。`);
       return;
     } else if (this.ID.length > this.CONTROLLER.model.ID_LENGTH_MAX) {
-      this.generateLoginArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MAX} 文字以下で入力してください。`);
+      this.generateUserArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MAX} 文字以下で入力してください。`);
       return;
     } else if (this.PASSWORD.length == 0) {
-      this.generateLoginArea('danger', 'パスワード を入力してください。');
+      this.generateUserArea('danger', 'パスワード を入力してください。');
       return;
     }
     
@@ -211,14 +211,14 @@ class LoginEvent extends CommonEvent {
         if (_data.length > 0) {
           this.ID = _data;
           this.LOGIN = true;
-          this.generateLoginArea('success', `ユーザー ${this.ID} でログインしました。`);
+          this.generateUserArea('success', `ユーザー ${this.ID} でログインしました。`);
         } else {
-          this.generateLoginArea('danger', 'IDとパスワードの組み合わせが正しくありません。');
+          this.generateUserArea('danger', 'IDとパスワードの組み合わせが正しくありません。');
         }
       },
       error: () => {
         Log.logClass(this.NAME, 'loginUser ajax failed');
-        this.generateLoginArea('danger', 'ajax通信に失敗しました。');
+        this.generateUserArea('danger', 'ajax通信に失敗しました。');
       }
     });
   }
@@ -228,6 +228,6 @@ class LoginEvent extends CommonEvent {
     this.LOGIN = false;
     this.ID = null;
     this.PASSWORD = null;
-    this.generateLoginArea('success', 'ログアウトしました。');
+    this.generateUserArea('success', 'ログアウトしました。');
   }
 }
