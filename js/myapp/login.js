@@ -263,5 +263,26 @@ class UserEvent extends CommonEvent {
     
     this.generateLoading(`${this.ID} でユーザー登録`,'登録中...');
     
+    $.ajax({
+      url: 'ruby/signupUser.rb',
+      data: {
+        id: this.ID,
+        password: this.PASSWORD_HASH
+      },
+      success: (_data) => {
+        Log.logClass(this.NAME, 'signupUser ajax success');
+        if (_data.length > 0) {
+          this.ID = _data;
+          this.LOGIN = true;
+          this.generateUserArea('success', `ユーザー ${this.ID} を登録しました。`);
+        } else {
+          this.generateUserArea('danger', `ユーザー ${this.ID} は登録済みです`);
+        }
+      },
+      error: () => {
+        Log.logClass(this.NAME, 'signupUser ajax failed');
+        this.generateUserArea('danger', 'ajax通信に失敗しました。');
+      }
+    });
   }
 }
