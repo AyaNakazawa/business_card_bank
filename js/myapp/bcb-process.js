@@ -52,6 +52,7 @@ class BCBProcess extends CommonProcess {
       switchSelector: '#desc-area'
     });
   }
+  
   static show() {
     $('body').show();
   }
