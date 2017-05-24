@@ -32,6 +32,9 @@ class Content {
   }
   
   static getHeader(_header = null) {
+    if (_header != null) {
+      return `<div class="${Content.HEADER}">${_header}</div>`
+    }
     return '';
   }
   
