@@ -141,7 +141,7 @@ class UserEvent extends CommonEvent {
       // ログインしていないとき
       Log.logClass(this.NAME, 'Not login');
       template = this.CONTROLLER.model.$TEMPLATE_NOT_LOGIN_SELECTOR.text();
-      $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('User');
+      $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('Login');
       
     }
     const compiled = _.template(template);
@@ -178,23 +178,16 @@ class UserEvent extends CommonEvent {
     this.CONTROLLER.model.$USER_AREA_SELECTOR.html(compiled(model));
   }
   
+  checkValidate() {
+  }
+  
   submitLogin() {
     Log.logClassKey(this.NAME, 'submit', 'Login');
     this.ID = $(this.CONTROLLER.model.USER_ID_SELECTOR).val();
     this.PASSWORD = $(this.CONTROLLER.model.USER_PASSWORD_SELECTOR).val();
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
-    if (this.ID.length == 0) {
-      this.generateUserArea('danger', 'ID を入力してください。');
-      return;
-    } else if (this.ID.length < this.CONTROLLER.model.ID_LENGTH_MIN) {
-      this.generateUserArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MIN} 文字以上で入力してください。`);
-      return;
-    } else if (this.ID.length > this.CONTROLLER.model.ID_LENGTH_MAX) {
-      this.generateUserArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MAX} 文字以下で入力してください。`);
-      return;
-    } else if (this.PASSWORD.length == 0) {
-      this.generateUserArea('danger', 'パスワード を入力してください。');
+    if (!this.checkValidate()) {
       return;
     }
     
