@@ -93,6 +93,28 @@
       </p>
     </footer>
     <!-- template -->
+    <!-- confirm-view -->
+    <script type="text/template" id="confirm-view-template">
+      <div id="<%- confirmId %>" class="modal fade" data-backdrop="static" data-keyboard="false" data-html="true" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" id="<%- confirmId %>-close">
+                <span>
+                  <i class="fa fa-close"></i>
+                </span>
+              </button>
+              <h4 class="modal-title"><%- confirmTitle %></h4>
+            </div>
+            <div class="modal-body"><%- confirmMessage %></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-yes"><%- yes %></button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-no"><%- no %></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
     <!-- logined-template -->
     <script type="text/template" id="logined-template">
       <div class="content-item" id="logined-message">
