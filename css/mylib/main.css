@@ -114,6 +114,7 @@ main {
 
 .content .help-icon {
   cursor: pointer;
+  padding: 8px;
 }
 
 .content-item .checkbox {
