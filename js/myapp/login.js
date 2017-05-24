@@ -13,7 +13,9 @@ class UserModel extends SwitchModel {
     loginTrigger = 'click',
     loginSelector = null,
     logoutTrigger = 'click',
-    logoutSelector = null
+    logoutSelector = null,
+    signupTrigger = 'click',
+    signupSelector = null
   } = {}) {
     super({
       name: name,
@@ -28,6 +30,9 @@ class UserModel extends SwitchModel {
     
     this.LOGOUT_TRIGGER = logoutTrigger;
     this.LOGOUT_SELECTOR = logoutSelector;
+    
+    this.SIGNUP_TRIGGER = signupTrigger;
+    this.SIGNUP_SELECTOR = signupSelector;
     
     this.USER_ID_SELECTOR = userIdSelector;
     this.USER_PASSWORD_SELECTOR = userPasswordSelector;
@@ -84,7 +89,8 @@ class UserEvent extends CommonEvent {
       userIdSelector: '#user-id',
       userPasswordSelector: '#user-password',
       loginSelector: '#login-submit',
-      logoutSelector: '#logined-logout'
+      logoutSelector: '#logined-logout',
+      signupSelector: '#signup-submit'
     });
     
     this.LOGIN = false;
@@ -107,6 +113,13 @@ class UserEvent extends CommonEvent {
       this.CONTROLLER.model.LOGOUT_SELECTOR,
       () => {
         this.submitLogout();
+      }
+    );
+    SetEvent.setOn(
+      this.CONTROLLER.model.SIGNUP_TRIGGER,
+      this.CONTROLLER.model.SIGNUP_SELECTOR,
+      () => {
+        this.submitSignup();
       }
     );
     SetEvent.setOn(
@@ -238,7 +251,7 @@ class UserEvent extends CommonEvent {
     this.generateUserArea('success', 'ログアウトしました。');
   }
   
-  submitSignUp() {
+  submitSignup() {
     
   }
 }
