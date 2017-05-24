@@ -8,7 +8,7 @@ objCgi = CGI.new
 _id = objCgi["id"]
 _password = objCgi["password"]
 
-query = "SELECT name FROM User WHERE name = '#{_id}' AND password = '#{_password}';"
+query = "SELECT name FROM User WHERE name = '#{_id}';"
 
 db = SQLite3::Database.new("../db/bcb.sqlite3")
 
