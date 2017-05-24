@@ -39,6 +39,9 @@ class Content {
   }
   
   static getItemName(_name = null) {
+    if (_name != null) {
+      return `<div class="${Content.ITEM_NAME}">${_name}</div>`
+    }
     return '';
   }
   
