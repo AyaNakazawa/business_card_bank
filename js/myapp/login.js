@@ -213,7 +213,7 @@ class UserEvent extends CommonEvent {
   submitLogin() {
     Log.logClassKey(this.NAME, 'Submit', 'Login');
     
-    if (!this.checkValidate()) {
+    if (this.checkValidate() == false) {
       return;
     }
     
@@ -255,7 +255,7 @@ class UserEvent extends CommonEvent {
   submitSignup() {
     Log.logClassKey(this.NAME, 'Submit', 'Sign Up');
     
-    if (!this.checkValidate()) {
+    if (this.checkValidate() == false) {
       return;
     }
     
