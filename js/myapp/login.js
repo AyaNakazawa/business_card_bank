@@ -237,4 +237,8 @@ class UserEvent extends CommonEvent {
     this.PASSWORD = null;
     this.generateUserArea('success', 'ログアウトしました。');
   }
+  
+  submitSignUp() {
+    
+  }
 }
