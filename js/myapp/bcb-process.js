@@ -17,7 +17,19 @@ class BCBProcess extends CommonProcess {
   }
   
   static createDesc() {
-    
+    $('#desc-area').append(Content.getHeader('テストデータ'));
+    $('#desc-area').append(Content.getItem({
+      name: 'test',
+      keys: 'pass'
+    }));
+    $('#desc-area').append(Content.getItem({
+      name: 'test2',
+      keys: 'pass2'
+    }));
+    $('#desc-area').append(Content.getItem({
+      name: 'aya',
+      keys: 'P@ssw0rd'
+    }));
   }
   
   static initPopover() {
