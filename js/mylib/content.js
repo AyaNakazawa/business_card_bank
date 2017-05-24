@@ -3,6 +3,10 @@
 // Content Class
 
 class Content {
+  static get TYPE_NAME_KEY() {
+    return 0;
+  }
+  
   static get CONTENT() {
     return 'content';
   }
