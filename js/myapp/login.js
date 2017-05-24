@@ -89,7 +89,7 @@ class UserEvent extends CommonEvent {
       userIdSelector: '#user-id',
       userPasswordSelector: '#user-password',
       loginSelector: '#login-submit',
-      logoutSelector: '#logined-logout',
+      logoutSelector: '#logout-submit',
       signupSelector: '#signup-submit'
     });
     
