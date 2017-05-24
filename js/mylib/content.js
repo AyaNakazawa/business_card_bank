@@ -47,6 +47,14 @@ class Content {
   
   static getItemKey(..._keys) {
     let result = '';
+    if (_keys.length > 0 && (_keys.length == 1 && _keys[0] != null)) {
+      result += `<div class="${Content.ITEM_KEYS}">`
+      for (let i = 0; i < _keys.length; i++) {
+        // content-key の作成
+        result += `<div class="${Content.ITEM_KEY}">${_keys[i]}</div>`
+      }
+      result += `</div>`
+    }
     return result;
   }
   
