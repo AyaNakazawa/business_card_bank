@@ -58,7 +58,7 @@ class BCBProcess extends CommonProcess {
   }
   
   static initEvent() {
-    new LoginEvent();
+    new UserEvent();
   }
   
   static initController() {

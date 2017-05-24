@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarTop">
           <ul class="nav navbar-nav">
             <li id="action-desc"><a>Desc</a></li>
-            <li id="action-login"><a>Login</a></li>
+            <li id="action-user"><a>Login</a></li>
           </ul>
         </div>
       </div>
@@ -49,8 +49,8 @@
     <main>
       <!-- desc -->
       <div class="content" id="desc-area"></div>
-      <!-- login -->
-      <div class="content" id="login-area"></div>
+      <!-- user -->
+      <div class="content" id="user-area"></div>
     </main>
     <!-- footer -->
     <footer>
@@ -105,21 +105,21 @@
     </script>
     <!-- not-login-template -->
     <script type="text/template" id="not-login-template">
-      <div class="content-item" id="login-id-area">
-        <label for="login-id">ID</label>
-        <span class="help-icon fa fa-question-circle" id="login-id-help"></span>
-        <input type="text" id="login-id" class="form-control" value="<%- id %>" placeholder="Enter your ID">
+      <div class="content-item" id="user-id-area">
+        <label for="user-id">ID</label>
+        <span class="help-icon fa fa-question-circle" id="user-id-help"></span>
+        <input type="text" id="user-id" class="form-control" value="<%- id %>" placeholder="Enter your ID">
       </div>
-      <div class="content-item form-group" id="login-password-area">
-        <label for="login-password">パスワード</label>
-        <span class="help-icon fa fa-question-circle" id="login-password-help"></span>
-        <input type="password" id="login-password" class="form-control" value="<%- password %>" placeholder="Enter your password">
+      <div class="content-item form-group" id="user-password-area">
+        <label for="user-password">パスワード</label>
+        <span class="help-icon fa fa-question-circle" id="user-password-help"></span>
+        <input type="password" id="user-password" class="form-control" value="<%- password %>" placeholder="Enter your password">
       </div>
-      <!-- <div class="content-item" id="login-check-area">
+      <!-- <div class="content-item" id="user-check-area">
         <span class="checkbox">
-          <label><input type="checkbox" id="login-check">ログインしたままにする</label>
+          <label><input type="checkbox" id="user-check">ログインしたままにする</label>
         </span>
-        <span class="help-icon fa fa-question-circle" id="login-check-help"></span>
+        <span class="help-icon fa fa-question-circle" id="user-check-help"></span>
       </div> -->
       <div class="content-item form-group" id="login-submit-area">
         <button class="btn btn-default" id="login-submit"><i class="fa fa-sign-in" aria-hidden="true"></i> ログイン</button>
