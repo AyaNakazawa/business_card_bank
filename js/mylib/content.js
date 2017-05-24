@@ -33,6 +33,7 @@ class Content {
   
   static createContentItem(
     _type = Content.TYPE_NAME_KEY,
+    _header = null,
     _name = null,
     ..._key = []
   ) {
