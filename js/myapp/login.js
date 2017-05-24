@@ -179,6 +179,20 @@ class UserEvent extends CommonEvent {
   }
   
   checkValidate() {
+    if (this.ID.length == 0) {
+      this.generateUserArea('danger', 'ID を入力してください。');
+      return false;
+    } else if (this.ID.length < this.CONTROLLER.model.ID_LENGTH_MIN) {
+      this.generateUserArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MIN} 文字以上で入力してください。`);
+      return false;
+    } else if (this.ID.length > this.CONTROLLER.model.ID_LENGTH_MAX) {
+      this.generateUserArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MAX} 文字以下で入力してください。`);
+      return false;
+    } else if (this.PASSWORD.length == 0) {
+      this.generateUserArea('danger', 'パスワード を入力してください。');
+      return false;
+    }
+    return true;
   }
   
   submitLogin() {
