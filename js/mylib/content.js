@@ -31,12 +31,12 @@ class Content {
     return 'content-item-key';
   }
   
-  static createContentItem(
-    _type = Content.TYPE_NAME_KEY,
-    _header = null,
-    _name = null,
-    ..._key = []
-  ) {
+  static createContentItem({
+    type = Content.TYPE_NAME_KEY,
+    header = null,
+    name = null,
+    keys = null
+  } = {}) {
     let result = '';
     
     return result;
