@@ -9,10 +9,15 @@ class BCBProcess extends CommonProcess {
   }
   
   static initProcess() {
+    BCBProcess.createDesc();
     BCBProcess.initPopover();
     BCBProcess.initEvent();
     BCBProcess.initController();
     BCBProcess.show();
+  }
+  
+  static createDesc() {
+    
   }
   
   static initPopover() {
