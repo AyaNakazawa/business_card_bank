@@ -192,6 +192,8 @@ class UserEvent extends CommonEvent {
   }
   
   checkValidate() {
+    this.ID = $(this.CONTROLLER.model.USER_ID_SELECTOR).val();
+    this.PASSWORD = $(this.CONTROLLER.model.USER_PASSWORD_SELECTOR).val();
     if (this.ID.length == 0) {
       this.generateUserArea('danger', 'ID を入力してください。');
       return false;
@@ -210,13 +212,12 @@ class UserEvent extends CommonEvent {
   
   submitLogin() {
     Log.logClassKey(this.NAME, 'submit', 'Login');
-    this.ID = $(this.CONTROLLER.model.USER_ID_SELECTOR).val();
-    this.PASSWORD = $(this.CONTROLLER.model.USER_PASSWORD_SELECTOR).val();
-    this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
     if (!this.checkValidate()) {
       return;
     }
+    
+    this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
     this.generateLoading();
     
