@@ -30,4 +30,14 @@ class Content {
   static get ITEM_KEY() {
     return 'content-item-key';
   }
+  
+  static createContentItem(
+    _type = Content.TYPE_NAME_KEY,
+    _name = null,
+    ..._key = []
+  ) {
+    let result = '';
+    
+    return result;
+  }
 }
