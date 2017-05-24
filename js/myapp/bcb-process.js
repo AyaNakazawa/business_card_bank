@@ -12,6 +12,7 @@ class BCBProcess extends CommonProcess {
     BCBProcess.initPopover();
     BCBProcess.initEvent();
     BCBProcess.initController();
+    BCBProcess.show();
   }
   
   static initPopover() {
@@ -50,5 +51,8 @@ class BCBProcess extends CommonProcess {
       triggerSelector: '#action-desc',
       switchSelector: '#desc-area'
     });
+  }
+  static show() {
+    $('body').show();
   }
 }
