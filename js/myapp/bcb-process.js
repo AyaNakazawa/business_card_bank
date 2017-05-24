@@ -36,17 +36,17 @@ class BCBProcess extends CommonProcess {
     {
       new PopoverController({
         name: 'ID Popover',
-        selector: '#login-id-help',
+        selector: '#user-id-help',
         help: 'ID を入力してください。'
       });
       new PopoverController({
         name: 'Password Popover',
-        selector: '#login-password-help',
+        selector: '#user-password-help',
         help: 'パスワード を入力してください。'
       });
       new PopoverController({
         name: 'Login Check Popover',
-        selector: '#login-check-help',
+        selector: '#user-check-help',
         help: '共有デバイスでは設定に注意してください。'
       });
       new PopoverController({
