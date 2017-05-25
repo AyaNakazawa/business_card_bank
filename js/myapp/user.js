@@ -154,7 +154,7 @@ class UserController extends CommonController {
       },
       error: () => {
         Log.logClass(this.NAME, 'loginUser ajax failed');
-        this.view.generateUserArea('danger', 'ajax通信に失敗しました。');
+        this.view.generateUserArea('danger', 'ajax通信に失敗しました。', false);
       }
     });
   }
@@ -199,7 +199,7 @@ class UserController extends CommonController {
       },
       error: () => {
         Log.logClass(this.NAME, 'signupUser ajax failed');
-        this.view.generateUserArea('danger', 'ajax通信に失敗しました。');
+        this.view.generateUserArea('danger', 'ajax通信に失敗しました。', false);
       }
     });
   }
