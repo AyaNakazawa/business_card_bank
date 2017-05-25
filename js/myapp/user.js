@@ -73,7 +73,7 @@ class UserController extends CommonController {
     this.PASSWORD_HASH = null;
   }
   
-  generateUserArea(_alert = 'success', _message = null) {
+  generateUserArea(_alertType = 'success', _message = null) {
     let template = null;
     if (this.LOGIN) {
       // ログインしているとき
@@ -95,15 +95,7 @@ class UserController extends CommonController {
     };
     
     this.model.$USER_AREA_SELECTOR.empty();
-    if (_message != null) {
-      const alertTemplate = this.model.$ALERT_TEMPLATE.text();
-      const alertCompiled = _.template(alertTemplate);
-      const alertModel = {
-        type: _alert,
-        message: _message
-      };
-      this.model.$USER_AREA_SELECTOR.append(alertCompiled(alertModel));
-    }
+    this.view.generateAlert(this.model.$USER_AREA_SELECTOR, _alertType, _message);
     this.model.$USER_AREA_SELECTOR.append(compiled(model));
     
     $(this.model.USER_ID_SELECTOR).focus();
