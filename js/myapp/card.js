@@ -23,7 +23,7 @@ class CardModel extends SwitchModel {
     this.CARD_AREA_SELECTOR = '#card-area';
     this.$CARD_AREA_SELECTOR = $(this.CARD_AREA_SELECTOR);
     
-    this.CARD_TBODY = '#card-area tbody';
+    this.CARD_TBODY = '#card-tbody';
     this.$CARD_TBODY = $(this.CARD_TBODY);
   }
 }
@@ -44,19 +44,21 @@ class CardController extends CommonController {
     this.model = new CardModel(_obj);
     this.view = new CardView(this.model);
     
-    this.ID = null;
-    this.HASH = null;
-    this.LOGIN = null;
+    this.model.ID = null;
+    this.model.HASH = null;
+    this.model.LOGIN = null;
   }
   
   setUser(_id = null, _hash = null) {
-    this.ID = _id;
-    this.HASH = _hash;
-    if (this.ID != null && this.HASH != null) {
-      this.LOGIN = true;
+    this.model.ID = _id;
+    this.model.HASH = _hash;
+    if (this.model.ID != null && this.model.HASH != null) {
+      this.model.LOGIN = true;
     } else {
-      this.LOGIN = false;
+      this.model.LOGIN = false;
     }
+    
+    this.view.generateLoading(this.model.$CARD_AREA_SELECTOR, '通信中', `ユーザーID ${this.model.ID} の名刺データを取得中...`);
   }
 }
 
