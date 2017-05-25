@@ -85,7 +85,7 @@ class CardController extends CommonController {
           id: _id,
           password: _hash
         },
-        type: json,
+        dataType: 'json',
         success: (_data) => {
           Log.logClass(this.NAME, 'getCard ajax success');
           if (Object.keys(_data).length > 0) {
