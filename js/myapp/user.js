@@ -148,7 +148,7 @@ class UserController extends CommonController {
       return;
     }
     
-    CE.CONTROLLER.setHash();
+    CE.CONTROLLER.setUser();
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
     this.generateLoading(`${this.ID} でログイン`, 'ログイン中...');
@@ -164,7 +164,7 @@ class UserController extends CommonController {
         if (_data.length > 0) {
           this.ID = _data;
           this.LOGIN = true;
-          CE.CONTROLLER.setHash(this.PASSWORD_HASH);
+          CE.CONTROLLER.setUser(this.ID, this.PASSWORD_HASH);
           this.generateUserArea('success', `ユーザー ${this.ID} でログインしました。`);
         } else {
           this.generateUserArea('danger', 'IDとパスワードの組み合わせが正しくありません。');
@@ -182,7 +182,7 @@ class UserController extends CommonController {
     this.LOGIN = false;
     this.ID = null;
     this.PASSWORD = null;
-    CE.CONTROLLER.setHash();
+    CE.CONTROLLER.setUser();
     this.generateUserArea('success', 'ログアウトしました。');
   }
   
@@ -193,7 +193,7 @@ class UserController extends CommonController {
       return;
     }
     
-    CE.CONTROLLER.setHash();
+    CE.CONTROLLER.setUser();
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
     this.generateLoading(`${this.ID} でユーザー登録`,'登録中...');
@@ -209,7 +209,7 @@ class UserController extends CommonController {
         if (_data.length > 0) {
           this.ID = _data;
           this.LOGIN = true;
-          CE.CONTROLLER.setHash(this.PASSWORD_HASH);
+          CE.this.ID, CONTROLLER.setUser(this.PASSWORD_HASH);
           this.generateUserArea('success', `ユーザー ${this.ID} を登録しました。`);
         } else {
           this.generateUserArea('danger', `ユーザー ${this.ID} は登録済みです`);
