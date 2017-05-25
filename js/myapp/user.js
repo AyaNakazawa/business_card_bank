@@ -144,7 +144,7 @@ class UserController extends CommonController {
         password: this.model.HASH
       },
       success: (_data) => {
-        Log.logClass(this.NAME, 'loginUser ajax success');
+        Log.logClassKey(this.NAME, 'ajax loginUser', 'success');
         if (_data.length > 0) {
           this.model.ID = _data;
           this.model.LOGIN = true;
@@ -155,7 +155,7 @@ class UserController extends CommonController {
         }
       },
       error: () => {
-        Log.logClass(this.NAME, 'loginUser ajax failed');
+        Log.logClassKey(this.NAME, 'ajax loginUser', 'failed');
         this.view.generateUserArea('danger', 'ajax通信に失敗しました。', false);
       }
     });
@@ -189,7 +189,7 @@ class UserController extends CommonController {
         password: this.model.HASH
       },
       success: (_data) => {
-        Log.logClass(this.NAME, 'signupUser ajax success');
+          Log.logClassKey(this.NAME, 'ajax signupUser', 'success');
         if (_data.length > 0) {
           this.model.ID = _data;
           this.model.LOGIN = true;
@@ -200,7 +200,7 @@ class UserController extends CommonController {
         }
       },
       error: () => {
-        Log.logClass(this.NAME, 'signupUser ajax failed');
+          Log.logClassKey(this.NAME, 'ajax signupUser', 'failed');
         this.view.generateUserArea('danger', 'ajax通信に失敗しました。', false);
       }
     });

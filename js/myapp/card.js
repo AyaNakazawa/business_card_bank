@@ -94,7 +94,7 @@ class CardController extends CommonController {
         },
         dataType: 'json',
         success: (_data) => {
-          Log.logClass(this.NAME, 'getCard ajax success');
+          Log.logClassKey(this.NAME, 'ajax getCard', 'success');
           if (Object.keys(_data).length > 0) {
             this.model.DOWNLOAD = true;
             this.model.CARD = _data;
@@ -104,7 +104,7 @@ class CardController extends CommonController {
           }
         },
         error: () => {
-          Log.logClass(this.NAME, 'getCard ajax failed');
+          Log.logClassKey(this.NAME, 'ajax getCard', 'failed');
           this.view.generateCardArea('danger', 'ajax通信に失敗しました。', false);
         }
       });
