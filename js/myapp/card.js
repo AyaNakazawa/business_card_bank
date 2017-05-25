@@ -39,6 +39,15 @@ class CardView extends SwitchView {
     this.model.$CARD_AREA_SELECTOR.empty();
     this.view.generateAlert(this.model.$CARD_AREA_SELECTOR, _alertType, _message);
     
+    let template = null;
+    if (this.model.LOGIN) {
+      // ログインしているとき
+      template = this.model.$TEMPLATE_CARD_TABLE_SELECTOR.text();
+      const compiled = _.template(template);
+      const model = {};
+      this.model.$CARD_AREA_SELECTOR.append(compiled(model));
+      this.model.$CARD_TBODY = $(this.model.CARD_TBODY);
+    }
   }
 }
 
