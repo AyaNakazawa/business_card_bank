@@ -65,81 +65,12 @@ class UserController extends CommonController {
     
     this.model = new UserModel(_obj);
     this.view = new UserView(this.model);
-  }
-}
-
-// ----------------------------------------------------------------
-// Event
-
-class UserEvent extends CommonEvent {
-  constructor({
-    name = 'User Event'
-  } = {})
-  {
-    super({
-      name: name
-    });
     
-    this.NAME = name;
-    this.CONTROLLER = new UserController({
-      name: 'User Switch',
-      lsKeyView: 'user',
-      triggerSelector: '#action-user',
-      switchSelector: '#user-area',
-      userIdSelector: '#user-id',
-      userPasswordSelector: '#user-password',
-      loginSelector: '#login-submit',
-      logoutSelector: '#logout-submit',
-      signupSelector: '#signup-submit'
-    });
-    
+    this.NAME = 'User Controller';
     this.LOGIN = false;
     this.ID = null;
-    
-    this.setOn();
-    this.generateUserArea();
-  }
-  
-  setOn() {
-    SetEvent.setOn(
-      this.CONTROLLER.model.LOGIN_TRIGGER,
-      this.CONTROLLER.model.LOGIN_SELECTOR,
-      () => {
-        this.submitLogin();
-      }
-    );
-    SetEvent.setOn(
-      this.CONTROLLER.model.LOGOUT_TRIGGER,
-      this.CONTROLLER.model.LOGOUT_SELECTOR,
-      () => {
-        this.submitLogout();
-      }
-    );
-    SetEvent.setOn(
-      this.CONTROLLER.model.SIGNUP_TRIGGER,
-      this.CONTROLLER.model.SIGNUP_SELECTOR,
-      () => {
-        this.submitSignup();
-      }
-    );
-    SetEvent.setOn(
-      'keypress',
-      this.CONTROLLER.model.USER_ID_SELECTOR,
-      (e) => {
-        if (e.keyCode == 13) {
-          $(this.CONTROLLER.model.USER_PASSWORD_SELECTOR).focus();
-        }
-      }
-    );
-    SetEvent.setOn(
-      'keypress',
-      this.CONTROLLER.model.USER_PASSWORD_SELECTOR,
-      (e) => {
-        if (e.keyCode == 13) {
-          $(this.CONTROLLER.model.LOGIN_SELECTOR).trigger(this.CONTROLLER.model.LOGIN_TRIGGER);
-        }
-      }
-    );
+    this.PASSWORD = null;
+    this.PASSWORD_HASH = null;
   }
   
   generateUserArea(_loginAlert = 'success', _loginFailedMessage = null) {
@@ -147,14 +78,14 @@ class UserEvent extends CommonEvent {
     if (this.LOGIN) {
       // ログインしているとき
       Log.logClass(this.NAME, 'Logined');
-      template = this.CONTROLLER.model.$TEMPLATE_LOGINED_SELECTOR.text();
-      $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('Logout');
+      template = this.model.$TEMPLATE_LOGINED_SELECTOR.text();
+      $(`${this.model.TRIGGER_SELECTOR} a`).text('Logout');
       
     } else {
       // ログインしていないとき
       Log.logClass(this.NAME, 'Not login');
-      template = this.CONTROLLER.model.$TEMPLATE_NOT_LOGIN_SELECTOR.text();
-      $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('Login');
+      template = this.model.$TEMPLATE_NOT_LOGIN_SELECTOR.text();
+      $(`${this.model.TRIGGER_SELECTOR} a`).text('Login');
       
     }
     const compiled = _.template(template);
@@ -163,45 +94,45 @@ class UserEvent extends CommonEvent {
       password: this.PASSWORD
     };
     
-    this.CONTROLLER.model.$USER_AREA_SELECTOR.empty();
+    this.model.$USER_AREA_SELECTOR.empty();
     if (_loginFailedMessage != null) {
-      const alertTemplate = this.CONTROLLER.model.$ALERT_TEMPLATE.text();
+      const alertTemplate = this.model.$ALERT_TEMPLATE.text();
       const alertCompiled = _.template(alertTemplate);
       const alertModel = {
         type: _loginAlert,
         message: _loginFailedMessage
       };
-      this.CONTROLLER.model.$USER_AREA_SELECTOR.append(alertCompiled(alertModel));
+      this.model.$USER_AREA_SELECTOR.append(alertCompiled(alertModel));
     }
-    this.CONTROLLER.model.$USER_AREA_SELECTOR.append(compiled(model));
+    this.model.$USER_AREA_SELECTOR.append(compiled(model));
     
-    $(this.CONTROLLER.model.USER_ID_SELECTOR).focus();
+    $(this.model.USER_ID_SELECTOR).focus();
     
     BCBProcess.initPopover();
   }
   
   generateLoading(_header = null, _message = null) {
-    const template = this.CONTROLLER.model.$LOADING_TEMPLATE.text();
+    const template = this.model.$LOADING_TEMPLATE.text();
     const compiled = _.template(template);
     const model = {
       header: _header,
       message: _message
     };
-    this.CONTROLLER.model.$USER_AREA_SELECTOR.empty();
-    this.CONTROLLER.model.$USER_AREA_SELECTOR.html(compiled(model));
+    this.model.$USER_AREA_SELECTOR.empty();
+    this.model.$USER_AREA_SELECTOR.html(compiled(model));
   }
   
   checkValidate() {
-    this.ID = $(this.CONTROLLER.model.USER_ID_SELECTOR).val();
-    this.PASSWORD = $(this.CONTROLLER.model.USER_PASSWORD_SELECTOR).val();
+    this.ID = $(this.model.USER_ID_SELECTOR).val();
+    this.PASSWORD = $(this.model.USER_PASSWORD_SELECTOR).val();
     if (this.ID.length == 0) {
       this.generateUserArea('danger', 'ID を入力してください。');
       return false;
-    } else if (this.ID.length < this.CONTROLLER.model.ID_LENGTH_MIN) {
-      this.generateUserArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MIN} 文字以上で入力してください。`);
+    } else if (this.ID.length < this.model.ID_LENGTH_MIN) {
+      this.generateUserArea('danger', `ID は ${this.model.ID_LENGTH_MIN} 文字以上で入力してください。`);
       return false;
-    } else if (this.ID.length > this.CONTROLLER.model.ID_LENGTH_MAX) {
-      this.generateUserArea('danger', `ID は ${this.CONTROLLER.model.ID_LENGTH_MAX} 文字以下で入力してください。`);
+    } else if (this.ID.length > this.model.ID_LENGTH_MAX) {
+      this.generateUserArea('danger', `ID は ${this.model.ID_LENGTH_MAX} 文字以下で入力してください。`);
       return false;
     } else if (this.PASSWORD.length == 0) {
       this.generateUserArea('danger', 'パスワード を入力してください。');
@@ -289,5 +220,77 @@ class UserEvent extends CommonEvent {
         this.generateUserArea('danger', 'ajax通信に失敗しました。');
       }
     });
+  }
+}
+
+// ----------------------------------------------------------------
+// Event
+
+class UserEvent extends CommonEvent {
+  constructor({
+    name = 'User Event'
+  } = {})
+  {
+    super({
+      name: name
+    });
+    
+    this.NAME = name;
+    this.CONTROLLER = new UserController({
+      name: 'User Switch',
+      lsKeyView: 'user',
+      triggerSelector: '#action-user',
+      switchSelector: '#user-area',
+      userIdSelector: '#user-id',
+      userPasswordSelector: '#user-password',
+      loginSelector: '#login-submit',
+      logoutSelector: '#logout-submit',
+      signupSelector: '#signup-submit'
+    });
+    
+    this.setOn();
+    this.CONTROLLER.generateUserArea();
+  }
+  
+  setOn() {
+    SetEvent.setOn(
+      this.CONTROLLER.model.LOGIN_TRIGGER,
+      this.CONTROLLER.model.LOGIN_SELECTOR,
+      () => {
+        this.CONTROLLER.submitLogin();
+      }
+    );
+    SetEvent.setOn(
+      this.CONTROLLER.model.LOGOUT_TRIGGER,
+      this.CONTROLLER.model.LOGOUT_SELECTOR,
+      () => {
+        this.CONTROLLER.submitLogout();
+      }
+    );
+    SetEvent.setOn(
+      this.CONTROLLER.model.SIGNUP_TRIGGER,
+      this.CONTROLLER.model.SIGNUP_SELECTOR,
+      () => {
+        this.CONTROLLER.submitSignup();
+      }
+    );
+    SetEvent.setOn(
+      'keypress',
+      this.CONTROLLER.model.USER_ID_SELECTOR,
+      (e) => {
+        if (e.keyCode == 13) {
+          $(this.CONTROLLER.model.USER_PASSWORD_SELECTOR).focus();
+        }
+      }
+    );
+    SetEvent.setOn(
+      'keypress',
+      this.CONTROLLER.model.USER_PASSWORD_SELECTOR,
+      (e) => {
+        if (e.keyCode == 13) {
+          $(this.CONTROLLER.model.LOGIN_SELECTOR).trigger(this.CONTROLLER.model.LOGIN_TRIGGER);
+        }
+      }
+    );
   }
 }
