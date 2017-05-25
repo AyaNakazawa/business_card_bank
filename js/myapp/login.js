@@ -146,7 +146,7 @@ class UserEvent extends CommonEvent {
     let template = null;
     if (this.LOGIN) {
       // ログインしているとき
-      Log.logClass(this.NAME, 'Usered');
+      Log.logClass(this.NAME, 'Logined');
       template = this.CONTROLLER.model.$TEMPLATE_LOGINED_SELECTOR.text();
       $(`${this.CONTROLLER.model.TRIGGER_SELECTOR} a`).text('Logout');
       
