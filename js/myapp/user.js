@@ -111,17 +111,6 @@ class UserController extends CommonController {
     BCBProcess.initPopover();
   }
   
-  generateLoading(_header = null, _message = null) {
-    const template = this.model.$LOADING_TEMPLATE.text();
-    const compiled = _.template(template);
-    const model = {
-      header: _header,
-      message: _message
-    };
-    this.model.$USER_AREA_SELECTOR.empty();
-    this.model.$USER_AREA_SELECTOR.html(compiled(model));
-  }
-  
   checkValidate() {
     this.ID = $(this.model.USER_ID_SELECTOR).val();
     this.PASSWORD = $(this.model.USER_PASSWORD_SELECTOR).val();
@@ -151,7 +140,7 @@ class UserController extends CommonController {
     CE.CONTROLLER.setUser();
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
-    this.generateLoading(`${this.ID} でログイン`, 'ログイン中...');
+    this.view.generateLoading(this.model.$USER_AREA_SELECTOR, 'ログイン中...', `${this.ID} でログイン`);
     
     $.ajax({
       url: 'ruby/loginUser.rb',
@@ -196,7 +185,7 @@ class UserController extends CommonController {
     CE.CONTROLLER.setUser();
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
-    this.generateLoading(`${this.ID} でユーザー登録`,'登録中...');
+    this.view.generateLoading(this.model.$USER_AREA_SELECTOR,'登録中...',  `${this.ID} でユーザー登録`);
     
     $.ajax({
       url: 'ruby/signupUser.rb',
