@@ -43,11 +43,15 @@ class CardController extends CommonController {
     
     this.ID = null;
     this.HASH = null;
+    this.LOGIN = null;
   }
   
   setUser(_id = null, _hash = null) {
     this.ID = _id;
     this.HASH = _hash;
+    if (this.ID != null && this.HASH != null) {
+      this.LOGIN = true;
+    }
   }
 }
 
