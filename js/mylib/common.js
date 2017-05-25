@@ -126,7 +126,7 @@ class CommonView extends CommonClass {
     _$selector.html(compiled(model));
   }
   
-  generateAlert(_$selector = null, _alert = null, _message = null) {
+  generateAlert(_$selector = null, _type = 'success', _message = null) {
     if (_$selector == null) {
       Log.logCaution(this.NAME, 'generateAlert', 'Undefined selector');
       return;
@@ -135,7 +135,7 @@ class CommonView extends CommonClass {
       const alertTemplate = this.model.$ALERT_TEMPLATE.text();
       const alertCompiled = _.template(alertTemplate);
       const alertModel = {
-        type: _alert,
+        type: _type,
         message: _message
       };
       _$selector.append(alertCompiled(alertModel));
