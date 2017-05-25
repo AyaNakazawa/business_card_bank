@@ -69,11 +69,6 @@ class CardController extends CommonController {
   setUser(_id = null, _hash = null) {
     this.model.ID = _id;
     this.model.HASH = _hash;
-    if (this.model.ID != null && this.model.HASH != null) {
-      this.model.DOWNLOAD = true;
-    } else {
-      this.model.DOWNLOAD = false;
-    }
     
     this.downloadCard(this.model.ID, this.model.HASH)
   }
