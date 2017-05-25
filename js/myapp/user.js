@@ -55,7 +55,10 @@ class UserView extends SwitchView {
     super(_model);
   }
   
-  generateUserArea(_alertType = 'success', _message = null) {
+  generateUserArea(_alertType = 'success', _message = null, _close = true) {
+    this.model.$USER_AREA_SELECTOR.empty();
+    this.generateAlert(this.model.$USER_AREA_SELECTOR, _alertType, _message, _close);
+    
     let template = null;
     if (this.model.LOGIN) {
       // ログインしているとき
@@ -76,8 +79,6 @@ class UserView extends SwitchView {
       password: this.model.PASSWORD
     };
     
-    this.model.$USER_AREA_SELECTOR.empty();
-    this.generateAlert(this.model.$USER_AREA_SELECTOR, _alertType, _message);
     this.model.$USER_AREA_SELECTOR.append(compiled(model));
     
     $(this.model.USER_ID_SELECTOR).focus();
