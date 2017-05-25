@@ -73,7 +73,7 @@ class UserController extends CommonController {
     this.PASSWORD_HASH = null;
   }
   
-  generateUserArea(_loginAlert = 'success', _loginFailedMessage = null) {
+  generateUserArea(_alert = 'success', _message = null) {
     let template = null;
     if (this.LOGIN) {
       // ログインしているとき
@@ -95,12 +95,12 @@ class UserController extends CommonController {
     };
     
     this.model.$USER_AREA_SELECTOR.empty();
-    if (_loginFailedMessage != null) {
+    if (_message != null) {
       const alertTemplate = this.model.$ALERT_TEMPLATE.text();
       const alertCompiled = _.template(alertTemplate);
       const alertModel = {
-        type: _loginAlert,
-        message: _loginFailedMessage
+        type: _alert,
+        message: _message
       };
       this.model.$USER_AREA_SELECTOR.append(alertCompiled(alertModel));
     }
