@@ -217,6 +217,7 @@ class UserEvent extends CommonEvent {
       return;
     }
     
+    CE.CONTROLLER.setHash();
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
     this.generateLoading(`${this.ID} でログイン`, 'ログイン中...');
@@ -232,6 +233,7 @@ class UserEvent extends CommonEvent {
         if (_data.length > 0) {
           this.ID = _data;
           this.LOGIN = true;
+          CE.CONTROLLER.setHash(this.PASSWORD_HASH);
           this.generateUserArea('success', `ユーザー ${this.ID} でログインしました。`);
         } else {
           this.generateUserArea('danger', 'IDとパスワードの組み合わせが正しくありません。');
@@ -249,6 +251,7 @@ class UserEvent extends CommonEvent {
     this.LOGIN = false;
     this.ID = null;
     this.PASSWORD = null;
+    CE.CONTROLLER.setHash();
     this.generateUserArea('success', 'ログアウトしました。');
   }
   
@@ -259,6 +262,7 @@ class UserEvent extends CommonEvent {
       return;
     }
     
+    CE.CONTROLLER.setHash();
     this.PASSWORD_HASH = SHA256.getHash(this.PASSWORD);
     
     this.generateLoading(`${this.ID} でユーザー登録`,'登録中...');
@@ -274,6 +278,7 @@ class UserEvent extends CommonEvent {
         if (_data.length > 0) {
           this.ID = _data;
           this.LOGIN = true;
+          CE.CONTROLLER.setHash(this.PASSWORD_HASH);
           this.generateUserArea('success', `ユーザー ${this.ID} を登録しました。`);
         } else {
           this.generateUserArea('danger', `ユーザー ${this.ID} は登録済みです`);
