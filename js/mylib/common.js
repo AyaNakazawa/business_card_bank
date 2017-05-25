@@ -113,6 +113,7 @@ class CommonView extends CommonClass {
   
   generateLoading(_$selector = null, _header = null, _message = null) {
     if (_$selector == null) {
+      Log.logCaution(this.NAME, 'generateLoading', 'Undefined selector');
       return;
     }
     const template = this.model.$LOADING_TEMPLATE.text();
@@ -127,6 +128,7 @@ class CommonView extends CommonClass {
   
   generateAlert(_$selector = null, _alert = null, _message = null) {
     if (_$selector == null) {
+      Log.logCaution(this.NAME, 'generateAlert', 'Undefined selector');
       return;
     }
     if (_message != null) {
