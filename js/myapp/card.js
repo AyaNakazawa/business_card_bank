@@ -77,6 +77,10 @@ class CardController extends CommonController {
     
     this.view.generateLoading(this.model.$CARD_AREA_SELECTOR, '通信中', `ユーザーID ${this.model.ID} の名刺データを取得中...`);
   }
+  
+  downloadCard(_id = null, _hash = null) {
+    
+  }
 }
 
 // ----------------------------------------------------------------
