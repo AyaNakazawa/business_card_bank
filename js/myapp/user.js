@@ -53,6 +53,8 @@ class UserModel extends SwitchModel {
 class UserView extends SwitchView {
   constructor(_model = new UserModel()) {
     super(_model);
+    
+    this.NAME = 'User View';
   }
   
   generateUserArea(_alertType = 'success', _message = null, _close = true) {
@@ -68,7 +70,7 @@ class UserView extends SwitchView {
       
     } else {
       // ログインしていないとき
-      Log.logClass(this.model.NAME, 'Not login');
+      Log.logClass(this.NAME, 'Not login');
       template = this.model.$TEMPLATE_NOT_LOGIN_SELECTOR.text();
       $(`${this.model.TRIGGER_SELECTOR} a`).text('Login');
       

@@ -31,6 +31,8 @@ class CardModel extends SwitchModel {
 class CardView extends SwitchView {
   constructor(_model = new CardModel()) {
     super(_model);
+    
+    this.NAME = 'Card View';
   }
   
   generateCardArea(_alertType = 'success', _message = null, _close = true) {
@@ -40,11 +42,14 @@ class CardView extends SwitchView {
     
     let template = null;
     if (this.model.DOWNLOAD) {
+    Log.logClass(this.NAME, 'Card is found');
       template = this.model.$TEMPLATE_CARD_TABLE_SELECTOR.text();
       const compiled = _.template(template);
       const model = {};
       this.model.$CARD_AREA_SELECTOR.append(compiled(model));
       this.model.$CARD_TBODY = $(this.model.CARD_TBODY);
+    } else {
+      Log.logClass(this.NAME, 'Card is not found');
     }
   }
 }
@@ -59,6 +64,7 @@ class CardController extends CommonController {
     this.model = new CardModel(_obj);
     this.view = new CardView(this.model);
     
+    this.NAME = 'Card Controller';
     this.model.ID = null;
     this.model.HASH = null;
     this.model.DOWNLOAD = null;
