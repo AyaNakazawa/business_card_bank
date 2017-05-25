@@ -34,6 +34,12 @@ class CardView extends SwitchView {
   constructor(_model = new CardModel()) {
     super(_model);
   }
+  
+  generateCardArea(_alertType = 'success', _message = null) {
+    this.model.$CARD_AREA_SELECTOR.empty();
+    this.view.generateAlert(this.model.$CARD_AREA_SELECTOR, _alertType, _message);
+    
+  }
 }
 
 // ----------------------------------------------------------------
