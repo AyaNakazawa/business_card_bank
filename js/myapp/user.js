@@ -101,7 +101,7 @@ class UserController extends CommonController {
     this.model.LOGIN = false;
     this.model.ID = null;
     this.model.PASSWORD = null;
-    this.model.PASSWORD_HASH = null;
+    this.model.HASH = null;
   }
   
   checkValidate() {
@@ -131,7 +131,7 @@ class UserController extends CommonController {
     }
     
     CE.CONTROLLER.setUser();
-    this.model.PASSWORD_HASH = SHA256.getHash(this.model.PASSWORD);
+    this.model.HASH = SHA256.getHash(this.model.PASSWORD);
     
     this.view.generateLoading(this.model.$USER_AREA_SELECTOR, 'ログイン中', `${this.model.ID} でログイン`);
     
@@ -139,14 +139,14 @@ class UserController extends CommonController {
       url: 'ruby/loginUser.rb',
       data: {
         id: this.model.ID,
-        password: this.model.PASSWORD_HASH
+        password: this.model.HASH
       },
       success: (_data) => {
         Log.logClass(this.NAME, 'loginUser ajax success');
         if (_data.length > 0) {
           this.model.ID = _data;
           this.model.LOGIN = true;
-          CE.CONTROLLER.setUser(this.model.ID, this.model.PASSWORD_HASH);
+          CE.CONTROLLER.setUser(this.model.ID, this.model.HASH);
           this.view.generateUserArea('success', `ユーザー ${this.model.ID} でログインしました。`);
         } else {
           this.view.generateUserArea('danger', 'IDとパスワードの組み合わせが正しくありません。');
@@ -176,7 +176,7 @@ class UserController extends CommonController {
     }
     
     CE.CONTROLLER.setUser();
-    this.model.PASSWORD_HASH = SHA256.getHash(this.model.PASSWORD);
+    this.model.HASH = SHA256.getHash(this.model.PASSWORD);
     
     this.view.generateLoading(this.model.$USER_AREA_SELECTOR,'登録中',  `${this.ID} でユーザー登録`);
     
@@ -184,14 +184,14 @@ class UserController extends CommonController {
       url: 'ruby/signupUser.rb',
       data: {
         id: this.model.ID,
-        password: this.model.PASSWORD_HASH
+        password: this.model.HASH
       },
       success: (_data) => {
         Log.logClass(this.NAME, 'signupUser ajax success');
         if (_data.length > 0) {
           this.model.ID = _data;
           this.model.LOGIN = true;
-          CE.CONTROLLER.setUser(this.model.ID, this.model.PASSWORD_HASH);
+          CE.CONTROLLER.setUser(this.model.ID, this.model.HASH);
           this.view.generateUserArea('success', `ユーザー ${this.model.ID} を登録しました。`);
         } else {
           this.view.generateUserArea('danger', `ユーザー ${this.model.ID} は登録済みです`);
