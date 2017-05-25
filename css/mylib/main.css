@@ -144,6 +144,36 @@ main {
   }
 }
 
+.content .loading-dot::after {
+  content: '';
+  animation: dotting 3s linear infinite;
+  -webkit-animation: dotting 3s linear infinite;
+}
+
+@-webkit-keyframes dotting {
+  25%{
+    content: '.';
+  }
+  50%{
+    content: '..';
+  }
+  75%{
+    content: '...';
+  }
+}
+
+@keyframes dotting {
+  25%{
+    content: '.';
+  }
+  50%{
+    content: '..';
+  }
+  75%{
+    content: '...';
+  }
+}
+
 /* Large desktop */
 
 @media (min-width: 1200px) {
