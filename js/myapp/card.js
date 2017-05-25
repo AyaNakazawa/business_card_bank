@@ -19,6 +19,9 @@ class CardModel extends SwitchModel {
     
     this.NAME = name;
     this.HASH = hash;
+    
+    this.CARD_TBODY = '#card-area tbody';
+    this.$CARD_TBODY = $(this.CARD_TBODY);
   }
 }
 
