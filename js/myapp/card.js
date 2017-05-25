@@ -41,6 +41,8 @@ class CardController extends CommonController {
     this.model = new CardModel(_obj);
     this.view = new CardView(this.model);
     
+    this.ID = null;
+    this.HASH = null;
   }
   
   setUser(_id = null, _hash = null) {
