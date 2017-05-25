@@ -98,18 +98,18 @@ class CardController extends CommonController {
           if (Object.keys(_data).length > 0) {
             this.model.DOWNLOAD = true;
             this.model.CARD = _data;
-            this.view.generateCardArea('success', `名刺データの取得に成功しました。`);
+            this.view.generateCardArea(this.model.ALERT_SUCCESS, `名刺データの取得に成功しました。`);
           } else {
-            this.view.generateCardArea('danger', '名刺データは存在しません。', false);
+            this.view.generateCardArea(this.model.ALERT_DANGER, '名刺データは存在しません。', false);
           }
         },
         error: () => {
           Log.logClassKey(this.NAME, 'ajax getCard', 'failed');
-          this.view.generateCardArea('danger', 'ajax通信に失敗しました。', false);
+          this.view.generateCardArea(this.model.ALERT_DANGER, 'ajax通信に失敗しました。', false);
         }
       });
     } else {
-      this.view.generateCardArea('danger', 'ログインしてください。', false);
+      this.view.generateCardArea(this.model.ALERT_DANGER, 'ログインしてください。', false);
     }
   }
 }
