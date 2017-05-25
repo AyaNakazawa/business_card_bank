@@ -22,6 +22,8 @@ class CardModel extends SwitchModel {
     
     this.CARD_AREA_SELECTOR = '#card-area';
     this.$CARD_AREA_SELECTOR = $(this.CARD_AREA_SELECTOR);
+    this.TEMPLATE_CARD_TABLE_SELECTOR = '#card-table-template';
+    this.$TEMPLATE_CARD_TABLE_SELECTOR = $(this.TEMPLATE_CARD_TABLE_SELECTOR);
     
     this.CARD_TBODY = '#card-tbody';
     this.$CARD_TBODY = $(this.CARD_TBODY);
