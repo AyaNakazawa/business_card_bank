@@ -65,6 +65,8 @@ class CardController extends CommonController {
     this.model.ID = null;
     this.model.HASH = null;
     this.model.LOGIN = null;
+    
+    this.downloadCard();
   }
   
   setUser(_id = null, _hash = null) {
