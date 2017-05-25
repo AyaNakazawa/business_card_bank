@@ -54,6 +54,8 @@ class CardController extends CommonController {
     this.HASH = _hash;
     if (this.ID != null && this.HASH != null) {
       this.LOGIN = true;
+    } else {
+      this.LOGIN = false;
     }
   }
 }
