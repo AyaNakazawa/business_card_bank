@@ -7,8 +7,7 @@ class CardModel extends SwitchModel {
     name,
     lsKeyView,
     triggerSelector,
-    switchSelector,
-    hash = null
+    switchSelector
   } = {}) {
     super({
       name: name,
@@ -18,7 +17,6 @@ class CardModel extends SwitchModel {
     });
     
     this.NAME = name;
-    this.HASH = hash;
     
     this.CARD_AREA_SELECTOR = '#card-area';
     this.$CARD_AREA_SELECTOR = $(this.CARD_AREA_SELECTOR);
@@ -87,7 +85,27 @@ class CardController extends CommonController {
     this.DOWNLOAD = false;
     
     if (_id != null && _hash != null) {
-      
+      $.ajax({
+        url: 'ruby/getCard.rb',
+        data: {
+          id: _id,
+          password: _hash
+        },
+        type: json,
+        success: (_data) => {
+          Log.logClass(this.NAME, 'signupUser ajax success');
+          if (_data.length > 0) {
+            this.DOWNLOAD = true;
+            this.view.generateUserArea('success', `名刺データの取得に成功しました。`);
+          } else {
+            this.view.generateCardArea('danger', '名刺データは存在しません。');
+          }
+        },
+        error: () => {
+          Log.logClass(this.NAME, 'signupUser ajax failed');
+          this.view.generateUserArea('danger', 'ajax通信に失敗しました。');
+        }
+      });
     } else {
       this.view.generateUserArea('danger', 'ログインしてください。');
     }
