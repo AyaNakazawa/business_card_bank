@@ -111,7 +111,11 @@ class CommonView extends CommonClass {
     this.model = _model;
   }
   
-  generateLoading(_$selector = null, _header = null, _message = null) {
+  generateLoading(
+    _$selector = null,
+    _header = null,
+    _message = null
+  ) {
     if (_$selector == null) {
       Log.logCaution(this.NAME, 'generateLoading', 'Undefined selector');
       return;
@@ -126,7 +130,12 @@ class CommonView extends CommonClass {
     _$selector.html(compiled(model));
   }
   
-  generateAlert(_$selector = null, _type = 'success', _message = null, _close = true) {
+  generateAlert(
+    _$selector = null,
+    _type = 'success',
+    _message = null,
+    _close = true
+  ) {
     if (_$selector == null) {
       Log.logCaution(this.NAME, 'generateAlert', 'Undefined selector');
       return;
