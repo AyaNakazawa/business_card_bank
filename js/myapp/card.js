@@ -75,7 +75,7 @@ class CardController extends CommonController {
   
   downloadCard(_id = null, _hash = null) {
     
-    this.view.generateLoading(this.model.$CARD_AREA_SELECTOR, '通信中', `ユーザーID ${_id} の名刺データを取得中...`);
+    this.view.generateLoading(this.model.$CARD_AREA_SELECTOR, '通信中', `ユーザーID ${_id} の名刺データを取得中`);
     
     this.model.DOWNLOAD = false;
     
