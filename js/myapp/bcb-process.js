@@ -58,8 +58,8 @@ class BCBProcess extends CommonProcess {
   }
   
   static initEvent() {
-    new UserEvent();
-    new CardEvent();
+    UE = new UserEvent();
+    CE = new CardEvent();
   }
   
   static initController() {
