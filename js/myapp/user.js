@@ -110,16 +110,16 @@ class UserController extends CommonController {
     this.model.ID = $(this.model.USER_ID_SELECTOR).val();
     this.model.PASSWORD = $(this.model.USER_PASSWORD_SELECTOR).val();
     if (this.model.ID.length == 0) {
-      this.view.generateUserArea(this.model.ALERT_DANGER, 'ID を入力してください。');
+      this.view.generateUserArea(this.model.ALERT_WARNING, 'ID を入力してください。');
       return false;
     } else if (this.model.ID.length < this.model.ID_LENGTH_MIN) {
-      this.view.generateUserArea(this.model.ALERT_DANGER, `ID は ${this.model.ID_LENGTH_MIN} 文字以上で入力してください。`);
+      this.view.generateUserArea(this.model.ALERT_WARNING, `ID は ${this.model.ID_LENGTH_MIN} 文字以上で入力してください。`);
       return false;
     } else if (this.model.ID.length > this.model.ID_LENGTH_MAX) {
-      this.view.generateUserArea(this.model.ALERT_DANGER, `ID は ${this.model.ID_LENGTH_MAX} 文字以下で入力してください。`);
+      this.view.generateUserArea(this.model.ALERT_WARNING, `ID は ${this.model.ID_LENGTH_MAX} 文字以下で入力してください。`);
       return false;
     } else if (this.model.PASSWORD.length == 0) {
-      this.view.generateUserArea(this.model.ALERT_DANGER, 'パスワード を入力してください。');
+      this.view.generateUserArea(this.model.ALERT_WARNING, 'パスワード を入力してください。');
       return false;
     }
     return true;
@@ -151,7 +151,7 @@ class UserController extends CommonController {
           CE.CONTROLLER.setUser(this.model.ID, this.model.HASH);
           this.view.generateUserArea(this.model.ALERT_SUCCESS, `ユーザー ${this.model.ID} でログインしました。`);
         } else {
-          this.view.generateUserArea(this.model.ALERT_DANGER, 'IDとパスワードの組み合わせが正しくありません。');
+          this.view.generateUserArea(this.model.ALERT_WARNING, 'IDとパスワードの組み合わせが正しくありません。');
         }
       },
       error: () => {
@@ -196,7 +196,7 @@ class UserController extends CommonController {
           CE.CONTROLLER.setUser(this.model.ID, this.model.HASH);
           this.view.generateUserArea(this.model.ALERT_SUCCESS, `ユーザー ${this.model.ID} を登録しました。`);
         } else {
-          this.view.generateUserArea(this.model.ALERT_DANGER, `ユーザー ${this.model.ID} は登録済みです`);
+          this.view.generateUserArea(this.model.ALERT_WARNING, `ユーザー ${this.model.ID} は登録済みです`);
         }
       },
       error: () => {
