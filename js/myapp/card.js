@@ -33,10 +33,10 @@ class CardView extends SwitchView {
     super(_model);
   }
   
-  generateCardArea(_alertType = 'success', _message = null) {
+  generateCardArea(_alertType = 'success', _message = null, _close = true) {
     this.model.$CARD_AREA_SELECTOR.empty();
     this.model.$CARD_AREA_SELECTOR.append(Content.getHeader('名刺情報'));
-    this.generateAlert(this.model.$CARD_AREA_SELECTOR, _alertType, _message);
+    this.generateAlert(this.model.$CARD_AREA_SELECTOR, _alertType, _message, _close);
     
     let template = null;
     if (this.model.DOWNLOAD) {
