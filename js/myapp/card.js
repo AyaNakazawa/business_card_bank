@@ -100,7 +100,7 @@ class CardController extends CommonController {
             this.model.CARD = _data;
             this.view.generateCardArea(this.model.ALERT_SUCCESS, `名刺データの取得に成功しました。`);
           } else {
-            this.view.generateCardArea(this.model.ALERT_DANGER, '名刺データは存在しません。', false);
+            this.view.generateCardArea(this.model.ALERT_INFO, '名刺データは存在しません。', false);
           }
         },
         error: () => {
@@ -109,7 +109,7 @@ class CardController extends CommonController {
         }
       });
     } else {
-      this.view.generateCardArea(this.model.ALERT_DANGER, 'ログインしてください。', false);
+      this.view.generateCardArea(this.model.ALERT_WARNING, 'ログインしてください。', false);
     }
   }
 }
