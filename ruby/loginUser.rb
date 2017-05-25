@@ -1,4 +1,4 @@
-#!ruby
+#!/home/aya/.rbenv/versions/2.4.1/bin/ruby
 print "Content-type: text/html\n\n";
 
 require 'cgi'
