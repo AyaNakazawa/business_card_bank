@@ -83,6 +83,10 @@ class CommonModel extends CommonClass {
     this.$LOADING_TEMPLATE = $(this.LOADING_TEMPLATE);
     this.ALERT_TEMPLATE = '#alert-template';
     this.$ALERT_TEMPLATE = $(this.ALERT_TEMPLATE);
+    this.ALERT_SUCCESS = 'success';
+    this.ALERT_INFO = 'info';
+    this.ALERT_WARNING = 'warning';
+    this.ALERT_DANGER = 'danger';
     
     if (name != null && echoPermission) {
       super.viewNameModel(name);
