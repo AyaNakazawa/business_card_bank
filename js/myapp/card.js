@@ -41,8 +41,7 @@ class CardView extends SwitchView {
     this.generateAlert(this.model.$CARD_AREA_SELECTOR, _alertType, _message);
     
     let template = null;
-    if (this.model.LOGIN) {
-      // ログインしているとき
+    if (this.model.DOWNLOAD) {
       template = this.model.$TEMPLATE_CARD_TABLE_SELECTOR.text();
       const compiled = _.template(template);
       const model = {};
@@ -64,7 +63,7 @@ class CardController extends CommonController {
     
     this.model.ID = null;
     this.model.HASH = null;
-    this.model.LOGIN = null;
+    this.model.DOWNLOAD = null;
     
     this.downloadCard();
   }
@@ -73,9 +72,9 @@ class CardController extends CommonController {
     this.model.ID = _id;
     this.model.HASH = _hash;
     if (this.model.ID != null && this.model.HASH != null) {
-      this.model.LOGIN = true;
+      this.model.DOWNLOAD = true;
     } else {
-      this.model.LOGIN = false;
+      this.model.DOWNLOAD = false;
     }
     
     this.downloadCard(this.model.ID, this.model.HASH)
@@ -83,7 +82,15 @@ class CardController extends CommonController {
   
   downloadCard(_id = null, _hash = null) {
     
-    this.view.generateLoading(this.model.$CARD_AREA_SELECTOR, '通信中', `ユーザーID ${this.model.ID} の名刺データを取得中...`);
+    this.view.generateLoading(this.model.$CARD_AREA_SELECTOR, '通信中', `ユーザーID ${_id} の名刺データを取得中...`);
+    
+    this.DOWNLOAD = false;
+    
+    if (_id != null && _hash != null) {
+      
+    } else {
+      this.view.generateUserArea('danger', 'ログインしてください。');
+    }
   }
 }
 
