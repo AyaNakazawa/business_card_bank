@@ -62,6 +62,7 @@ class CardController extends CommonController {
     this.model.ID = null;
     this.model.HASH = null;
     this.model.DOWNLOAD = null;
+    this.model.CARD = null;
     
     this.downloadCard();
   }
@@ -90,6 +91,7 @@ class CardController extends CommonController {
           Log.logClass(this.NAME, 'getCard ajax success');
           if (Object.keys(_data).length > 0) {
             this.model.DOWNLOAD = true;
+            this.model.CARD = _data;
             this.view.generateCardArea('success', `名刺データの取得に成功しました。`);
           } else {
             this.view.generateCardArea('danger', '名刺データは存在しません。', false);
