@@ -77,7 +77,7 @@ class CardController extends CommonController {
     
     this.view.generateLoading(this.model.$CARD_AREA_SELECTOR, '通信中', `ユーザーID ${_id} の名刺データを取得中...`);
     
-    this.DOWNLOAD = false;
+    this.model.DOWNLOAD = false;
     
     if (_id != null && _hash != null) {
       $.ajax({
@@ -90,7 +90,7 @@ class CardController extends CommonController {
         success: (_data) => {
           Log.logClass(this.NAME, 'signupUser ajax success');
           if (_data.length > 0) {
-            this.DOWNLOAD = true;
+            this.model.DOWNLOAD = true;
             this.view.generateUserArea('success', `名刺データの取得に成功しました。`);
           } else {
             this.view.generateCardArea('danger', '名刺データは存在しません。');
