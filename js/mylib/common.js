@@ -124,6 +124,21 @@ class CommonView extends CommonClass {
     _$selector.empty();
     _$selector.html(compiled(model));
   }
+  
+  generateAlert(_$selector = null, _alert = null, _message = null) {
+    if (_$selector == null) {
+      return;
+    }
+    if (_message != null) {
+      const alertTemplate = this.model.$ALERT_TEMPLATE.text();
+      const alertCompiled = _.template(alertTemplate);
+      const alertModel = {
+        type: _alert,
+        message: _message
+      };
+      _$selector.append(alertCompiled(alertModel));
+    }
+  }
 }
 
 // ----------------------------------------------------------------
