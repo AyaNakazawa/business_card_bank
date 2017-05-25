@@ -132,7 +132,7 @@ class UserController extends CommonController {
     CE.CONTROLLER.setUser();
     this.model.PASSWORD_HASH = SHA256.getHash(this.model.PASSWORD);
     
-    this.view.generateLoading(this.model.$USER_AREA_SELECTOR, 'ログイン中...', `${this.model.ID} でログイン`);
+    this.view.generateLoading(this.model.$USER_AREA_SELECTOR, 'ログイン中', `${this.model.ID} でログイン`);
     
     $.ajax({
       url: 'ruby/loginUser.rb',
@@ -177,7 +177,7 @@ class UserController extends CommonController {
     CE.CONTROLLER.setUser();
     this.model.PASSWORD_HASH = SHA256.getHash(this.model.PASSWORD);
     
-    this.view.generateLoading(this.model.$USER_AREA_SELECTOR,'登録中...',  `${this.ID} でユーザー登録`);
+    this.view.generateLoading(this.model.$USER_AREA_SELECTOR,'登録中',  `${this.ID} でユーザー登録`);
     
     $.ajax({
       url: 'ruby/signupUser.rb',
