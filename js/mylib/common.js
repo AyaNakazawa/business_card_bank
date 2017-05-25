@@ -110,6 +110,20 @@ class CommonView extends CommonClass {
     super();
     this.model = _model;
   }
+  
+  generateLoading(_$selector = null, _header = null, _message = null) {
+    if (_$selector == null) {
+      return;
+    }
+    const template = this.model.$LOADING_TEMPLATE.text();
+    const compiled = _.template(template);
+    const model = {
+      header: _header,
+      message: _message
+    };
+    _$selector.empty();
+    _$selector.html(compiled(model));
+  }
 }
 
 // ----------------------------------------------------------------
