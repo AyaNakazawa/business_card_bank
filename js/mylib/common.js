@@ -122,8 +122,11 @@ class CommonView extends CommonClass {
     if (_$template == null) {
       return null;
     }
+    const template = _$template.text();
+    const compiled = _.template(template);
+    return compiled(_model);
   }
-
+  
   generateLoading(
     _$selector = null,
     _header = null,
