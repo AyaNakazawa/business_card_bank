@@ -115,6 +115,15 @@ class CommonView extends CommonClass {
     this.model = _model;
   }
   
+  getTemplate(
+    _$template = null,
+    _model = null
+  ) {
+    if (_$template == null) {
+      return null;
+    }
+  }
+
   generateLoading(
     _$selector = null,
     _header = null,
