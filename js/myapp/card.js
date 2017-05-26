@@ -42,12 +42,13 @@ class CardView extends SwitchView {
     
     let template = null;
     if (this.model.DOWNLOAD) {
-    Log.logClass(this.NAME, 'Card is found');
-      template = this.model.$TEMPLATE_CARD_TABLE_SELECTOR.text();
-      const compiled = _.template(template);
-      const model = {};
-      this.model.$CARD_AREA_SELECTOR.append(compiled(model));
+      Log.logClass(this.NAME, 'Card is found');
+      this.model.$CARD_AREA_SELECTOR.append(this.getTemplate(
+        this.model.$TEMPLATE_CARD_TABLE_SELECTOR,
+        {}
+      ));
       this.model.$CARD_TBODY = $(this.model.CARD_TBODY);
+      
     } else {
       Log.logClass(this.NAME, 'Card is not found');
     }
