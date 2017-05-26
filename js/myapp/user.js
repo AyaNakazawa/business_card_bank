@@ -61,27 +61,28 @@ class UserView extends SwitchView {
     this.model.$USER_AREA_SELECTOR.empty();
     this.generateAlert(this.model.$USER_AREA_SELECTOR, _alertType, _message, _close);
     
-    let template = null;
+    let $template = null;
     if (this.model.LOGIN) {
       // ログインしているとき
       Log.logClass(this.NAME, 'Logined');
-      template = this.model.$TEMPLATE_LOGINED_SELECTOR.text();
+      $template = this.model.$TEMPLATE_LOGINED_SELECTOR;
       $(`${this.model.TRIGGER_SELECTOR} a`).text('Logout');
       
     } else {
       // ログインしていないとき
       Log.logClass(this.NAME, 'Not login');
-      template = this.model.$TEMPLATE_NOT_LOGIN_SELECTOR.text();
+      $template = this.model.$TEMPLATE_NOT_LOGIN_SELECTOR;
       $(`${this.model.TRIGGER_SELECTOR} a`).text('Login');
       
     }
-    const compiled = _.template(template);
-    const model = {
-      id: this.model.ID,
-      password: this.model.PASSWORD
-    };
     
-    this.model.$USER_AREA_SELECTOR.append(compiled(model));
+    this.model.$USER_AREA_SELECTOR.append(this.getTemplate(
+      $template,
+      {
+        id: this.model.ID,
+        password: this.model.PASSWORD
+      }
+    ));
     
     $(this.model.USER_ID_SELECTOR).focus();
     
@@ -102,7 +103,9 @@ class UserController extends CommonController {
     this.NAME = 'User Controller';
     this.model.LOGIN = false;
     this.model.ID = null;
+    this.model.ID = 'test';
     this.model.PASSWORD = null;
+    this.model.PASSWORD = 'pass';
     this.model.HASH = null;
   }
   
@@ -234,6 +237,8 @@ class UserEvent extends CommonEvent {
     
     this.setOn();
     this.CONTROLLER.view.generateUserArea();
+    
+    this.CONTROLLER.submitLogin();
   }
   
   setOn() {
