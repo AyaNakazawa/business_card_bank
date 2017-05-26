@@ -157,14 +157,14 @@ class CommonView extends CommonClass {
       return;
     }
     if (_message != null) {
-      const alertTemplate = this.model.$ALERT_TEMPLATE.text();
-      const alertCompiled = _.template(alertTemplate);
-      const alertModel = {
-        type: _type,
-        message: _message,
-        close: _close
-      };
-      _$selector.append(alertCompiled(alertModel));
+      _$selector.append(this.getTemplate(
+        this.model.$ALERT_TEMPLATE,
+        {
+          type: _type,
+          message: _message,
+          close: _close
+        }
+      ));
     }
   }
 }
