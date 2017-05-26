@@ -136,14 +136,14 @@ class CommonView extends CommonClass {
       Log.logCaution(this.NAME, 'generateLoading', 'Undefined selector');
       return;
     }
-    const template = this.model.$LOADING_TEMPLATE.text();
-    const compiled = _.template(template);
-    const model = {
-      header: _header,
-      message: _message
-    };
     _$selector.empty();
-    _$selector.html(compiled(model));
+    _$selector.append(this.getTemplate(
+      this.model.$LOADING_TEMPLATE,
+      {
+        header: _header,
+        message: _message
+      }
+    ));
   }
   
   generateAlert(
