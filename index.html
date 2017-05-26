@@ -151,9 +151,7 @@
           <thead>
             <tr>
               <th>氏名</th>
-              <th>カナ</th>
               <th>会社</th>
-              <th>カナ</th>
               <th>所属</th>
               <th>〒</th>
               <th>住所１</th>
@@ -174,10 +172,18 @@
     <!-- card-tbody-template -->
     <script type="text/template" id="card-tbody-template">
       <tr>
-        <th><%- card['name'] %></th>
-        <th><%- card['nameKana'] %></th>
-        <th><%- card['companyName'] %></th>
-        <th><%- card['companyNameKana'] %></th>
+        <th><ruby>
+          <rb><%- card['name'] %></rb>
+          <rp>（</rp>
+          <rt><%- card['nameKana'] %></rt>
+          <rp>）</rp>
+        </ruby></th>
+        <th><ruby>
+          <rb><%- card['companyName'] %></rb>
+          <rp>（</rp>
+          <rt><%- card['companyNameKana'] %></rt>
+          <rp>）</rp>
+        </ruby></th>
         <th><%- card['department'] %></th>
         <th><%- card['zipCode'] %></th>
         <th><%- card['address1'] %></th>
