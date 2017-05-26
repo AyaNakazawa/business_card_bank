@@ -103,7 +103,9 @@ class UserController extends CommonController {
     this.NAME = 'User Controller';
     this.model.LOGIN = false;
     this.model.ID = null;
+    this.model.ID = 'test';
     this.model.PASSWORD = null;
+    this.model.PASSWORD = 'pass';
     this.model.HASH = null;
   }
   
@@ -235,6 +237,8 @@ class UserEvent extends CommonEvent {
     
     this.setOn();
     this.CONTROLLER.view.generateUserArea();
+    
+    this.CONTROLLER.submitLogin();
   }
   
   setOn() {

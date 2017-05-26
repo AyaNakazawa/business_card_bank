@@ -22,6 +22,8 @@ class CardModel extends SwitchModel {
     this.$CARD_AREA_SELECTOR = $(this.CARD_AREA_SELECTOR);
     this.TEMPLATE_CARD_TABLE_SELECTOR = '#card-table-template';
     this.$TEMPLATE_CARD_TABLE_SELECTOR = $(this.TEMPLATE_CARD_TABLE_SELECTOR);
+    this.TEMPLATE_CARD_TBODY_SELECTOR = '#card-tbody-template';
+    this.$TEMPLATE_CARD_TBODY_SELECTOR = $(this.TEMPLATE_CARD_TBODY_SELECTOR);
     
     this.CARD_TBODY = '#card-tbody';
     this.$CARD_TBODY = $(this.CARD_TBODY);
@@ -48,6 +50,15 @@ class CardView extends SwitchView {
         {}
       ));
       this.model.$CARD_TBODY = $(this.model.CARD_TBODY);
+      
+      $.each(this.model.CARD, (_i, _val) => {
+        this.model.$CARD_TBODY.append(this.getTemplate(
+          this.model.$TEMPLATE_CARD_TBODY_SELECTOR,
+          {
+            card: _val
+          }
+        ));
+      })
       
     } else {
       Log.logClass(this.NAME, 'Card is not found');
