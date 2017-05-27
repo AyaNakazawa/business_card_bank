@@ -31,6 +31,13 @@ class Content {
     return 'content-item-key';
   }
   
+  static getContent(_id = null) {
+    if (_id != null) {
+      return `<div class="${Content.CONTENT}" id="${_id}"></div>`
+    }
+    return '';
+  }
+  
   static getHeader(_header = null) {
     if (_header != null) {
       return `<div class="${Content.HEADER}">${_header}</div>`
