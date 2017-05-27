@@ -17,22 +17,6 @@ class SwitchModel extends CommonModel {
       name: name
     });
     
-    // compile template
-    if (template != null) {
-      if (name != 'none') {
-        name = `${template.capitalize()} Switch`;
-      }
-      if (lsKeyView != 'none') {
-        lsKeyView = template;
-      }
-      if (triggerSelector != 'none') {
-        triggerSelector = `#switch-${template}`;
-      }
-      if (switchSelector != 'none') {
-        switchSelector = `#${template}-area`;
-      }
-    }
-    
     this.INIT_VIEW = true;
     
     if (lsKeyView != null) {
@@ -48,7 +32,26 @@ class SwitchModel extends CommonModel {
     this.$SWITCH_SELECTOR = $(this.SWITCH_SELECTOR);
     this.TOGGLE_TIME_MS = toggleTimeMs;
     
-    Log.logObj(this);
+    this.compile(template);
+  }
+  
+  compile(_template = null) {
+    if (_template != null) {
+      if (this.NAME != 'none') {
+        this.NAME = `${_template.capitalize()} Switch`;
+      }
+      if (this.LS_KEY_VIEW != 'none') {
+        this.LS_KEY_VIEW = `View.${_template}`;
+      }
+      if (this.TRIGGER_SELECTOR != 'none') {
+        this.TRIGGER_SELECTOR = `#switch-${_template}`;
+        this.$TRIGGER_SELECTOR = $(this.TRIGGER_SELECTOR);
+      }
+      if (this.SWITCH_SELECTOR != 'none') {
+        this.SWITCH_SELECTOR = `#${_template}-area`;
+        this.$SWITCH_SELECTOR = $(this.SWITCH_SELECTOR);
+      }
+    }
   }
 }
 
