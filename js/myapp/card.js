@@ -2,18 +2,12 @@
 // ----------------------------------------------------------------
 // Card Class
 
-class CardModel extends SwitchModel {
+class CardModel extends CommonModel {
   constructor({
-    name,
-    lsKeyView,
-    triggerSelector,
-    switchSelector
+    name
   } = {}) {
     super({
-      name: name,
-      lsKeyView: lsKeyView,
-      triggerSelector: triggerSelector,
-      switchSelector: switchSelector
+      name: name
     });
     
     this.NAME = name;
@@ -35,7 +29,7 @@ class CardModel extends SwitchModel {
   }
 }
 
-class CardView extends SwitchView {
+class CardView extends CommonView {
   constructor(_model = new CardModel()) {
     super(_model);
     
@@ -225,10 +219,7 @@ class CardEvent extends CommonEvent {
     
     this.NAME = name;
     this.CONTROLLER = new CardController({
-      name: 'Card Switch',
-      lsKeyView: 'card',
-      triggerSelector: '#action-card',
-      switchSelector: '#card-area'
+      name: 'Card Controller',
     });
   }
 }
