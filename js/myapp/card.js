@@ -64,6 +64,10 @@ class CardView extends SwitchView {
           this.model.$TEMPLATE_CARD_TBODY_SELECTOR,
           {card: _val}
         ));
+        this.model.$CARD_AREA_SELECTOR.append(this.getTemplate(
+          this.model.$TEMPLATE_CARD_HOVER_SELECTOR,
+          {card: _val}
+        ));
       });
       
     } else {
