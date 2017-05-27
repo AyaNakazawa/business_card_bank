@@ -4,6 +4,7 @@
 
 class SwitchModel extends CommonModel {
   constructor({
+    template = null,
     name = 'Common Switch',
     view = null,
     lsKeyView = null,
@@ -15,6 +16,22 @@ class SwitchModel extends CommonModel {
     super({
       name: name
     });
+    
+    // compile template
+    if (template != null) {
+      if (name != 'none') {
+        name = `${template.capitalize()} Switch`;
+      }
+      if (lsKeyView != 'none') {
+        lsKeyView = template;
+      }
+      if (triggerSelector != 'none') {
+        triggerSelector = `#switch-${template}`;
+      }
+      if (switchSelector != 'none') {
+        switchSelector = `#${template}-area`;
+      }
+    }
     
     this.INIT_VIEW = true;
     
