@@ -37,7 +37,7 @@ class CardView extends SwitchView {
     this.NAME = 'Card View';
   }
   
-  generateCardArea(_alertType = 'success', _message = null, _close = true) {
+  generateCardArea(_alertType = this.model.ALERT_SUCCESS, _message = null, _close = true) {
     this.model.$CARD_AREA_SELECTOR.empty();
     this.model.$CARD_AREA_SELECTOR.append(Content.getHeader('名刺情報'));
     this.generateAlert(this.model.$CARD_AREA_SELECTOR, _alertType, _message, _close);
@@ -51,14 +51,13 @@ class CardView extends SwitchView {
       ));
       this.model.$CARD_TBODY = $(this.model.CARD_TBODY);
       
-      $.each(this.model.CARD, (_i, _val) => {
+      $.each(this.model.CARD, (_id, _val) => {
+        this.model.CARD[_id][this.model.ACTIVE] = false;
         this.model.$CARD_TBODY.append(this.getTemplate(
           this.model.$TEMPLATE_CARD_TBODY_SELECTOR,
-          {
-            card: _val
-          }
+          {card: _val}
         ));
-      })
+      });
       
     } else {
       Log.logClass(this.NAME, 'Card is not found');
