@@ -5,26 +5,26 @@ class BCBProcess extends CommonProcess {
       name: `${Project.NAME} Process`
     });
     
-    BCBProcess.initProcess();
+    this.initProcess();
   }
   
-  static initProcess() {
-    BCBProcess.initContent();
-    BCBProcess.createDesc();
+  initProcess() {
+    this.initContent();
+    this.createDesc();
     BCBProcess.initPopover();
-    BCBProcess.initEvent();
-    BCBProcess.initController();
-    BCBProcess.show();
+    this.initEvent();
+    this.initController();
+    this.show();
   }
   
-  static initContent() {
+  initContent() {
     $('main').empty();
     $('main').append(Content.getContent('desc-area'));
     $('main').append(Content.getContent('user-area'));
     $('main').append(Content.getContent('card-area'));
   }
   
-  static createDesc() {
+  createDesc() {
     $('#desc-area').append(Content.getHeader('テストデータ'));
     $('#desc-area').append(Content.getItem({
       name: 'test',
@@ -65,7 +65,7 @@ class BCBProcess extends CommonProcess {
     }
   }
   
-  static initEvent() {
+  initEvent() {
     CE = new CardEvent();
     UE = new UserEvent();
     {
@@ -85,11 +85,11 @@ class BCBProcess extends CommonProcess {
     }
   }
   
-  static initController() {
+  initController() {
     
   }
   
-  static show() {
+  show() {
     $('main').slideDown(300);
   }
 }
