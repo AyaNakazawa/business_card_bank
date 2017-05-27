@@ -189,7 +189,7 @@ class CardController extends CommonController {
           if (Object.keys(_data).length > 0) {
             this.model.DOWNLOAD = true;
             this.model.CARD = _data;
-            this.view.generateCardArea(this.model.ALERT_SUCCESS, `名刺データの取得に成功しました。`);
+            this.view.generateCardArea(this.model.ALERT_SUCCESS, `名刺データを取得しました。`);
           } else {
             this.view.generateCardArea(this.model.ALERT_INFO, '名刺データは存在しません。', false);
           }
