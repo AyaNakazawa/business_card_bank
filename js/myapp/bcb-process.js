@@ -66,8 +66,8 @@ class BCBProcess extends CommonProcess {
   }
   
   initEvent() {
-    CE = new CardEvent();
-    UE = new UserEvent();
+    this.CE = new CardEvent();
+    this.UE = new UserEvent();
     this.SDE = new SwitchEvent({
       template: 'desc'
     });
