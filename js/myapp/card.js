@@ -65,6 +65,12 @@ class CardView extends SwitchView {
       Log.logClass(this.NAME, 'Card is not found');
     }
   }
+  
+  updateCardPosition(_id = null) {
+    if (_id != null) {
+      $(`#card-${_id}-detail`).css('top', ($(`#card-${_id}-main`).offset().top + $(`#card-${_id}-main`).height()) + 'px');
+    }
+  }
 }
 
 // ----------------------------------------------------------------
