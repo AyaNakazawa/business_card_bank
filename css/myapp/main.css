@@ -32,3 +32,8 @@ nav * {
 #card-area .card-hover label::after {
   content: ':';
 }
+
+#card-area .card-hover .btn-group {
+  width: 100%;
+  text-align: center;
+}
