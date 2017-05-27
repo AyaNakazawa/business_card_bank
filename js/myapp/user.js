@@ -2,12 +2,9 @@
 // ----------------------------------------------------------------
 // User Class
 
-class UserModel extends SwitchModel {
+class UserModel extends CommonModel {
   constructor({
     name,
-    lsKeyView,
-    triggerSelector,
-    switchSelector,
     userIdSelector = null,
     userPasswordSelector = null,
     loginTrigger = 'click',
@@ -18,10 +15,7 @@ class UserModel extends SwitchModel {
     signupSelector = null
   } = {}) {
     super({
-      name: name,
-      lsKeyView: lsKeyView,
-      triggerSelector: triggerSelector,
-      switchSelector: switchSelector
+      name: name
     });
     
     this.NAME = name;
@@ -50,7 +44,7 @@ class UserModel extends SwitchModel {
   }
 }
 
-class UserView extends SwitchView {
+class UserView extends CommonView {
   constructor(_model = new UserModel()) {
     super(_model);
     
@@ -222,10 +216,7 @@ class UserEvent extends CommonEvent {
     
     this.NAME = name;
     this.CONTROLLER = new UserController({
-      name: 'User Switch',
-      lsKeyView: 'user',
-      triggerSelector: '#action-user',
-      switchSelector: '#user-area',
+      name: 'User Controller',
       userIdSelector: '#user-id',
       userPasswordSelector: '#user-password',
       loginSelector: '#login-submit',
