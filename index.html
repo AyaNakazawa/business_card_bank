@@ -187,6 +187,14 @@
     <script type="text/template" id="card-hover-template">
       <div class="card-<%- card['id'] %> card-hover" id="card-<%- card['id'] %>-detail" style="display:none;">
         <div>
+          <label>登録日時</label>
+          <span><%- card['registerDate'] %></span>
+        </div>
+        <div>
+          <label>更新日時</label>
+          <span><%- card['updateDate'] %></span>
+        </div>
+        <div>
           <label>郵便番号</label>
           <span><a href="http://www.post.japanpost.jp/cgi-zip/zipcode.php?zip=<%- card['zipCode'] %>" target="_blank"><%- card['zipCode'] %></a></span>
         </div>
