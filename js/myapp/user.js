@@ -62,6 +62,9 @@ class UserView extends CommonView {
       $template = this.model.$TEMPLATE_LOGINED_SELECTOR;
       $(`${this.model.TRIGGER_SELECTOR} a`).text('Logout');
       
+      PS.SUE.CONTROLLER_SWITCH.view.setView(false);
+      PS.SCE.CONTROLLER_SWITCH.view.setView(true);
+      
     } else {
       // ログインしていないとき
       Log.logClass(this.NAME, 'Not login');
