@@ -9,11 +9,19 @@ class BCBProcess extends CommonProcess {
   }
   
   static initProcess() {
+    BCBProcess.initContent();
     BCBProcess.createDesc();
     BCBProcess.initPopover();
     BCBProcess.initEvent();
     BCBProcess.initController();
     BCBProcess.show();
+  }
+  
+  static initContent() {
+    $('main').empty();
+    $('main').append(Content.getContent('desc-area'));
+    $('main').append(Content.getContent('user-area'));
+    $('main').append(Content.getContent('card-area'));
   }
   
   static createDesc() {
@@ -72,6 +80,6 @@ class BCBProcess extends CommonProcess {
   }
   
   static show() {
-    $('body').show();
+    $('main').slideDown(300);
   }
 }
