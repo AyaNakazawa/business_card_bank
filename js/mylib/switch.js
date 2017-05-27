@@ -4,11 +4,11 @@
 
 class SwitchModel extends CommonModel {
   constructor({
-    name = 'Switch',
+    name = 'Common Switch',
     view = null,
     lsKeyView = null,
-    triggerSelector = 'none',
-    switchSelector = 'none',
+    triggerSelector = null,
+    switchSelector = null,
     toggleTimeMs = 500
   } = {})
   {
@@ -30,12 +30,50 @@ class SwitchModel extends CommonModel {
     this.SWITCH_SELECTOR = switchSelector;
     this.$SWITCH_SELECTOR = $(this.SWITCH_SELECTOR);
     this.TOGGLE_TIME_MS = toggleTimeMs;
+    
+    Log.logObj(this);
   }
 }
 
 class SwitchView extends CommonView {
   constructor(_model = new SwitchModel()) {
     super(_model);
+  }
+  
+  setView(_view = null, _speed = this.model.TOGGLE_TIME_MS) {
+    Log.logClassKey('View', this.model.NAME, _view, Log.ARROW_INPUT);
+    
+    if (_view != null) {
+      if (_view) {
+        this.model.$TRIGGER_SELECTOR.addClass(this.model.CURRENT);
+        this.model.$SWITCH_SELECTOR.show(_speed);
+      } else {
+        this.model.$TRIGGER_SELECTOR.removeClass(this.model.CURRENT);
+        this.model.$SWITCH_SELECTOR.hide(_speed);
+      }
+      
+      // save
+      if (this.model.LS_KEY_VIEW != null) {
+        LocalStorage.setItem(this.model.LS_KEY_VIEW, _view);
+      }
+      this.model.view = _view;
+    }
+  }
+}
+
+// ----------------------------------------------------------------
+// Controllers
+
+class SwitchController extends CommonController {
+  constructor(_obj) {
+    super({
+      name: _obj.name
+    });
+    
+    this.model = new SwitchModel(_obj);
+    this.view = new SwitchView(this.model);
+    
+    this.NAME = this.model.name;
     
     // Init SwitchView
     this.initSwitchView();
@@ -43,12 +81,7 @@ class SwitchView extends CommonView {
   
   initSwitchView() {
     this.setCurrentView();
-    this.setView(this.model.view, 0);
-    this.setOn();
-  }
-  
-  setOn() {
-    $(document).on('click', this.model.TRIGGER_SELECTOR, () => {this.switchView()});
+    this.view.setView(this.model.view, 0);
   }
   
   setCurrentView() {
@@ -69,41 +102,30 @@ class SwitchView extends CommonView {
   }
   
   switchView() {
-    Log.logClass('Switch', `${this.model.NAME} View`);
+    Log.logClass('Switch', `${this.NAME} View`);
     
     this.setCurrentView();
-    this.setView(!this.model.view);
-  }
-  
-  setView(_view, _speed = this.model.TOGGLE_TIME_MS) {
-    Log.logClassKey('View', this.model.NAME, _view, Log.ARROW_INPUT);
-    
-    if (_view) {
-      this.model.$TRIGGER_SELECTOR.addClass(this.model.CURRENT);
-      this.model.$SWITCH_SELECTOR.show(_speed);
-    } else {
-      this.model.$TRIGGER_SELECTOR.removeClass(this.model.CURRENT);
-      this.model.$SWITCH_SELECTOR.hide(_speed);
-    }
-    
-    // save
-    if (this.model.LS_KEY_VIEW != null) {
-      LocalStorage.setItem(this.model.LS_KEY_VIEW, _view);
-    }
-    this.model.view = _view;
+    this.view.setView(!this.model.view);
   }
 }
 
-// ----------------------------------------------------------------
-// Controllers
-
-class SwitchController extends CommonController {
+class SwitchEvent extends CommonEvent {
   constructor(_obj) {
-    super({
-      name: 'Switch Controller'
-    });
+    super(_obj);
     
-    this.model = new SwitchModel(_obj);
-    this.view = new SwitchView(this.model);
+    this.NAME = _obj.name;
+    this.CONTROLLER_SWITCH = new SwitchController(_obj);
+    
+    this.setOnSwitch();
+  }
+  
+  setOnSwitch() {
+    SetEvent.setOn(
+      'click',
+      this.CONTROLLER_SWITCH.model.TRIGGER_SELECTOR,
+      () => {
+        this.CONTROLLER_SWITCH.switchView();
+      }
+    );
   }
 }
