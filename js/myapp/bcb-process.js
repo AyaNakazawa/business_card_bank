@@ -68,21 +68,19 @@ class BCBProcess extends CommonProcess {
   initEvent() {
     CE = new CardEvent();
     UE = new UserEvent();
-    {
-      new SwitchEvent({
-        template: 'desc'
-      });
-      new SwitchEvent({
-        template: 'user',
-        view: true,
-        lsKey: 'none'
-      });
-      new SwitchEvent({
-        template: 'card',
-        view: false,
-        lsKey: 'none'
-      });
-    }
+    this.SDE = new SwitchEvent({
+      template: 'desc'
+    });
+    this.SUE = new SwitchEvent({
+      template: 'user',
+      view: true,
+      lsKey: 'none'
+    });
+    this.SCE = new SwitchEvent({
+      template: 'card',
+      view: false,
+      lsKey: 'none'
+    });
   }
   
   initController() {
