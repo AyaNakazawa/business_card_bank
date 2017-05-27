@@ -16,7 +16,7 @@ class SwitchModel extends CommonModel {
       name: name
     });
     
-    this.initView = true;
+    this.INIT_VIEW = true;
     
     if (lsKeyView != null) {
       lsKeyView = `View.${lsKeyView}`;
@@ -54,7 +54,7 @@ class SwitchView extends CommonView {
   setCurrentView() {
     if (this.model.view == null) {
       if (this.model.LS_KEY_VIEW == null) {
-        this.model.view = this.model.initView;
+        this.model.view = this.model.INIT_VIEW;
       } else {
         const lsValView = LocalStorage.getItem(this.model.LS_KEY_VIEW);
         if (lsValView == null) {
