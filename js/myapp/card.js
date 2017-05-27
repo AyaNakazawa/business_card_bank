@@ -27,6 +27,8 @@ class CardModel extends SwitchModel {
     
     this.CARD_TBODY = '#card-tbody';
     this.$CARD_TBODY = $(this.CARD_TBODY);
+    
+    this.HEADER_TEXT = '名刺情報';
   }
 }
 
@@ -39,7 +41,7 @@ class CardView extends SwitchView {
   
   generateCardArea(_alertType = this.model.ALERT_SUCCESS, _message = null, _close = true) {
     this.model.$CARD_AREA_SELECTOR.empty();
-    this.model.$CARD_AREA_SELECTOR.append(Content.getHeader('名刺情報'));
+    this.model.$CARD_AREA_SELECTOR.append(Content.getHeader(this.model.HEADER_TEXT));
     this.generateAlert(this.model.$CARD_AREA_SELECTOR, _alertType, _message, _close);
     
     let template = null;
