@@ -19,36 +19,39 @@ class SwitchModel extends CommonModel {
     
     this.INIT_VIEW = true;
     
-    if (lsKey != null) {
+    if (lsKey != null && lsKey != 'none') {
       lsKey = `View.${lsKey}`;
     }
     
+    this.TEMPLATE = template;
     this.NAME = name;
     this.view = view;
-    this.LS_KEY_VIEW = lsKey;
+    this.LS_KEY = lsKey;
     this.TRIGGER_SELECTOR = triggerSelector;
     this.$TRIGGER_SELECTOR = $(this.TRIGGER_SELECTOR);
     this.SWITCH_SELECTOR = switchSelector;
     this.$SWITCH_SELECTOR = $(this.SWITCH_SELECTOR);
     this.TOGGLE_TIME_MS = toggleTimeMs;
     
-    this.compile(template);
+    this.compile();
   }
   
-  compile(_template = null) {
-    if (_template != null) {
+  compile() {
+    if (this.TEMPLATE != null) {
       if (this.NAME != 'none') {
-        this.NAME = `${_template.capitalize()} Switch`;
+        this.NAME = `${this.TEMPLATE.capitalize()} Switch`;
       }
-      if (this.LS_KEY_VIEW != 'none') {
-        this.LS_KEY_VIEW = `View.${_template}`;
+      if (this.LS_KEY != 'none') {
+        this.LS_KEY = `View.${this.TEMPLATE}`;
+      } else {
+        this.LS_KEY = null;
       }
       if (this.TRIGGER_SELECTOR != 'none') {
-        this.TRIGGER_SELECTOR = `#switch-${_template}`;
+        this.TRIGGER_SELECTOR = `#switch-${this.TEMPLATE}`;
         this.$TRIGGER_SELECTOR = $(this.TRIGGER_SELECTOR);
       }
       if (this.SWITCH_SELECTOR != 'none') {
-        this.SWITCH_SELECTOR = `#${_template}-area`;
+        this.SWITCH_SELECTOR = `#${this.TEMPLATE}-area`;
         this.$SWITCH_SELECTOR = $(this.SWITCH_SELECTOR);
       }
     }
@@ -58,10 +61,16 @@ class SwitchModel extends CommonModel {
 class SwitchView extends CommonView {
   constructor(_model = new SwitchModel()) {
     super(_model);
+    
+    if (this.model.TEMPLATE != null) {
+      this.NAME = `${this.model.TEMPLATE.capitalize()} View`;
+    } else {
+      this.NAME = this.model.name;
+    }
   }
   
   setView(_view = null, _speed = this.model.TOGGLE_TIME_MS) {
-    Log.logClassKey('View', this.model.NAME, _view, Log.ARROW_INPUT);
+    Log.logClassKey('View', this.NAME, _view, Log.ARROW_INPUT);
     
     if (_view != null) {
       if (_view) {
@@ -73,8 +82,8 @@ class SwitchView extends CommonView {
       }
       
       // save
-      if (this.model.LS_KEY_VIEW != null) {
-        LocalStorage.setItem(this.model.LS_KEY_VIEW, _view);
+      if (this.model.LS_KEY != null) {
+        LocalStorage.setItem(this.model.LS_KEY, _view);
       }
       this.model.view = _view;
     }
@@ -93,7 +102,11 @@ class SwitchController extends CommonController {
     this.model = new SwitchModel(_obj);
     this.view = new SwitchView(this.model);
     
-    this.NAME = this.model.name;
+    if (_obj.template != null) {
+      this.NAME = `${_obj.template.capitalize()} Controller`;
+    } else {
+      this.NAME = _obj.name;
+    }
     
     // Init SwitchView
     this.initSwitchView();
@@ -106,15 +119,15 @@ class SwitchController extends CommonController {
   
   setCurrentView() {
     if (this.model.view == null) {
-      if (this.model.LS_KEY_VIEW == null) {
+      if (this.model.LS_KEY == null) {
         this.model.view = this.model.INIT_VIEW;
       } else {
-        const lsValView = LocalStorage.getItem(this.model.LS_KEY_VIEW);
-        if (lsValView == null) {
+        const LS_VAL = LocalStorage.getItem(this.model.LS_KEY);
+        if (LS_VAL == null) {
           this.model.view = true;
-        } else if (lsValView == 'true') {
+        } else if (LS_VAL == 'true') {
           this.model.view = true;
-        } else if (lsValView == 'false') {
+        } else if (LS_VAL == 'false') {
           this.model.view = false;
         }
       }
@@ -122,7 +135,7 @@ class SwitchController extends CommonController {
   }
   
   switchView() {
-    Log.logClass('Switch', `${this.NAME} View`);
+    Log.logClass('Switch', `${this.NAME}`);
     
     this.setCurrentView();
     this.view.setView(!this.model.view);
@@ -133,7 +146,11 @@ class SwitchEvent extends CommonEvent {
   constructor(_obj) {
     super(_obj);
     
-    this.NAME = _obj.name;
+    if (_obj.template != null) {
+      this.NAME = `${_obj.template.capitalize()} Event`;
+    } else {
+      this.NAME = _obj.name;
+    }
     this.CONTROLLER_SWITCH = new SwitchController(_obj);
     
     this.setOnSwitch();
