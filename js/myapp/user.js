@@ -41,6 +41,8 @@ class UserModel extends CommonModel {
     
     this.ID_LENGTH_MAX = 31;
     this.ID_LENGTH_MIN = 3;
+    
+    this.SWITCH_LABEL_SELECTOR = '#switch-user';
   }
 }
 
@@ -60,7 +62,7 @@ class UserView extends CommonView {
       // ログインしているとき
       Log.logClass(this.NAME, 'Logined');
       $template = this.model.$TEMPLATE_LOGINED_SELECTOR;
-      $(`${this.model.TRIGGER_SELECTOR} a`).text('Logout');
+      $(`${this.model.SWITCH_LABEL_SELECTOR} a`).text('Logout');
       
       PS.SUE.CONTROLLER_SWITCH.view.setView(false);
       PS.SCE.CONTROLLER_SWITCH.view.setView(true);
@@ -69,7 +71,7 @@ class UserView extends CommonView {
       // ログインしていないとき
       Log.logClass(this.NAME, 'Not login');
       $template = this.model.$TEMPLATE_NOT_LOGIN_SELECTOR;
-      $(`${this.model.TRIGGER_SELECTOR} a`).text('Login');
+      $(`${this.model.SWITCH_LABEL_SELECTOR} a`).text('Login');
       
     }
     
