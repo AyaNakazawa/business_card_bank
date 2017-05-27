@@ -71,6 +71,17 @@ class CardView extends SwitchView {
       $(`#card-${_id}-detail`).css('top', ($(`#card-${_id}-main`).offset().top + $(`#card-${_id}-main`).height()) + 'px');
     }
   }
+  
+  switchDetailView(_id = null, _view = null, _speed = 0) {
+    if (_id != null && _view != null) {
+      if (_view) {
+        this.updateCardPosition(_id);
+        $(`#card-${_id}-detail`).slideDown(_speed);
+      } else {
+        $(`#card-${_id}-detail`).slideUp(_speed);
+      }
+    }
+  }
 }
 
 // ----------------------------------------------------------------
