@@ -7,7 +7,7 @@ class SwitchModel extends CommonModel {
     template = null,
     name = 'Common Switch',
     view = null,
-    lsKeyView = null,
+    lsKey = null,
     triggerSelector = null,
     switchSelector = null,
     toggleTimeMs = 500
@@ -19,13 +19,13 @@ class SwitchModel extends CommonModel {
     
     this.INIT_VIEW = true;
     
-    if (lsKeyView != null) {
-      lsKeyView = `View.${lsKeyView}`;
+    if (lsKey != null) {
+      lsKey = `View.${lsKey}`;
     }
     
     this.NAME = name;
     this.view = view;
-    this.LS_KEY_VIEW = lsKeyView;
+    this.LS_KEY_VIEW = lsKey;
     this.TRIGGER_SELECTOR = triggerSelector;
     this.$TRIGGER_SELECTOR = $(this.TRIGGER_SELECTOR);
     this.SWITCH_SELECTOR = switchSelector;
