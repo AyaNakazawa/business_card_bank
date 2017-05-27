@@ -30,6 +30,7 @@ class CardModel extends SwitchModel {
     this.CARD_TBODY = '#card-tbody';
     this.$CARD_TBODY = $(this.CARD_TBODY);
     
+    this.SHOW_SPEED_MS = 100;
     this.HEADER_TEXT = '名刺情報';
   }
 }
