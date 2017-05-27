@@ -186,6 +186,38 @@
     <!-- card-hover-template -->
     <script type="text/template" id="card-hover-template">
       <div class="card-<%- card['id'] %> card-hover" id="card-<%- card['id'] %>-detail" style="display:none;">
+        <div>
+          <label>郵便番号</label>
+          <span><a href="http://www.post.japanpost.jp/cgi-zip/zipcode.php?zip=<%- card['zipCode'] %>" target="_blank"><%- card['zipCode'] %></a></span>
+        </div>
+        <div>
+          <label>住所１</label>
+          <span><a href="https://www.google.co.jp/search?q=<%- card['address1'] %>" target="_blank"><%- card['address1'] %></a></span>
+        </div>
+        <div>
+          <label>住所２</label>
+          <span><a href="https://www.google.co.jp/search?q=<%- card['address2'] %>" target="_blank"><%- card['address2'] %></a></span>
+        </div>
+        <div>
+          <label>FAX番号</label>
+          <span><a href="https://www.google.co.jp/search?q=<%- card['fax'] %>" target="_blank"><%- card['fax'] %></a></span>
+        </div>
+        <div>
+          <label>携帯電話</label>
+          <span><a href="https://www.google.co.jp/search?q=<%- card['cellphone'] %>" target="_blank"><%- card['cellphone'] %></a></span>
+        </div>
+        <div>
+          <label>メールアドレス</label>
+          <span><a href="mailto:<%- card['mail'] %>" target="_blank"><%- card['mail'] %></a></span>
+        </div>
+        <div>
+          <label>URL</label>
+          <span><a href="<%- card['url'] %>" target="_blank"><%- card['url'] %></a></span>
+        </div>
+        <div>
+          <label>備考</label>
+          <span><%- card['note'] %></span>
+        </div>
       </div>
     </script>
     <!-- script -->
