@@ -68,15 +68,25 @@ class BCBProcess extends CommonProcess {
   static initEvent() {
     CE = new CardEvent();
     UE = new UserEvent();
+    {
+      new SwitchEvent({
+        template: 'desc'
+      });
+      new SwitchEvent({
+        template: 'user',
+        view: true,
+        lsKey: 'none'
+      });
+      new SwitchEvent({
+        template: 'card',
+        view: false,
+        lsKey: 'none'
+      });
+    }
   }
   
   static initController() {
-    new SwitchController({
-      name: 'Desc Switch',
-      lsKeyView: 'desc',
-      triggerSelector: '#action-desc',
-      switchSelector: '#desc-area'
-    });
+    
   }
   
   static show() {
