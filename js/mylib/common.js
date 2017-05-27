@@ -217,8 +217,8 @@ class CommonProcess extends CommonClass {
   {
     super();
     
+    this.NAME = name;
     if (name != null && viewName) {
-      this.NAME = name;
       super.viewNameModel(name);
     }
   }
