@@ -132,7 +132,7 @@ class UserController extends CommonController {
       return;
     }
     
-    CE.CONTROLLER.setUser();
+    PS.CE.CONTROLLER.setUser();
     this.model.HASH = SHA256.getHash(this.model.PASSWORD);
     
     this.view.generateLoading(this.model.$USER_AREA_SELECTOR, 'ログイン中', `${this.model.ID} でログイン`);
@@ -148,7 +148,7 @@ class UserController extends CommonController {
         if (_data.length > 0) {
           this.model.ID = _data;
           this.model.LOGIN = true;
-          CE.CONTROLLER.setUser(this.model.ID, this.model.HASH);
+          PS.CE.CONTROLLER.setUser(this.model.ID, this.model.HASH);
           this.view.generateUserArea(this.model.ALERT_SUCCESS, `ユーザー ${this.model.ID} でログインしました。`);
         } else {
           this.view.generateUserArea(this.model.ALERT_WARNING, 'IDとパスワードの組み合わせが正しくありません。');
@@ -166,7 +166,7 @@ class UserController extends CommonController {
     this.model.LOGIN = false;
     this.model.ID = null;
     this.model.PASSWORD = null;
-    CE.CONTROLLER.setUser();
+    PS.CE.CONTROLLER.setUser();
     this.view.generateUserArea('success', 'ログアウトしました。');
   }
   
@@ -177,7 +177,7 @@ class UserController extends CommonController {
       return;
     }
     
-    CE.CONTROLLER.setUser();
+    PS.CE.CONTROLLER.setUser();
     this.model.HASH = SHA256.getHash(this.model.PASSWORD);
     
     this.view.generateLoading(this.model.$USER_AREA_SELECTOR,'登録中',  `${this.ID} でユーザー登録`);
@@ -193,7 +193,7 @@ class UserController extends CommonController {
         if (_data.length > 0) {
           this.model.ID = _data;
           this.model.LOGIN = true;
-          CE.CONTROLLER.setUser(this.model.ID, this.model.HASH);
+          PS.CE.CONTROLLER.setUser(this.model.ID, this.model.HASH);
           this.view.generateUserArea(this.model.ALERT_SUCCESS, `ユーザー ${this.model.ID} を登録しました。`);
         } else {
           this.view.generateUserArea(this.model.ALERT_WARNING, `ユーザー ${this.model.ID} は登録済みです`);
