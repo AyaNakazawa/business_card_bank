@@ -77,6 +77,7 @@ class CommonModel extends CommonClass {
     this.DISPLAY_NONE = 'display-none';
     this.CURRENT = 'current';
     this.ACTIVE = 'active';
+    this.HOVER = 'hover';
     this.BODY = 'body';
     this.$BODY = $(this.BODY);
     this.LOADING_TEMPLATE = '#loading-template';
