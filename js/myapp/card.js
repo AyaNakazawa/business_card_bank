@@ -68,6 +68,24 @@ class CardView extends SwitchView {
           this.model.$TEMPLATE_CARD_HOVER_SELECTOR,
           {card: _val}
         ));
+        $(`#card-${_id}-main`).hover(
+          () => {
+            // なにもアクティブでないとき
+            if (this.model.SELECT == null) {
+              // ホバーにする
+              this.model.CARD[_id][this.model.HOVER] = true;
+              this.switchDetailView(_id, true, this.model.SHOW_SPEED_MS);
+            }
+          },
+          () => {
+            // アクティブでないとき
+            if (!this.model.CARD[_id][this.model.ACTIVE]) {
+              // ホバー解除
+              this.model.CARD[_id][this.model.HOVER] = false;
+              this.switchDetailView(_id, false, 0);
+            }
+          }
+        );
       });
       
     } else {
