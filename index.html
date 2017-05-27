@@ -23,7 +23,7 @@
     <!-- title -->
     <title>Business Card Bank</title>
   </head>
-  <body style="display:none;">
+  <body>
     <!-- header -->
     <header>
       <h1>Business Card Bank</h1>
@@ -50,12 +50,15 @@
     </nav>
     <!-- main -->
     <main>
-      <!-- desc -->
-      <div class="content" id="desc-area"></div>
-      <!-- user -->
-      <div class="content" id="user-area"></div>
-      <!-- card -->
-      <div class="content" id="card-area"></div>
+      <!-- error -->
+      <div class="content" id="error-area">
+        <div class="content-header">
+          非対応ブラウザ
+        </div>
+        <div class="content-item">
+          ES2015をサポートしているブラウザでご覧ください
+        </div>
+      </div>
     </main>
     <!-- footer -->
     <footer>
@@ -181,6 +184,8 @@
       </tr>
     </script>
     <!-- script -->
+    <!-- error -->
+    <script src="js/mylib/error.js"></script>
     <!-- lib -->
     <script src="js/lib/underscore-min.js"></script>
     <script src="js/lib/jquery-3.2.0.min.js"></script>
