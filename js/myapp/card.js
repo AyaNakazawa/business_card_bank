@@ -82,6 +82,16 @@ class CardView extends SwitchView {
       }
     }
   }
+  
+  switchCardActive(_id = null, _flg = null) {
+    if (_id != null && _flg != null) {
+      if (_flg) {
+        $(`#card-${_id}-main`).addClass(this.model.ACTIVE);
+      } else {
+        $(`#card-${_id}-main`).removeClass(this.model.ACTIVE);
+      }
+    }
+  }
 }
 
 // ----------------------------------------------------------------
