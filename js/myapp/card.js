@@ -24,7 +24,7 @@ class CardModel extends CommonModel {
     this.CARD_TBODY = '#card-tbody';
     this.$CARD_TBODY = $(this.CARD_TBODY);
     
-    this.SHOW_SPEED_MS = 100;
+    this.VIEW_SPEED_MS = 100;
     this.HEADER_TEXT = '名刺情報';
   }
 }
@@ -70,7 +70,7 @@ class CardView extends CommonView {
               this.model.CARD[_id][this.model.HOVER] = false;
               this.model.SELECT = null;
               this.switchCardActive(_id, false);
-              this.switchDetailView(_id, false, this.model.SHOW_SPEED_MS);
+              this.switchDetailView(_id, false, this.model.VIEW_SPEED_MS);
             } else {
               // アクティブにする
               $.each(this.model.CARD, (_id, _val) => {
@@ -87,7 +87,7 @@ class CardView extends CommonView {
               if (this.model.CARD[_id][this.model.HOVER]) {
                 this.switchDetailView(_id, true, 0);
               } else {
-                this.switchDetailView(_id, true, this.model.SHOW_SPEED_MS);
+                this.switchDetailView(_id, true, this.model.VIEW_SPEED_MS);
               }
             }
           }
@@ -98,7 +98,7 @@ class CardView extends CommonView {
             if (this.model.SELECT == null) {
               // ホバーにする
               this.model.CARD[_id][this.model.HOVER] = true;
-              this.switchDetailView(_id, true, this.model.SHOW_SPEED_MS);
+              this.switchDetailView(_id, true, this.model.VIEW_SPEED_MS);
             }
           },
           () => {
