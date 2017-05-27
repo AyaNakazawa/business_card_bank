@@ -40,6 +40,8 @@ class CardView extends SwitchView {
     super(_model);
     
     this.NAME = 'Card View';
+    
+    this.model.SELECT = null;
   }
   
   generateCardArea(_alertType = this.model.ALERT_SUCCESS, _message = null, _close = true) {
