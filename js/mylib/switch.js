@@ -87,7 +87,9 @@ class SwitchView extends CommonView {
     }
     
     // save
-    LocalStorage.setItem(this.model.LS_KEY_VIEW, _view);
+    if (this.model.LS_KEY_VIEW != null) {
+      LocalStorage.setItem(this.model.LS_KEY_VIEW, _view);
+    }
     this.model.view = _view;
   }
 }
