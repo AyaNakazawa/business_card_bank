@@ -14,6 +14,7 @@ class CardModel extends CommonModel {
     });
     
     this.NAME = name;
+    this.EVENT = PS.CE;
     
     this.CARD_AREA_SELECTOR = '#card-area';
     this.$CARD_AREA_SELECTOR = $(this.CARD_AREA_SELECTOR);
@@ -130,91 +131,6 @@ class CardView extends CommonView {
         this.model.CARD[_id][this.model.ACTIVE] = false;
         $(`#card-${_id}-main`).removeClass(this.model.ACTIVE);
       }
-    }
-  }
-  
-  setCardClick(_id = null) {
-    if (_id != null) {
-      $(`#card-${_id}-main`).click(
-        () => {
-          if (this.model.CARD[_id][this.model.ACTIVE]) {
-            // 既にアクティブなときは解除
-            this.setDetailView(_id, false, this.model.ACTIVE, this.model.VIEW_SPEED_MS);
-          } else {
-            // アクティブにする
-            $.each(this.model.CARD, (_id2, _val2) => {
-              // 他の項目を解除する
-              if (_id2 != _id) {
-                this.setDetailView(_id2, false, this.model.ACTIVE);
-              }
-            });
-            // クリックした項目をアクティブにする
-            this.setDetailView(_id, true, this.model.ACTIVE);
-          }
-        }
-      );
-    }
-  }
-  
-  setCardHover(_id = null) {
-    if (_id != null) {
-      $(`#card-${_id}-main`).hover(
-        () => {
-          // なにもアクティブでないとき
-          if (this.model.SELECT == null) {
-            // ホバーにする
-            this.setDetailView(_id, true, this.model.HOVER, this.model.VIEW_SPEED_MS);
-          }
-        },
-        () => {
-          // アクティブでないとき
-          if (!this.model.CARD[_id][this.model.ACTIVE]) {
-            // ホバー解除
-            this.setDetailView(_id, false, this.model.HOVER);
-          }
-        }
-      );
-    }
-  }
-  
-  setEditClick(_id = null) {
-    if (_id != null) {
-      $(`.card-${_id}-edit`).click(
-        () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Edit');
-        }
-      );
-    }
-  }
-  
-  setDeleteClick(_id = null) {
-    if (_id != null) {
-      $(`.card-${_id}-delete`).click(
-        () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Delete');
-        }
-      );
-    }
-  }
-  
-  setCopyClick(_id = null) {
-    if (_id != null) {
-      $(`.card-${_id}-copy`).click(
-        () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Copy');
-        }
-      );
-    }
-  }
-  
-  setcloseClick(_id = null) {
-    if (_id != null) {
-      $(`.card-${_id}-close`).click(
-        () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Close');
-          this.setDetailView(_id, false, this.model.ACTIVE, this.model.VIEW_SPEED_MS);
-        }
-      );
     }
   }
 }
