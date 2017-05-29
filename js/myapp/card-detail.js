@@ -98,6 +98,16 @@ class CardDetailController extends CommonController {
   saveCard() {
     
   }
+  
+  deleteCard(
+    _id = this.model.ID,
+    _hash = this.model.HASH,
+    _card = this.model.CARD
+  ) {
+    if (_id != null && _hash != null && _card != null) {
+      
+    }
+  }
 }
 
 // ----------------------------------------------------------------
