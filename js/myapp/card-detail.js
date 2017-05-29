@@ -40,7 +40,7 @@ class CardDetailView extends CommonView {
   }
   
   generateCardDetailArea(
-    _alertType = 'success',
+    _alertType = this.MODEL.ALERT_SUCCESS,
     _message = null,
     _close = true
   ) {
@@ -61,7 +61,10 @@ class CardDetailView extends CommonView {
       // カードがない場合
       $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).append(this.getTemplate(
         this.MODEL.TEMPLATE_CARD_DETAIL_SELECTOR,
-        {card: this.MODEL.CARD}
+        {
+          card: this.MODEL.CARD,
+          copy: this.MODEL.COPY
+        }
       ));
     }
   }
