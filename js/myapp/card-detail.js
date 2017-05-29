@@ -15,6 +15,10 @@ class CardDetailModel extends CommonModel {
     
     this.NAME = 'Card Detail Model';
     this.EVENT = PS.CDE;
+    
+    this.ID = null;
+    this.HASH = null;
+    this.CARD = null;
   }
 }
 
@@ -40,9 +44,6 @@ class CardDetailController extends CommonController {
     this.view = new CardDetailView(this.model);
     
     this.NAME = 'Card Detail Controller';
-    this.model.ID = null;
-    this.model.HASH = null;
-    this.model.CARD = null;
   }
 }
 
