@@ -69,8 +69,8 @@ class BCBProcess extends CommonProcess {
     this.CONTROLLER = {};
     this.CONTROLLER.SWITCH = {};
     
-    this.CONTROLLER.CARD = new CardController();
     this.CONTROLLER.CARD_DETAIL = new CardDetailController();
+    this.CONTROLLER.CARD = new CardController();
     this.CONTROLLER.USER = new UserController();
     
     this.CONTROLLER.SWITCH.DESC = new SwitchController({
