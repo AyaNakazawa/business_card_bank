@@ -50,24 +50,24 @@ class CardView extends CommonView {
   ) {
     $(this.MODEL.CARD_AREA_SELECTOR).empty();
     $(this.MODEL.CARD_AREA_SELECTOR).append(Content.getHeader(this.MODEL.HEADER_TEXT));
-    this.generateAlert($(this.MODEL.CARD_AREA_SELECTOR), _alertType, _message, _close);
+    this.generateAlert(this.MODEL.CARD_AREA_SELECTOR, _alertType, _message, _close);
     
     let template = null;
     if (this.MODEL.DOWNLOAD) {
       Log.logClass(this.NAME, 'Card is found');
       $(this.MODEL.CARD_AREA_SELECTOR).append(this.getTemplate(
-        $(this.MODEL.TEMPLATE_CARD_TABLE_SELECTOR),
+        this.MODEL.TEMPLATE_CARD_TABLE_SELECTOR,
         {}
       ));
       
       $.each(this.MODEL.CARD, (_id, _val) => {
         this.MODEL.CARD[_id][this.MODEL.ACTIVE] = false;
         $(this.MODEL.CARD_TBODY_SELECTOR).append(this.getTemplate(
-          $(this.MODEL.TEMPLATE_CARD_TBODY_SELECTOR),
+          this.MODEL.TEMPLATE_CARD_TBODY_SELECTOR,
           {card: _val}
         ));
         $(this.MODEL.CARD_AREA_SELECTOR).append(this.getTemplate(
-          $(this.MODEL.TEMPLATE_CARD_HOVER_SELECTOR),
+          this.MODEL.TEMPLATE_CARD_HOVER_SELECTOR,
           {card: _val}
         ));
         this.EVENT.setCardClick(_id);
@@ -272,7 +272,7 @@ class CardController extends CommonController {
   downloadCard(_id = this.MODEL.ID, _hash = this.MODEL.HASH) {
     this.MODEL.DOWNLOAD = false;
     
-    this.VIEW.generateLoading($(this.MODEL.CARD_AREA_SELECTOR), '通信中', `ユーザーID ${_id} の名刺データを取得中`);
+    this.VIEW.generateLoading(this.MODEL.CARD_AREA_SELECTOR, '通信中', `ユーザーID ${_id} の名刺データを取得中`);
     
     if (_id != null && _hash != null) {
       $.ajax({

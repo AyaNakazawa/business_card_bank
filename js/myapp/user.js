@@ -52,13 +52,13 @@ class UserView extends CommonView {
   
   generateUserArea(_alertType = 'success', _message = null, _close = true) {
     $(this.MODEL.USER_AREA_SELECTOR).empty();
-    this.generateAlert($(this.MODEL.USER_AREA_SELECTOR), _alertType, _message, _close);
+    this.generateAlert(this.MODEL.USER_AREA_SELECTOR, _alertType, _message, _close);
     
-    let $template = null;
+    let template = null;
     if (this.MODEL.LOGIN) {
       // ログインしているとき
       Log.logClass(this.NAME, 'Logined');
-      $template = $(this.MODEL.TEMPLATE_LOGINED_SELECTOR);
+      template = this.MODEL.TEMPLATE_LOGINED_SELECTOR;
       $(`${this.MODEL.SWITCH_LABEL_SELECTOR} a`).text('Logout');
       
       PS.CONTROLLER.SWITCH.USER.VIEW.setView(false);
@@ -67,13 +67,13 @@ class UserView extends CommonView {
     } else {
       // ログインしていないとき
       Log.logClass(this.NAME, 'Not login');
-      $template = $(this.MODEL.TEMPLATE_NOT_LOGIN_SELECTOR);
+      template = this.MODEL.TEMPLATE_NOT_LOGIN_SELECTOR;
       $(`${this.MODEL.SWITCH_LABEL_SELECTOR} a`).text('Login');
       
     }
     
     $(this.MODEL.USER_AREA_SELECTOR).append(this.getTemplate(
-      $template,
+      template,
       {
         id: this.MODEL.ID,
         password: this.MODEL.PASSWORD
@@ -164,16 +164,28 @@ class UserController extends CommonController {
     this.MODEL.ID = $(this.MODEL.USER_ID_SELECTOR).val();
     this.MODEL.PASSWORD = $(this.MODEL.USER_PASSWORD_SELECTOR).val();
     if (this.MODEL.ID.length == 0) {
-      this.VIEW.generateUserArea(this.MODEL.ALERT_WARNING, 'ID を入力してください。');
+      this.VIEW.generateUserArea(
+        this.MODEL.ALERT_WARNING,
+        'ID を入力してください。'
+      );
       return false;
     } else if (this.MODEL.ID.length < this.MODEL.ID_LENGTH_MIN) {
-      this.VIEW.generateUserArea(this.MODEL.ALERT_WARNING, `ID は ${this.MODEL.ID_LENGTH_MIN} 文字以上で入力してください。`);
+      this.VIEW.generateUserArea(
+        this.MODEL.ALERT_WARNING,
+        `ID は ${this.MODEL.ID_LENGTH_MIN} 文字以上で入力してください。`
+      );
       return false;
     } else if (this.MODEL.ID.length > this.MODEL.ID_LENGTH_MAX) {
-      this.VIEW.generateUserArea(this.MODEL.ALERT_WARNING, `ID は ${this.MODEL.ID_LENGTH_MAX} 文字以下で入力してください。`);
+      this.VIEW.generateUserArea(
+        this.MODEL.ALERT_WARNING,
+        `ID は ${this.MODEL.ID_LENGTH_MAX} 文字以下で入力してください。`
+      );
       return false;
     } else if (this.MODEL.PASSWORD.length == 0) {
-      this.VIEW.generateUserArea(this.MODEL.ALERT_WARNING, 'パスワード を入力してください。');
+      this.VIEW.generateUserArea(
+        this.MODEL.ALERT_WARNING,
+        'パスワード を入力してください。'
+      );
       return false;
     }
     return true;
@@ -188,7 +200,7 @@ class UserController extends CommonController {
     
     this.MODEL.HASH = SHA256.getHash(this.MODEL.PASSWORD);
     
-    this.VIEW.generateLoading($(this.MODEL.USER_AREA_SELECTOR), 'ログイン中', `${this.MODEL.ID} でログイン`);
+    this.VIEW.generateLoading(this.MODEL.USER_AREA_SELECTOR, 'ログイン中', `${this.MODEL.ID} でログイン`);
     
     $.ajax({
       url: 'ruby/loginUser.rb',
@@ -202,14 +214,24 @@ class UserController extends CommonController {
           this.MODEL.ID = _data;
           this.MODEL.LOGIN = true;
           PS.CONTROLLER.CARD.setUser(this.MODEL.ID, this.MODEL.HASH);
-          this.VIEW.generateUserArea(this.MODEL.ALERT_SUCCESS, `ユーザー ${this.MODEL.ID} でログインしました。`);
+          this.VIEW.generateUserArea(
+            this.MODEL.ALERT_SUCCESS,
+            `ユーザー ${this.MODEL.ID} でログインしました。`
+          );
         } else {
-          this.VIEW.generateUserArea(this.MODEL.ALERT_WARNING, 'IDとパスワードの組み合わせが正しくありません。');
+          this.VIEW.generateUserArea(
+            this.MODEL.ALERT_WARNING,
+            'IDとパスワードの組み合わせが正しくありません。'
+          );
         }
       },
       error: () => {
         Log.logClassKey(this.NAME, 'ajax loginUser', 'failed');
-        this.VIEW.generateUserArea(this.MODEL.ALERT_DANGER, 'ajax通信に失敗しました。', false);
+        this.VIEW.generateUserArea(
+          this.MODEL.ALERT_DANGER,
+          'ajax通信に失敗しました。',
+          false
+        );
       }
     });
   }
@@ -220,7 +242,10 @@ class UserController extends CommonController {
     this.MODEL.ID = null;
     this.MODEL.PASSWORD = null;
     PS.CONTROLLER.CARD.setUser();
-    this.VIEW.generateUserArea('success', 'ログアウトしました。');
+    this.VIEW.generateUserArea(
+      'success',
+      'ログアウトしました。'
+    );
   }
   
   submitSignup() {
@@ -246,14 +271,24 @@ class UserController extends CommonController {
           this.MODEL.ID = _data;
           this.MODEL.LOGIN = true;
           PS.CONTROLLER.CARD.setUser(this.MODEL.ID, this.MODEL.HASH);
-          this.VIEW.generateUserArea(this.MODEL.ALERT_SUCCESS, `ユーザー ${this.MODEL.ID} を登録しました。`);
+          this.VIEW.generateUserArea(
+            this.MODEL.ALERT_SUCCESS,
+            `ユーザー ${this.MODEL.ID} を登録しました。`
+          );
         } else {
-          this.VIEW.generateUserArea(this.MODEL.ALERT_WARNING, `ユーザー ${this.MODEL.ID} は登録済みです`);
+          this.VIEW.generateUserArea(
+            this.MODEL.ALERT_WARNING,
+            `ユーザー ${this.MODEL.ID} は登録済みです`
+          );
         }
       },
       error: () => {
         Log.logClassKey(this.NAME, 'ajax signupUser', 'failed');
-        this.VIEW.generateUserArea(this.MODEL.ALERT_DANGER, 'ajax通信に失敗しました。', false);
+        this.VIEW.generateUserArea(
+          this.MODEL.ALERT_DANGER,
+          'ajax通信に失敗しました。',
+          false
+        );
       }
     });
   }

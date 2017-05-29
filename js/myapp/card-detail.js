@@ -50,7 +50,7 @@ class CardDetailView extends CommonView {
   ) {
     $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).empty();
     this.generateAlert(
-      $(this.MODEL.CARD_DETAIL_AREA_SELECTOR),
+      this.MODEL.CARD_DETAIL_AREA_SELECTOR,
       _alertType,
       _message,
       _close
