@@ -1,3 +1,3 @@
 
-const PST = new ProcessStack(100);
+const PST = new ProcessStack();
 let PS = {};
