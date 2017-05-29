@@ -1,18 +1,19 @@
 
 class BCBProcess extends CommonProcess {
-  constructor() {
-    super({
-      name: `${Project.NAME} Process`
-    });
+  constructor(
+    _initSetting = {
+      NAME: `${Project.NAME} Process`
+    }
+  ) {
+    super(_initSetting);
     
-    this.initProcess();
+    this.run();
   }
   
-  initProcess() {
+  run() {
     this.initContent();
     this.createDesc();
     BCBProcess.initPopover();
-    this.initEvent();
     this.initController();
     this.show();
   }
@@ -42,51 +43,49 @@ class BCBProcess extends CommonProcess {
   }
   
   static initPopover() {
-    {
-      new PopoverController({
-        name: 'ID Popover',
-        selector: '#user-id-help',
-        help: 'ID を入力してください。'
-      });
-      new PopoverController({
-        name: 'Password Popover',
-        selector: '#user-password-help',
-        help: 'パスワード を入力してください。'
-      });
-      new PopoverController({
-        name: 'Login Check Popover',
-        selector: '#user-check-help',
-        help: '共有デバイスでは設定に注意してください。'
-      });
-      new PopoverController({
-        name: 'Logined ID Popover',
-        selector: '#logined-id-help',
-        help: 'ログインしている ID です。'
-      });
-    }
-  }
-  
-  initEvent() {
-    this.CE = new CardEvent();
-    this.CDE = new CardDetailEvent();
-    this.UE = new UserEvent();
-    this.SDE = new SwitchEvent({
-      template: 'desc'
+    new PopoverController({
+      NAME: 'ID Popover',
+      SELECTOR: '#user-id-help',
+      HELP: 'ID を入力してください。'
     });
-    this.SUE = new SwitchEvent({
-      template: 'user',
-      view: true,
-      lsKey: 'none'
+    new PopoverController({
+      NAME: 'Password Popover',
+      SELECTOR: '#user-password-help',
+      HELP: 'パスワード を入力してください。'
     });
-    this.SCE = new SwitchEvent({
-      template: 'card',
-      view: false,
-      lsKey: 'none'
+    new PopoverController({
+      NAME: 'Login Check Popover',
+      SELECTOR: '#user-check-help',
+      HELP: '共有デバイスでは設定に注意してください。'
+    });
+    new PopoverController({
+      NAME: 'Logined ID Popover',
+      SELECTOR: '#logined-id-help',
+      HELP: 'ログインしている ID です。'
     });
   }
   
   initController() {
+    this.CONTROLLER = {};
+    this.CONTROLLER.SWITCH = {};
     
+    this.CONTROLLER.CARD = new CardController();
+    this.CONTROLLER.CARD_DETAIL = new CardDetailController();
+    this.CONTROLLER.USER = new UserController();
+    
+    this.CONTROLLER.SWITCH.DESC = new SwitchController({
+      TEMPLATE: 'desc'
+    });
+    this.CONTROLLER.SWITCH.USER = new SwitchController({
+      TEMPLATE: 'user',
+      currentView: true,
+      LS_KEY: 'none'
+    });
+    this.CONTROLLER.SWITCH.CARD = new SwitchController({
+      TEMPLATE: 'card',
+      currentView: false,
+      LS_KEY: 'none'
+    });
   }
   
   show() {
