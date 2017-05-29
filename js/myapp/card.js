@@ -68,8 +68,8 @@ class CardView extends CommonView {
           this.model.$TEMPLATE_CARD_HOVER_SELECTOR,
           {card: _val}
         ));
-        this.setClick(_id);
-        this.setHover(_id);
+        this.setCardClick(_id);
+        this.setCardHover(_id);
         this.setEditClick(_id);
         this.setDeleteClick(_id);
         this.setCopyClick(_id);
@@ -133,7 +133,7 @@ class CardView extends CommonView {
     }
   }
   
-  setClick(_id = null) {
+  setCardClick(_id = null) {
     if (_id != null) {
       $(`#card-${_id}-main`).click(
         () => {
@@ -156,7 +156,7 @@ class CardView extends CommonView {
     }
   }
   
-  setHover(_id = null) {
+  setCardHover(_id = null) {
     if (_id != null) {
       $(`#card-${_id}-main`).hover(
         () => {
