@@ -86,6 +86,11 @@ class BCBProcess extends CommonProcess {
       currentView: false,
       LS_KEY: 'none'
     });
+    this.CONTROLLER.SWITCH.CARD_DETAIL = new SwitchController({
+      NAME: 'Card Detail Switch',
+      SWITCH_SELECTOR: '#card-detail-area',
+      currentView: false
+    });
   }
   
   show() {
