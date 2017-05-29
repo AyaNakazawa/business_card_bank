@@ -149,4 +149,14 @@ class CardDetailEvent extends CommonEvent {
       }
     );
   }
+  
+  setDeleteClick() {
+    SetEvent.setOn(
+      'click',
+      '#card-detail-delete',
+      () => {
+        this.CONTROLLER.deleteCard();
+      }
+    );
+  }
 }
