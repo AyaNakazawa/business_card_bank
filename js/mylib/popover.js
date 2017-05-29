@@ -2,52 +2,76 @@
 // ----------------------------------------------------------------
 // Popover Class
 
+// ----------------------------------------------------------------
+// Model
+
 class PopoverModel extends CommonModel {
-  constructor({
-    name = 'Popover',
-    selector = null,
-    help = 'popover',
-    trigger = 'hover'
-  } = {})
-  {
-    super({
-      name: name
-    });
-    
-    this.NAME = name;
-    this.SELECTOR = selector;
-    this.HELP = help;
-    this.TRIGGER = trigger;
+  constructor(
+    _setting = {}, 
+    _initSetting = {
+      NAME: 'Popover Object',
+      SELECTOR: null,
+      HELP: 'popover',
+      TRIGGER: 'hover'
+    }
+  ) {
+    super(_setting, _initSetting);
   }
 }
 
+// ----------------------------------------------------------------
+// View
+
 class PopoverView extends CommonView {
-  constructor(_model = new PopoverModel()) {
-    super(_model);
-    
-    this.setPopover();
+  constructor(
+    _setting = {}, 
+    _initSetting = {
+      NAME: 'Popover View'
+    }
+  ) {
+    super(_setting, _initSetting);
+  }
+}
+
+// ----------------------------------------------------------------
+// Event
+
+class PopoverEvent extends CommonEvent {
+  constructor(
+    _setting = {}, 
+    _initSetting = {
+      NAME: 'Popover Event'
+    }
+  ) {
+    super(_setting, _initSetting);
   }
   
   setPopover() {
-    if (this.model.SELECTOR != null) {
-      $(this.model.SELECTOR).attr('data-toggle', 'popover');
-      $(this.model.SELECTOR).attr('data-content', this.model.HELP);
-      $(this.model.SELECTOR).attr('data-trigger', this.model.TRIGGER);
-      $(this.model.SELECTOR).popover();
+    if (this.MODEL.SELECTOR != null) {
+      $(this.MODEL.SELECTOR).attr('data-toggle', 'popover');
+      $(this.MODEL.SELECTOR).attr('data-content', this.MODEL.HELP);
+      $(this.MODEL.SELECTOR).attr('data-trigger', this.MODEL.TRIGGER);
+      $(this.MODEL.SELECTOR).popover();
     }
   }
 }
 
 // ----------------------------------------------------------------
-// Controllers
+// Controller
 
 class PopoverController extends CommonController {
-  constructor(_obj) {
-    super({
-      name: 'Popover Controller'
-    });
+  constructor(
+    _setting = {}, 
+    _initSetting = {
+      NAME: 'Popover Controller',
+      MODEL: new PopoverModel(),
+      VIEW: new PopoverView(),
+      EVENT: new PopoverEvent(),
+      VIEW_OBJECT: false
+    }
+  ) {
+    super(_setting, _initSetting);
     
-    this.model = new PopoverModel(_obj);
-    this.view = new PopoverView(this.model);
+    this.EVENT.setPopover();
   }
 }
