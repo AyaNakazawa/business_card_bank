@@ -71,7 +71,7 @@ class CardView extends CommonView {
     }
   }
   
-  updateCardPosition(_id = null) {
+  setCardPosition(_id = null) {
     if (_id != null) {
       $(`#card-${_id}-detail`).css('top', ($(`#card-${_id}-main`).offset().top + $(`#card-${_id}-main`).height()) + 'px');
     }
@@ -80,7 +80,7 @@ class CardView extends CommonView {
   switchDetailView(_id = null, _view = null, _speed = 0) {
     if (_id != null && _view != null) {
       if (_view) {
-        this.updateCardPosition(_id);
+        this.setCardPosition(_id);
         $(`#card-${_id}-detail`).slideDown(_speed);
       } else {
         $(`#card-${_id}-detail`).slideUp(_speed);
