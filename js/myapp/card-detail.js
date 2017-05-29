@@ -74,6 +74,22 @@ class CardDetailController extends CommonController {
     this.model.HASH = _hash;
     this.model.CARD = _card;
   }
+  
+  openCard(
+    _id = this.model.ID,
+    _hash = this.model.HASH,
+    _card = this.model.CARD
+  ) {
+    if (_id != null && _hash != null) {
+      if (_card == null) {
+        // カードの追加
+        
+      } else {
+        // カードの編集
+        
+      }
+    }
+  }
 }
 
 // ----------------------------------------------------------------
