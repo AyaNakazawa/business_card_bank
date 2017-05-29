@@ -160,7 +160,7 @@ class CardView extends CommonView {
     if (_id != null) {
       $(`.card-${_id}-edit`).click(
         () => {
-          
+          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Edit');
         }
       );
     }
