@@ -37,12 +37,6 @@ class CardDetailView extends CommonView {
     super(_initSetting);
   }
   
-  setModel(
-    _card = null
-  ) {
-    
-  }
-  
   generateCardDetailArea(
     _alertType = 'success',
     _message = null,
@@ -139,15 +133,45 @@ class CardDetailController extends CommonController {
   openCard(
     _id = this.MODEL.ID,
     _hash = this.MODEL.HASH,
-    _card = this.MODEL.CARD
+    _card = this.MODEL.CARD,
+    _copy = false
   ) {
     if (_id != null && _hash != null) {
       if (_card == null) {
-        // カードの追加
-        
+        // カードがない場合
+        if (PS.CONTROLLER.USER.MODEL.LOGIN) {
+          // ログイン済み
+          // カードの追加
+          this.VIEW.generateCardDetailArea(
+            this.MODEL.ALERT_SUCCESS,
+            'カードを追加できます。'
+          );
+          PS.CONTROLLER.SWITCH.CARD_DETAIL.VIEW.setView(true);
+        } else {
+          // ログインしていない
+          // カードの選択
+          this.VIEW.generateCardDetailArea(
+            this.MODEL.ALERT_SUCCESS,
+            'ログインしてカードを選択してください。'
+          );
+          PS.CONTROLLER.SWITCH.CARD_DETAIL.VIEW.setView(false);
+        }
       } else {
-        // カードの編集
-        
+        if (_copy) {
+          // カードの編集
+          this.VIEW.generateCardDetailArea(
+            this.MODEL.ALERT_SUCCESS,
+            'コピーしたカードを追加できます。'
+          );
+          PS.CONTROLLER.SWITCH.CARD_DETAIL.VIEW.setView(true);
+        } else {
+          // カードの編集
+          this.VIEW.generateCardDetailArea(
+            this.MODEL.ALERT_SUCCESS,
+            'カードを編集できます。'
+          );
+          PS.CONTROLLER.SWITCH.CARD_DETAIL.VIEW.setView(true);
+        }
       }
     }
   }
