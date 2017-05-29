@@ -2,73 +2,88 @@
 // ----------------------------------------------------------------
 // Scroll Class
 
+// ----------------------------------------------------------------
+// Model
+
 class ScrollModel extends CommonModel {
-  constructor({
-    name = 'Scroll',
-    event = 'click',
-    positionOffset = 0,
-    triggerSelector = null,
-    scrollDistSelector = null,
-    scrollTimeMs = 500
-  } = {})
-  {
-    super({
-      name: name
-    });
-    
-    // each setting
-    this.NAME = name;
-    this.EVENT = event;
-    this.POSITION_OFFSET = positionOffset;
-    this.TRIGGER_SELECTOR = triggerSelector;
-    this.$TRIGGER_SELECTOR = $(this.TRIGGER_SELECTOR);
-    this.SCROLL_SELECTOR = scrollDistSelector;
-    this.$SCROLL_SELECTOR = $(this.SCROLL_SELECTOR);
-    this.SCROLL_TIME_MS = scrollTimeMs;
+  constructor(
+    _initSetting = {
+      NAME: 'Scroll Object',
+      EVENT_TRIGGER: 'click',
+      POSITION_OFFSET: 0,
+      EVENT_SELECTOR: null,
+      SCROLL_SELECTOR: null,
+      SCROLL_TIME_MS: 500
+    }
+  ) {
+    super(_initSetting);
   }
 }
 
+// ----------------------------------------------------------------
+// View
+
 class ScrollView extends CommonView {
-  constructor(_model = new ScrollModel()) {
-    super(_model);
-    
-    // Init ScrollView
-    this.setOn();
-  }
-  
-  setOn() {
-    if (this.model.SCROLL_SELECTOR != null) {
-      SetEvent.setOn(
-        this.model.TRIGGER_SELECTOR,
-        this.model.EVENT,
-        () => {
-          this.scroll();
-        }
-      );
+  constructor(
+    _initSetting = {
+      NAME: 'Scroll View'
     }
+  ) {
+    super(_initSetting);
   }
   
   scroll() {
-    Log.logClass('Scroll', this.model.NAME);
-    this.model.$BODY.animate(
+    Log.logClass('Scroll', this.MODEL.NAME);
+    this.MODEL.$BODY.animate(
       {
-        scrollTop: this.model.$SCROLL_SELECTOR.offset().top + this.model.POSITION_OFFSET
+        scrollTop: $(this.MODEL.SCROLL_SELECTOR).offset().top + this.MODEL.POSITION_OFFSET
       },
-      this.model.SCROLL_TIME_MS
+      this.MODEL.SCROLL_TIME_MS
     );
   }
 }
 
 // ----------------------------------------------------------------
-// Controllers
+// Event
+
+class ScrollEvent extends CommonEvent {
+  constructor(
+    _initSetting = {
+      NAME: 'Scroll Event'
+    }
+  ) {
+    super(_initSetting);
+  }
+  
+  setOnScroll() {
+    if (this.MODEL.SCROLL_SELECTOR != null) {
+      super.setOn(
+        this.MODEL.EVENT_TRIGGER,
+        this.MODEL.EVENT_SELECTOR,
+        () => {
+          this.VIEW.scroll();
+        }
+      );
+    }
+  }
+}
+
+// ----------------------------------------------------------------
+// Controller
 
 class ScrollController extends CommonController {
-  constructor(_obj) {
-    super({
-      name: 'Scroll Controller'
-    });
+  constructor(
+    _model = {},
+    _initSetting = {
+      NAME: 'Scroll Controller',
+      MODEL: new ScrollModel(),
+      VIEW: new ScrollView(),
+      EVENT: new ScrollEvent(),
+      VIEW_OBJECT: false
+    }
+  ) {
+    super(_model, _initSetting);
     
-    this.model = new ScrollModel(_obj);
-    this.view = new ScrollView(this.model);
+    this.EVENT.setOnScroll();
   }
 }
