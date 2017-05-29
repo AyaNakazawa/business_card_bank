@@ -155,6 +155,15 @@ class CardView extends CommonView {
       );
     }
   }
+  
+  setEditClick(_id = null) {
+    if (_id != null) {
+      $(`.card-${_id}-edit`).click(
+        () => {
+          
+        }
+      );
+    }
 }
 
 // ----------------------------------------------------------------
