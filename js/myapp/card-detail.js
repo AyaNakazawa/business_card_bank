@@ -94,6 +94,10 @@ class CardDetailController extends CommonController {
   addCard() {
     
   }
+  
+  saveCard() {
+    
+  }
 }
 
 // ----------------------------------------------------------------
