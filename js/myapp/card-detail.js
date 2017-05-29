@@ -145,7 +145,7 @@ class CardDetailEvent extends CommonEvent {
   setAddClick() {
     SetEvent.setOn(
       'click',
-      '#card-detail-add',
+      this.model.CARD_DETAIL_ADD_SELECTOR,
       () => {
         this.CONTROLLER.addCard();
       }
@@ -155,7 +155,7 @@ class CardDetailEvent extends CommonEvent {
   setSaveClick() {
     SetEvent.setOn(
       'click',
-      '#card-detail-save',
+      this.model.CARD_DETAIL_SAVE_SELECTOR,
       () => {
         this.CONTROLLER.saveCard();
       }
@@ -165,7 +165,7 @@ class CardDetailEvent extends CommonEvent {
   setDeleteClick() {
     SetEvent.setOn(
       'click',
-      '#card-detail-delete',
+      this.model.CARD_DETAIL_DELETE_SELECTOR,
       () => {
         this.CONTROLLER.deleteCard();
       }
