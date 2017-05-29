@@ -117,7 +117,7 @@ class CardView extends CommonView {
               this.setCardActive(_id, false);
               this.setDetailView(_id, false, 0);
             });
-              // クリックした項目をアクティブにする
+            // クリックした項目をアクティブにする
             this.model.CARD[_id][this.model.ACTIVE] = true;
             this.model.SELECT = _id;
             this.setCardActive(_id, true);
