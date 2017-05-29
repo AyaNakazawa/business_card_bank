@@ -66,7 +66,7 @@ class CardView extends CommonView {
         this.setHover(_id);
         this.setEditClick(_id);
         this.setDeleteClick(_id);
-        this.setCloneClick(_id);
+        this.setCopyClick(_id);
         this.setcloseClick(_id);
       });
       
@@ -180,11 +180,11 @@ class CardView extends CommonView {
     }
   }
   
-  setCloneClick(_id = null) {
+  setCopyClick(_id = null) {
     if (_id != null) {
-      $(`.card-${_id}-clone`).click(
+      $(`.card-${_id}-copy`).click(
         () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Clone');
+          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Copy');
         }
       );
     }
@@ -194,7 +194,7 @@ class CardView extends CommonView {
     if (_id != null) {
       $(`.card-${_id}-close`).click(
         () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'close');
+          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Close');
         }
       );
     }
