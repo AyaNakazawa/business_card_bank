@@ -22,6 +22,8 @@ class UserModel extends CommonModel {
     });
     
     this.NAME = name;
+    this.EVENT = PS.UE;
+    
     this.LOGIN_TRIGGER = loginTrigger;
     this.LOGIN_SELECTOR = loginSelector;
     
