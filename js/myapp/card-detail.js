@@ -14,6 +14,7 @@ class CardDetailModel extends CommonModel {
     });
     
     this.NAME = 'Card Detail Model';
+    this.EVENT = PS.CDE;
   }
 }
 
@@ -56,6 +57,8 @@ class CardDetailEvent extends CommonEvent {
     super({
       name: name
     });
+    
+    PS.CDE = this;
     
     this.NAME = name;
     this.CONTROLLER = new CardDetailController({
