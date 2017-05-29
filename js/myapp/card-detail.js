@@ -34,6 +34,16 @@ class CardDetailView extends CommonView {
     
     this.NAME = 'Card Detail View';
   }
+  
+  generateCardDetailArea(
+    _alertType = 'success',
+    _message = null,
+    _close = true
+  ) {
+    this.model.$USER_DETAIL_AREA_SELECTOR.empty();
+    this.generateAlert(this.model.$USER_DETAIL_AREA_SELECTOR, _alertType, _message, _close);
+    
+  }
 }
 
 // ----------------------------------------------------------------
