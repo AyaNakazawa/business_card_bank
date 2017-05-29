@@ -22,6 +22,7 @@ class BCBProcess extends CommonProcess {
     $('main').append(Content.getContent('desc-area'));
     $('main').append(Content.getContent('user-area'));
     $('main').append(Content.getContent('card-area'));
+    $('main').append(Content.getContent('card-detail-area'));
   }
   
   createDesc() {
@@ -67,6 +68,7 @@ class BCBProcess extends CommonProcess {
   
   initEvent() {
     this.CE = new CardEvent();
+    this.CDE = new CardDetailEvent();
     this.UE = new UserEvent();
     this.SDE = new SwitchEvent({
       template: 'desc'
