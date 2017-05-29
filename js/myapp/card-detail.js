@@ -139,4 +139,14 @@ class CardDetailEvent extends CommonEvent {
       }
     );
   }
+  
+  setSaveClick() {
+    SetEvent.setOn(
+      'click',
+      '#card-detail-save',
+      () => {
+        this.CONTROLLER.saveCard();
+      }
+    );
+  }
 }
