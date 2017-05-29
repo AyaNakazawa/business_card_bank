@@ -30,6 +30,8 @@ class CardModel extends CommonModel {
     
     this.VIEW_SPEED_MS = 100;
     this.HEADER_TEXT = '名刺情報';
+    
+    this.model.SELECT = null;
   }
 }
 
@@ -41,8 +43,6 @@ class CardView extends CommonView {
     super(_model);
     
     this.NAME = 'Card View';
-    
-    this.model.SELECT = null;
   }
   
   generateCardArea(_alertType = this.model.ALERT_SUCCESS, _message = null, _close = true) {
