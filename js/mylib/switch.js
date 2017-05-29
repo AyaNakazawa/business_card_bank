@@ -13,6 +13,7 @@ class SwitchModel extends CommonModel {
       currentView: null,
       INIT_VIEW: true,
       LS_KEY: null,
+      EVENT_TRIGGER: 'click',
       TRIGGER_SELECTOR: null,
       SWITCH_SELECTOR: null,
       TOGGLE_TIME_MS: 500
@@ -94,13 +95,15 @@ class SwitchEvent extends CommonEvent {
   }
   
   setOnSwitch() {
-    super.setOn(
-      'click',
-      this.MODEL.TRIGGER_SELECTOR,
-      () => {
-        this.CONTROLLER.switchView();
-      }
-    );
+    if (this.MODEL.TRIGGER_SELECTOR != null) {
+      super.setOn(
+        this.MODEL.EVENT_TRIGGER,
+        this.MODEL.TRIGGER_SELECTOR,
+        () => {
+          this.CONTROLLER.switchView();
+        }
+      );
+    }
   }
 }
 
