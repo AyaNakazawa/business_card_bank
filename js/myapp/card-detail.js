@@ -35,6 +35,12 @@ class CardDetailView extends CommonView {
     this.NAME = 'Card Detail View';
   }
   
+  setModel(
+    _card = null
+  ) {
+    
+  }
+  
   generateCardDetailArea(
     _alertType = 'success',
     _message = null,
