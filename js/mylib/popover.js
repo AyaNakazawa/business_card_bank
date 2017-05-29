@@ -61,7 +61,7 @@ class PopoverEvent extends CommonEvent {
 
 class PopoverController extends CommonController {
   constructor(
-    _setting = {}, 
+    _model = {}, 
     _initSetting = {
       NAME: 'Popover Controller',
       MODEL: new PopoverModel(),
@@ -70,7 +70,7 @@ class PopoverController extends CommonController {
       VIEW_OBJECT: false
     }
   ) {
-    super(_setting, _initSetting);
+    super(_model, _initSetting);
     
     this.EVENT.setPopover();
   }
