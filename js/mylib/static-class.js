@@ -253,31 +253,6 @@ class LocalStorage {
   }
 }
 
-class SetEvent {
-  static setOn(
-    trigger = 'click',
-    selector = null,
-    func = () => {}
-  ) {
-    if (selector != null) {
-      $(document).on(trigger, selector, func);
-    } else {
-      $(document).on(trigger, func);
-    }
-  }
-  
-  static setOff(
-    trigger = 'click',
-    selector = null
-  ) {
-    if (selector != null) {
-      $(document).off(trigger, selector);
-    } else {
-      $(document).off(trigger);
-    }
-  }
-}
-
 class SHA256 {
   static getHash(_string = null) {
     if (_string != null) {
