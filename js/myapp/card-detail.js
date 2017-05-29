@@ -130,6 +130,12 @@ class CardDetailEvent extends CommonEvent {
     });
   }
   
+  setOn() {
+    this.setAddClick();
+    this.setSaveClick();
+    this.setDeleteClick();
+  }
+  
   setAddClick() {
     SetEvent.setOn(
       'click',
