@@ -185,6 +185,16 @@ class CardView extends CommonView {
       );
     }
   }
+  
+  setcloseClick(_id = null) {
+    if (_id != null) {
+      $(`.card-${_id}-close`).click(
+        () => {
+          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'close');
+        }
+      );
+    }
+  }
 }
 
 // ----------------------------------------------------------------
