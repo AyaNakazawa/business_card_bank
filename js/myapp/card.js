@@ -31,7 +31,7 @@ class CardModel extends CommonModel {
     this.VIEW_SPEED_MS = 100;
     this.HEADER_TEXT = '名刺情報';
     
-    this.model.SELECT = null;
+    this.SELECT = null;
   }
 }
 
