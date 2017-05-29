@@ -64,6 +64,16 @@ class CardDetailController extends CommonController {
     
     this.NAME = 'Card Detail Controller';
   }
+  
+  setCard(
+    _id = null,
+    _hash = null,
+    _card = null
+  ) {
+    this.model.ID = _id;
+    this.model.HASH = _hash;
+    this.model.CARD = _card;
+  }
 }
 
 // ----------------------------------------------------------------
