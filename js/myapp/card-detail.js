@@ -14,6 +14,7 @@ class CardDetailModel extends CommonModel {
     super(_initSetting);
     
     this.CARD_DETAIL_AREA_SELECTOR = '#card-detail-area';
+    this.TEMPLATE_CARD_DETAIL_SELECTOR = '#card-detail-template';
     
     this.CARD_DETAIL_ADD_SELECTOR = '#card-detail-add';
     this.CARD_DETAIL_SAVE_SELECTOR = '#card-detail-save';
@@ -22,6 +23,7 @@ class CardDetailModel extends CommonModel {
     this.ID = null;
     this.HASH = null;
     this.CARD = null;
+    this.COPY = false;
   }
 }
 
@@ -43,13 +45,25 @@ class CardDetailView extends CommonView {
     _close = true
   ) {
     $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).empty();
-    this.generateAlert(
+    super.generateAlert(
       this.MODEL.CARD_DETAIL_AREA_SELECTOR,
       _alertType,
       _message,
       _close
     );
-    
+    if (this.CARD == null) {
+      // カードがある場合
+      $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).append(this.getTemplate(
+        this.MODEL.TEMPLATE_CARD_DETAIL_SELECTOR,
+        {}
+      ));
+    } else {
+      // カードがない場合
+      $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).append(this.getTemplate(
+        this.MODEL.TEMPLATE_CARD_DETAIL_SELECTOR,
+        {card: this.MODEL.CARD}
+      ));
+    }
   }
 }
 
@@ -120,22 +134,17 @@ class CardDetailController extends CommonController {
     this.EVENT.setEvent();
   }
   
-  setCard(
+  openCard(
     _id = null,
     _hash = null,
-    _card = null
+    _card = null,
+    _copy = false
   ) {
     this.MODEL.ID = _id;
     this.MODEL.HASH = _hash;
     this.MODEL.CARD = _card;
-  }
-  
-  openCard(
-    _id = this.MODEL.ID,
-    _hash = this.MODEL.HASH,
-    _card = this.MODEL.CARD,
-    _copy = false
-  ) {
+    this.MODEL.COPY = _copy;
+    
     if (_id != null && _hash != null) {
       if (_card == null) {
         // カードがない場合
