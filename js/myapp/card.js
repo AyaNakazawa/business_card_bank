@@ -69,12 +69,12 @@ class CardView extends CommonView {
           this.model.$TEMPLATE_CARD_HOVER_SELECTOR,
           {card: _val}
         ));
-        this.setCardClick(_id);
-        this.setCardHover(_id);
-        this.setEditClick(_id);
-        this.setDeleteClick(_id);
-        this.setCopyClick(_id);
-        this.setcloseClick(_id);
+        this.model.EVENT.setCardClick(_id);
+        this.model.EVENT.setCardHover(_id);
+        this.model.EVENT.setEditClick(_id);
+        this.model.EVENT.setDeleteClick(_id);
+        this.model.EVENT.setCopyClick(_id);
+        this.model.EVENT.setcloseClick(_id);
       });
       
     } else {
@@ -207,6 +207,8 @@ class CardEvent extends CommonEvent {
       name: name
     });
     
+    PS.CE = this;
+    
     this.NAME = name;
     this.CONTROLLER = new CardController({
       name: 'Card Controller',
@@ -217,19 +219,19 @@ class CardEvent extends CommonEvent {
     if (_id != null) {
       $(`#card-${_id}-main`).click(
         () => {
-          if (this.model.CARD[_id][this.model.ACTIVE]) {
+          if (this.CONTROLLER.model.CARD[_id][this.CONTROLLER.model.ACTIVE]) {
             // 既にアクティブなときは解除
-            this.setDetailView(_id, false, this.model.ACTIVE, this.model.VIEW_SPEED_MS);
+            this.CONTROLLER.view.setDetailView(_id, false, this.CONTROLLER.model.ACTIVE, this.CONTROLLER.model.VIEW_SPEED_MS);
           } else {
             // アクティブにする
-            $.each(this.model.CARD, (_id2, _val2) => {
+            $.each(this.CONTROLLER.model.CARD, (_id2, _val2) => {
               // 他の項目を解除する
               if (_id2 != _id) {
-                this.setDetailView(_id2, false, this.model.ACTIVE);
+                this.CONTROLLER.view.setDetailView(_id2, false, this.CONTROLLER.model.ACTIVE);
               }
             });
             // クリックした項目をアクティブにする
-            this.setDetailView(_id, true, this.model.ACTIVE);
+            this.CONTROLLER.view.setDetailView(_id, true, this.CONTROLLER.model.ACTIVE);
           }
         }
       );
@@ -241,16 +243,16 @@ class CardEvent extends CommonEvent {
       $(`#card-${_id}-main`).hover(
         () => {
           // なにもアクティブでないとき
-          if (this.model.SELECT == null) {
+          if (this.CONTROLLER.model.SELECT == null) {
             // ホバーにする
-            this.setDetailView(_id, true, this.model.HOVER, this.model.VIEW_SPEED_MS);
+            this.CONTROLLER.view.setDetailView(_id, true, this.CONTROLLER.model.HOVER, this.CONTROLLER.model.VIEW_SPEED_MS);
           }
         },
         () => {
           // アクティブでないとき
-          if (!this.model.CARD[_id][this.model.ACTIVE]) {
+          if (!this.CONTROLLER.model.CARD[_id][this.CONTROLLER.model.ACTIVE]) {
             // ホバー解除
-            this.setDetailView(_id, false, this.model.HOVER);
+            this.CONTROLLER.view.setDetailView(_id, false, this.CONTROLLER.model.HOVER);
           }
         }
       );
@@ -292,7 +294,7 @@ class CardEvent extends CommonEvent {
       $(`.card-${_id}-close`).click(
         () => {
           Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Close');
-          this.setDetailView(_id, false, this.model.ACTIVE, this.model.VIEW_SPEED_MS);
+          this.CONTROLLER.view.setDetailView(_id, false, this.CONTROLLER.model.ACTIVE, this.CONTROLLER.model.VIEW_SPEED_MS);
         }
       );
     }
