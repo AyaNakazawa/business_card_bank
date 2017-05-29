@@ -16,6 +16,9 @@ class CardDetailModel extends CommonModel {
     this.NAME = 'Card Detail Model';
     this.EVENT = PS.CDE;
     
+    this.CARD_DETAIL_AREA_SELECTOR = '#card-detail-area';
+    this.$CARD_DETAIL_AREA_SELECTOR = $(this.CARD_DETAIL_AREA_SELECTOR);
+    
     this.ID = null;
     this.HASH = null;
     this.CARD = null;
