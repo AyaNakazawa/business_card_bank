@@ -129,4 +129,14 @@ class CardDetailEvent extends CommonEvent {
       name: 'Card Detail Controller',
     });
   }
+  
+  setAddClick() {
+    SetEvent.setOn(
+      'click',
+      '#card-detail-add',
+      () => {
+        this.CONTROLLER.addCard();
+      }
+    );
+  }
 }
