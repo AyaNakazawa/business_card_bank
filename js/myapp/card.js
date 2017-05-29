@@ -77,7 +77,7 @@ class CardView extends CommonView {
     }
   }
   
-  switchDetailView(_id = null, _view = null, _speed = 0) {
+  setDetailView(_id = null, _view = null, _speed = 0) {
     if (_id != null && _view != null) {
       if (_view) {
         this.setCardPosition(_id);
@@ -108,14 +108,14 @@ class CardView extends CommonView {
             this.model.CARD[_id][this.model.HOVER] = false;
             this.model.SELECT = null;
             this.switchCardActive(_id, false);
-            this.switchDetailView(_id, false, this.model.VIEW_SPEED_MS);
+            this.setDetailView(_id, false, this.model.VIEW_SPEED_MS);
           } else {
             // アクティブにする
             $.each(this.model.CARD, (_id, _val) => {
               // 他の項目を解除する
               this.model.CARD[_id][this.model.ACTIVE] = false;
               this.switchCardActive(_id, false);
-              this.switchDetailView(_id, false, 0);
+              this.setDetailView(_id, false, 0);
             });
               // クリックした項目をアクティブにする
             this.model.CARD[_id][this.model.ACTIVE] = true;
@@ -123,9 +123,9 @@ class CardView extends CommonView {
             this.switchCardActive(_id, true);
             // ホバー表示済みかで速度を変更
             if (this.model.CARD[_id][this.model.HOVER]) {
-              this.switchDetailView(_id, true, 0);
+              this.setDetailView(_id, true, 0);
             } else {
-              this.switchDetailView(_id, true, this.model.VIEW_SPEED_MS);
+              this.setDetailView(_id, true, this.model.VIEW_SPEED_MS);
             }
           }
         }
@@ -141,7 +141,7 @@ class CardView extends CommonView {
           if (this.model.SELECT == null) {
             // ホバーにする
             this.model.CARD[_id][this.model.HOVER] = true;
-            this.switchDetailView(_id, true, this.model.VIEW_SPEED_MS);
+            this.setDetailView(_id, true, this.model.VIEW_SPEED_MS);
           }
         },
         () => {
@@ -149,7 +149,7 @@ class CardView extends CommonView {
           if (!this.model.CARD[_id][this.model.ACTIVE]) {
             // ホバー解除
             this.model.CARD[_id][this.model.HOVER] = false;
-            this.switchDetailView(_id, false, 0);
+            this.setDetailView(_id, false, 0);
           }
         }
       );
