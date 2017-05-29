@@ -81,12 +81,31 @@ class CardView extends CommonView {
     }
   }
   
-  setDetailView(_id = null, _view = null, _speed = 0) {
-    if (_id != null && _view != null) {
+  setDetailView(_id = null, _view = null, _type = null, _speed = 0) {
+    if (_id != null && _view != null && _type != null) {
       if (_view) {
         this.setCardPosition(_id);
+        if (_type == this.model.HOVER) {
+          this.model.CARD[_id][this.model.HOVER] = true;
+        } else if (_type == this.model.ACTIVE) {
+          this.model.SELECT = _id;
+          this.setCardActive(_id, true);
+          // ホバー表示済みかで速度を変更
+          if (this.model.CARD[_id][this.model.HOVER]) {
+            _speed = 0;
+          } else {
+            _speed = this.model.VIEW_SPEED_MS;
+          }
+        }
         $(`#card-${_id}-detail`).slideDown(_speed);
       } else {
+        if (_type == this.model.HOVER) {
+          this.model.CARD[_id][this.model.HOVER] = false;
+        } else if (_type == this.model.ACTIVE) {
+          this.model.SELECT = null;
+          this.model.CARD[_id][this.model.HOVER] = false;
+          this.setCardActive(_id, false);
+        }
         $(`#card-${_id}-detail`).slideUp(_speed);
       }
     }
@@ -95,8 +114,10 @@ class CardView extends CommonView {
   setCardActive(_id = null, _flg = null) {
     if (_id != null && _flg != null) {
       if (_flg) {
+        this.model.CARD[_id][this.model.ACTIVE] = true;
         $(`#card-${_id}-main`).addClass(this.model.ACTIVE);
       } else {
+        this.model.CARD[_id][this.model.ACTIVE] = false;
         $(`#card-${_id}-main`).removeClass(this.model.ACTIVE);
       }
     }
@@ -108,29 +129,17 @@ class CardView extends CommonView {
         () => {
           if (this.model.CARD[_id][this.model.ACTIVE]) {
             // 既にアクティブなときは解除
-            this.model.CARD[_id][this.model.ACTIVE] = false;
-            this.model.CARD[_id][this.model.HOVER] = false;
-            this.model.SELECT = null;
-            this.setCardActive(_id, false);
-            this.setDetailView(_id, false, this.model.VIEW_SPEED_MS);
+            this.setDetailView(_id, false, this.model.ACTIVE, this.model.VIEW_SPEED_MS);
           } else {
             // アクティブにする
-            $.each(this.model.CARD, (_id, _val) => {
+            $.each(this.model.CARD, (_id2, _val2) => {
               // 他の項目を解除する
-              this.model.CARD[_id][this.model.ACTIVE] = false;
-              this.setCardActive(_id, false);
-              this.setDetailView(_id, false, 0);
+              if (_id2 != _id) {
+                this.setDetailView(_id2, false, this.model.ACTIVE);
+              }
             });
             // クリックした項目をアクティブにする
-            this.model.CARD[_id][this.model.ACTIVE] = true;
-            this.model.SELECT = _id;
-            this.setCardActive(_id, true);
-            // ホバー表示済みかで速度を変更
-            if (this.model.CARD[_id][this.model.HOVER]) {
-              this.setDetailView(_id, true, 0);
-            } else {
-              this.setDetailView(_id, true, this.model.VIEW_SPEED_MS);
-            }
+            this.setDetailView(_id, true, this.model.ACTIVE);
           }
         }
       );
@@ -144,16 +153,14 @@ class CardView extends CommonView {
           // なにもアクティブでないとき
           if (this.model.SELECT == null) {
             // ホバーにする
-            this.model.CARD[_id][this.model.HOVER] = true;
-            this.setDetailView(_id, true, this.model.VIEW_SPEED_MS);
+            this.setDetailView(_id, true, this.model.HOVER, this.model.VIEW_SPEED_MS);
           }
         },
         () => {
           // アクティブでないとき
           if (!this.model.CARD[_id][this.model.ACTIVE]) {
             // ホバー解除
-            this.model.CARD[_id][this.model.HOVER] = false;
-            this.setDetailView(_id, false, 0);
+            this.setDetailView(_id, false, this.model.HOVER);
           }
         }
       );
