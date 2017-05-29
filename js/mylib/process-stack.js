@@ -10,55 +10,70 @@
 // 必ず登録する処理の最後に、第１引数のコールバック関数を実行すること
 
 class ProcessStack {
-  constructor(repeatMs = 100) {
+  constructor() {
+    this.NAME = 'ProcessStack';
+    this.REPEAT_MS_INIT = 100;
+    this.REPEAT_MS_DIFF = 1.5;
+    this.REPEAT_MS_MIN = 1000 / 60;
+    this.REPEAT_MS_MAX = 5000;
+    
     this.count = 0;
     this.current = 0;
-    this.REPEAT_MS = repeatMs;
     this.stack = [];
     
+    this.initializeSpeed();
+    
     Log.log();
-    Log.log('ProcessStack', Log.ALIGN_CENTER);
+    Log.log(this.NAME, Log.ALIGN_CENTER);
     
     // 初期化
     this.push();
     this.stack[this.current].COMPLETE = true;
     
     // 監視を開始
-    Log.logClass('ProcessStack', 'Monitoring');
+    Log.logClass(this.NAME, 'Monitoring');
     this.check();
   }
   
   // カレントの監視
   check() {
     setTimeout(() => {
-      // Log.logClass('ProcessStack', 'Check');
+      // Log.logClass(this.NAME, 'Check');
       // カレントの存在確認
       if (this.stack[this.current] != null) {
-        // Log.logClass('ProcessStack', 'Current is exists');
+        // Log.logClass(this.NAME, 'Current is exists');
+        // Log.logClassKey(this.NAME, 'this.repeatMs', this.repeatMs);
         // カレントが存在する
         // カレントの終了確認
         if (this.stack[this.current].COMPLETE) {
-          // Log.logClassKey('ProcessStack', this.stack[this.current].NAME, `ID:${this.current} / Check Complete`);
+          // Log.logClassKey(this.NAME, this.stack[this.current].NAME, `ID:${this.current} / Check Complete`);
           // カレントが終了している
           // 次の処理が登録されているか確認
           if (this.stack[this.current + 1] != null) {
+            // 処理速度を早くする
+            this.changeSpeed(true);
             // カレントアップ
             this.current ++;
             // 次の処理を実行する
-            Log.logClassKey('ProcessStack', this.stack[this.current].NAME, `ID:${this.current} / Run`);
+            // Log.logClassKey(this.NAME, this.stack[this.current].NAME, `ID:${this.current} / Run`);
             this.stack[this.current].FUNCTION(() => {
               // 次の処理の第１引数に処理終了のコールバック関数を入れる
-              Log.logClassKey('ProcessStack', this.stack[this.current].NAME, `ID:${this.current} / Complete`);
+              // Log.logClassKey(this.NAME, this.stack[this.current].NAME, `ID:${this.current} / Complete`);
               this.stack[this.current].COMPLETE = true;
             });
           } else {
-            // Log.logClass('ProcessStack', 'Next is not exists');
+            // Log.logClass(this.NAME, 'Next is not exists');
+            // 処理速度を遅くする
+            this.changeSpeed(false);
           }
+        } else {
+          // 処理速度を遅くする
+          this.changeSpeed(false);
         }
       }
       // カレントの監視を再実行
       this.check();
-    }, this.REPEAT_MS);
+    }, this.repeatMs);
   }
   
   // 新しい処理の登録
@@ -72,13 +87,37 @@ class ProcessStack {
     this.stack[this.count].FUNCTION = func;
     this.stack[this.count].COMPLETE = false;
     
+    this.initializeSpeed();
+    
     if (this.count == 0) {
-      Log.logClass('ProcessStack', 'Initialize');
+      Log.logClass(this.NAME, 'Initialize');
     } else {
-      Log.logClassKey('ProcessStack', this.stack[this.count].NAME, `ID:${this.count} / Set`);
+      Log.logClassKey(this.NAME, this.stack[this.count].NAME, `ID:${this.count} / Set`);
     }
     
     // カウントアップ
     this.count ++;
+  }
+  
+  initializeSpeed() {
+    this.repeatMs = this.REPEAT_MS_INIT;
+  }
+  
+  changeSpeed(_type) {
+    if (_type) {
+      if (this.repeatMs > this.REPEAT_MS_MIN) {
+        this.repeatMs /= this.REPEAT_MS_DIFF;
+        if (this.repeatMs < this.REPEAT_MS_MIN) {
+          this.repeatMs = this.REPEAT_MS_MIN;
+        }
+      }
+    } else {
+      if (this.repeatMs < this.REPEAT_MS_MAX) {
+        this.repeatMs *= this.REPEAT_MS_DIFF;
+        if (this.repeatMs > this.REPEAT_MS_MAX) {
+          this.repeatMs = this.REPEAT_MS_MAX;
+        }
+      }
+    }
   }
 }
