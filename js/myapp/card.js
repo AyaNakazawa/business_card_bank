@@ -64,6 +64,10 @@ class CardView extends CommonView {
         ));
         this.setClick(_id);
         this.setHover(_id);
+        this.setEditClick(_id);
+        this.setDeleteClick(_id);
+        this.setCloneClick(_id);
+        this.setcloseClick(_id);
       });
       
     } else {
