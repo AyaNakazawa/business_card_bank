@@ -50,7 +50,11 @@ class UserView extends CommonView {
     super(_initSetting);
   }
   
-  generateUserArea(_alertType = 'success', _message = null, _close = true) {
+  generateUserArea(
+    _alertType = this.MODEL.ALERT_SUCCESS,
+    _message = null,
+    _close = true
+  ) {
     $(this.MODEL.USER_AREA_SELECTOR).empty();
     this.generateAlert(this.MODEL.USER_AREA_SELECTOR, _alertType, _message, _close);
     
