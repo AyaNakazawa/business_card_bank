@@ -54,7 +54,7 @@ class CardView extends CommonView {
     
     let template = null;
     if (this.MODEL.DOWNLOAD) {
-      Log.logClass(this.NAME, 'Card is found');
+      Log.logClass(this.NAME, 'Cards is found');
       $(this.MODEL.CARD_AREA_SELECTOR).append(this.getTemplate(
         this.MODEL.TEMPLATE_CARD_TABLE_SELECTOR,
         {}
@@ -79,7 +79,7 @@ class CardView extends CommonView {
       });
       
     } else {
-      Log.logClass(this.NAME, 'Card is not found');
+      Log.logClass(this.NAME, 'Cards is not found');
     }
   }
   
