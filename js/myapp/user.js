@@ -225,6 +225,8 @@ class UserEvent extends CommonEvent {
       name: name
     });
     
+    PS.UE = this;
+    
     this.NAME = name;
     this.CONTROLLER = new UserController({
       name: 'User Controller',
