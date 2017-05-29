@@ -62,54 +62,8 @@ class CardView extends CommonView {
           this.model.$TEMPLATE_CARD_HOVER_SELECTOR,
           {card: _val}
         ));
-        $(`#card-${_id}-main`).click(
-          () => {
-            if (this.model.CARD[_id][this.model.ACTIVE]) {
-              // 既にアクティブなときは解除
-              this.model.CARD[_id][this.model.ACTIVE] = false;
-              this.model.CARD[_id][this.model.HOVER] = false;
-              this.model.SELECT = null;
-              this.switchCardActive(_id, false);
-              this.switchDetailView(_id, false, this.model.VIEW_SPEED_MS);
-            } else {
-              // アクティブにする
-              $.each(this.model.CARD, (_id, _val) => {
-                // 他の項目を解除する
-                this.model.CARD[_id][this.model.ACTIVE] = false;
-                this.switchCardActive(_id, false);
-                this.switchDetailView(_id, false, 0);
-              });
-                // クリックした項目をアクティブにする
-              this.model.CARD[_id][this.model.ACTIVE] = true;
-              this.model.SELECT = _id;
-              this.switchCardActive(_id, true);
-              // ホバー表示済みかで速度を変更
-              if (this.model.CARD[_id][this.model.HOVER]) {
-                this.switchDetailView(_id, true, 0);
-              } else {
-                this.switchDetailView(_id, true, this.model.VIEW_SPEED_MS);
-              }
-            }
-          }
-        );
-        $(`#card-${_id}-main`).hover(
-          () => {
-            // なにもアクティブでないとき
-            if (this.model.SELECT == null) {
-              // ホバーにする
-              this.model.CARD[_id][this.model.HOVER] = true;
-              this.switchDetailView(_id, true, this.model.VIEW_SPEED_MS);
-            }
-          },
-          () => {
-            // アクティブでないとき
-            if (!this.model.CARD[_id][this.model.ACTIVE]) {
-              // ホバー解除
-              this.model.CARD[_id][this.model.HOVER] = false;
-              this.switchDetailView(_id, false, 0);
-            }
-          }
-        );
+        this.setClick(_id);
+        this.setHover(_id);
       });
       
     } else {
@@ -141,6 +95,64 @@ class CardView extends CommonView {
       } else {
         $(`#card-${_id}-main`).removeClass(this.model.ACTIVE);
       }
+    }
+  }
+  
+  setClick(_id = null) {
+    if (_id != null) {
+      $(`#card-${_id}-main`).click(
+        () => {
+          if (this.model.CARD[_id][this.model.ACTIVE]) {
+            // 既にアクティブなときは解除
+            this.model.CARD[_id][this.model.ACTIVE] = false;
+            this.model.CARD[_id][this.model.HOVER] = false;
+            this.model.SELECT = null;
+            this.switchCardActive(_id, false);
+            this.switchDetailView(_id, false, this.model.VIEW_SPEED_MS);
+          } else {
+            // アクティブにする
+            $.each(this.model.CARD, (_id, _val) => {
+              // 他の項目を解除する
+              this.model.CARD[_id][this.model.ACTIVE] = false;
+              this.switchCardActive(_id, false);
+              this.switchDetailView(_id, false, 0);
+            });
+              // クリックした項目をアクティブにする
+            this.model.CARD[_id][this.model.ACTIVE] = true;
+            this.model.SELECT = _id;
+            this.switchCardActive(_id, true);
+            // ホバー表示済みかで速度を変更
+            if (this.model.CARD[_id][this.model.HOVER]) {
+              this.switchDetailView(_id, true, 0);
+            } else {
+              this.switchDetailView(_id, true, this.model.VIEW_SPEED_MS);
+            }
+          }
+        }
+      );
+    }
+  }
+  
+  setHover(_id = null) {
+    if (_id != null) {
+      $(`#card-${_id}-main`).hover(
+        () => {
+          // なにもアクティブでないとき
+          if (this.model.SELECT == null) {
+            // ホバーにする
+            this.model.CARD[_id][this.model.HOVER] = true;
+            this.switchDetailView(_id, true, this.model.VIEW_SPEED_MS);
+          }
+        },
+        () => {
+          // アクティブでないとき
+          if (!this.model.CARD[_id][this.model.ACTIVE]) {
+            // ホバー解除
+            this.model.CARD[_id][this.model.HOVER] = false;
+            this.switchDetailView(_id, false, 0);
+          }
+        }
+      );
     }
   }
 }
