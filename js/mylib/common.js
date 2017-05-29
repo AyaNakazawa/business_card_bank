@@ -175,25 +175,25 @@ class CommonEvent extends CommonClass {
   }
   
   setOn(
-    trigger = 'click',
-    selector = null,
-    func = () => {}
+    _trigger = 'click',
+    _selector = null,
+    _func = () => {}
   ) {
-    if (selector != null) {
-      $(document).on(trigger, selector, func);
+    if (_selector != null) {
+      $(document).on(_trigger, _selector, _func);
     } else {
-      $(document).on(trigger, func);
+      $(document).on(_trigger, _func);
     }
   }
   
   setOff(
-    trigger = 'click',
-    selector = null
+    _trigger = 'click',
+    _selector = null
   ) {
-    if (selector != null) {
-      $(document).off(trigger, selector);
+    if (_selector != null) {
+      $(document).off(_trigger, _selector);
     } else {
-      $(document).off(trigger);
+      $(document).off(_trigger);
     }
   }
 }
