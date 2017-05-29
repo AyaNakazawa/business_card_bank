@@ -2,6 +2,9 @@
 // ----------------------------------------------------------------
 // Card Class
 
+// ----------------------------------------------------------------
+// Model
+
 class CardModel extends CommonModel {
   constructor({
     name
@@ -28,6 +31,9 @@ class CardModel extends CommonModel {
     this.HEADER_TEXT = '名刺情報';
   }
 }
+
+// ----------------------------------------------------------------
+// View
 
 class CardView extends CommonView {
   constructor(_model = new CardModel()) {
@@ -86,8 +92,10 @@ class CardView extends CommonView {
       if (_view) {
         this.setCardPosition(_id);
         if (_type == this.model.HOVER) {
+          // ホバーにする
           this.model.CARD[_id][this.model.HOVER] = true;
         } else if (_type == this.model.ACTIVE) {
+          // アクティブにする
           this.model.SELECT = _id;
           this.setCardActive(_id, true);
           // ホバー表示済みかで速度を変更
@@ -100,8 +108,10 @@ class CardView extends CommonView {
         $(`#card-${_id}-detail`).slideDown(_speed);
       } else {
         if (_type == this.model.HOVER) {
+          // ホバーを解除
           this.model.CARD[_id][this.model.HOVER] = false;
         } else if (_type == this.model.ACTIVE) {
+          // アクティブを解除
           this.model.SELECT = null;
           this.model.CARD[_id][this.model.HOVER] = false;
           this.setCardActive(_id, false);
@@ -202,6 +212,7 @@ class CardView extends CommonView {
       $(`.card-${_id}-close`).click(
         () => {
           Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Close');
+          this.setDetailView(_id, false, this.model.ACTIVE, this.model.VIEW_SPEED_MS);
         }
       );
     }

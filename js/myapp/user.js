@@ -2,6 +2,9 @@
 // ----------------------------------------------------------------
 // User Class
 
+// ----------------------------------------------------------------
+// Model
+
 class UserModel extends CommonModel {
   constructor({
     name,
@@ -45,6 +48,9 @@ class UserModel extends CommonModel {
     this.SWITCH_LABEL_SELECTOR = '#switch-user';
   }
 }
+
+// ----------------------------------------------------------------
+// View
 
 class UserView extends CommonView {
   constructor(_model = new UserModel()) {
