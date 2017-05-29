@@ -128,6 +128,8 @@ class CardDetailEvent extends CommonEvent {
     this.CONTROLLER = new CardDetailController({
       name: 'Card Detail Controller',
     });
+    
+    this.setOn();
   }
   
   setOn() {
