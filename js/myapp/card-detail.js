@@ -19,6 +19,10 @@ class CardDetailModel extends CommonModel {
     this.CARD_DETAIL_AREA_SELECTOR = '#card-detail-area';
     this.$CARD_DETAIL_AREA_SELECTOR = $(this.CARD_DETAIL_AREA_SELECTOR);
     
+    this.CARD_DETAIL_ADD_SELECTOR = '#card-detail-add';
+    this.CARD_DETAIL_SAVE_SELECTOR = '#card-detail-save';
+    this.CARD_DETAIL_DELETE_SELECTOR = '#card-detail-delete';
+    
     this.ID = null;
     this.HASH = null;
     this.CARD = null;
