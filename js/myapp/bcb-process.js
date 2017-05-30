@@ -82,9 +82,9 @@ class BCBProcess extends CommonProcess {
         LS_KEY: 'none'
       }),
       CARD: new SwitchController({
-        TEMPLATE: 'card',
-        currentView: false,
-        LS_KEY: 'none'
+        NAME: 'Card Switch',
+        SWITCH_SELECTOR: '#card-area',
+        currentView: false
       }),
       CARD_DETAIL: new SwitchController({
         NAME: 'Card Detail Switch',
