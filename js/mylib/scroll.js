@@ -13,7 +13,7 @@ class ScrollModel extends CommonModel {
       POSITION_OFFSET: 0,
       EVENT_SELECTOR: null,
       SCROLL_SELECTOR: null,
-      SCROLL_TIME_MS: 500
+      SCROLL_TIME_MS: 750
     }
   ) {
     super(_initSetting);
