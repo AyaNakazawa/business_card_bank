@@ -280,6 +280,7 @@ class CardDetailController extends CommonController {
         this.MODEL.ALERT_WARNING,
         '氏名 を入力してください。'
       );
+      PS.CONTROLLER.SCROLL.CARD_DETAIL.VIEW.scroll();
       return false;
     }
     return true;
