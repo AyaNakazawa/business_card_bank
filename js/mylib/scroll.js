@@ -38,7 +38,10 @@ class ScrollView extends CommonView {
       {
         scrollTop: $(this.MODEL.SCROLL_SELECTOR).offset().top + this.MODEL.POSITION_OFFSET
       },
-      this.MODEL.SCROLL_TIME_MS
+      {
+        duration: this.MODEL.SCROLL_TIME_MS,
+        easing: 'easeOutBack'
+      }
     );
   }
 }
