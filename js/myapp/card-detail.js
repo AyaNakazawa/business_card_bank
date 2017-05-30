@@ -194,6 +194,7 @@ class CardDetailEvent extends CommonEvent {
       'click',
       this.CONTROLLER.MODEL.CARD_DETAIL_CLOSE_SELECTOR,
       () => {
+        PS.CONTROLLER.SCROLL.CARD.VIEW.scroll();
         PS.CONTROLLER.SWITCH.CARD_DETAIL.VIEW.setView(false);
       }
     );
