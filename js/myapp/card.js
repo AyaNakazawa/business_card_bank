@@ -330,7 +330,6 @@ class CardController extends CommonController {
   ) {
     super(_model, _initSetting);
     
-    this.downloadCard();
     this.EVENT.setOnEvent();
   }
   
