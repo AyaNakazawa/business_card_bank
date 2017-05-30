@@ -114,7 +114,6 @@ class CardView extends CommonView {
       const bodyBottom = $('body').height();
       if (cardBottom > bodyBottom) {
         $('body').height(cardBottom);
-        Log.logClassKey(this.NAME, 'body', cardBottom);
       }
     }
   }
