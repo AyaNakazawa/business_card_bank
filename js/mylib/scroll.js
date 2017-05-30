@@ -56,7 +56,7 @@ class ScrollEvent extends CommonEvent {
   }
   
   setOnScroll() {
-    if (this.MODEL.SCROLL_SELECTOR != null) {
+    if (this.MODEL.EVENT_TRIGGER != null) {
       super.setOn(
         this.MODEL.EVENT_TRIGGER,
         this.MODEL.EVENT_SELECTOR,
