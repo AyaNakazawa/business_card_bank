@@ -313,6 +313,17 @@ class CardController extends CommonController {
     }
   }
   
+  addCard() {
+    Log.logClassKey(this.NAME, 'Click', 'Add');
+    PS.CONTROLLER.CARD_DETAIL.openCard(
+      this.MODEL.ID,
+      this.MODEL.HASH,
+      null,
+      false
+    );
+    this.VIEW.setDetailView(this.MODEL.SELECT, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
+  }
+  
   editCard(_id = null) {
     Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Edit');
     PS.CONTROLLER.CARD_DETAIL.openCard(
