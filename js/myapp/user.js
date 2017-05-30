@@ -114,7 +114,15 @@ class UserEvent extends CommonEvent {
       this.CONTROLLER.MODEL.LOGOUT_TRIGGER,
       this.CONTROLLER.MODEL.LOGOUT_SELECTOR,
       () => {
-        this.CONTROLLER.submitLogout();
+        new ConfirmController({
+          CONFIRM_ID: 'confirm-submit-logout',
+          CONFIRM_TITLE: 'ログアウト',
+          CONFIRM_MESSAGE: `ログアウトしてもよろしいですか？`,
+          AUTO_OPEN: true,
+          FUNCTION_YES: () => {
+            this.CONTROLLER.submitLogout();
+          }
+        });
       }
     );
     super.setOn(
