@@ -424,6 +424,15 @@
           <input type="text" id="detail-update-date" class="form-control" value="<%- card['updateDate'] %>" disabled>
         </div>
       </div>
+      <div class="content-item form-group">
+        <% if (add) { %>
+          <button class="btn btn-default" id="detail-submit-add"><i class="fa fa-plus-circle" aria-hidden="true"></i> 追加</button>
+        <% } else { %>
+          <button class="btn btn-default" id="detail-submit-save"><i class="fa fa-floppy-o" aria-hidden="true"></i> 保存</button>
+          <button class="btn btn-default" id="detail-submit-delete"><i class="fa fa-trash" aria-hidden="true"></i> 削除</button>
+        <% } %>
+        <button class="btn btn-default" id="detail-submit-close"><i class="fa fa-close" aria-hidden="true"></i> 閉じる</button>
+      </div>
     </script>
     <!-- script -->
     <!-- error -->
