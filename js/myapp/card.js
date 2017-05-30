@@ -92,6 +92,7 @@ class CardView extends CommonView {
         this.EVENT.setCopyClick(_id);
         this.EVENT.setcloseClick(_id);
       });
+      PS.CONTROLLER.SCROLL.CARD.VIEW.scroll();
       
     } else {
       Log.logClass(this.NAME, 'Cards is not found');
@@ -372,6 +373,7 @@ class CardController extends CommonController {
       null,
       false
     );
+    PS.CONTROLLER.SCROLL.CARD_DETAIL.VIEW.scroll();
     this.VIEW.setDetailView(this.MODEL.SELECT, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
   }
   
@@ -383,6 +385,7 @@ class CardController extends CommonController {
       this.MODEL.CARDS[_id],
       false
     );
+    PS.CONTROLLER.SCROLL.CARD_DETAIL.VIEW.scroll();
     this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
   }
   
@@ -404,6 +407,7 @@ class CardController extends CommonController {
       this.MODEL.CARDS[_id],
       true
     );
+    PS.CONTROLLER.SCROLL.CARD_DETAIL.VIEW.scroll();
     this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
   }
   
