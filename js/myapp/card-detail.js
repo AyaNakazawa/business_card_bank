@@ -73,16 +73,23 @@ class CardDetailView extends CommonView {
     );
     if (this.CARD == null) {
       // カードがある場合
+      Log.logObj(this.MODEL.CARD);
       $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).append(this.getTemplate(
         this.MODEL.TEMPLATE_CARD_DETAIL_SELECTOR,
-        {}
+        {
+          card: this.MODEL.CARD,
+          copy: this.MODEL.COPY
+        }
       ));
     } else {
       // カードがない場合
       $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).append(this.getTemplate(
         this.MODEL.TEMPLATE_CARD_DETAIL_SELECTOR,
         {
-          card: this.MODEL.CARD,
+          card: {
+            registerDate: new Date(),
+            updateDate: new Date()
+          },
           copy: this.MODEL.COPY
         }
       ));
