@@ -94,9 +94,13 @@
     <!-- logined-template -->
     <script type="text/template" id="logined-template">
       <div class="content-item" id="logined-message">
-        <label for="logined-id">ID</label>
+        <div class="content-label">
+          <label for="logined-id">ID</label>
+        </div>
         <span class="help-icon fa fa-question-circle" id="logined-id-help"></span>
-        <input type="text" id="logined-id" class="form-control" value="<%- id %>" disabled>
+        <div class="content-input">
+          <input type="text" id="logined-id" class="form-control" value="<%- id %>" disabled>
+        </div>
       </div>
       <div class="content-item form-group" id="logined-logout-area">
         <button class="btn btn-default" id="logout-submit"><i class="fa fa-sign-out" aria-hidden="true"></i> ログアウト</button>
@@ -115,17 +119,25 @@
     </script>
     <!-- not-login-template -->
     <script type="text/template" id="not-login-template">
-      <div class="content-item" id="user-id-area">
-        <label for="user-id">ID</label>
+      <div class="content-item form-inline" id="user-id-area">
+        <div class="content-label">
+          <label for="user-id">ID</label>
+        </div>
         <span class="help-icon fa fa-question-circle" id="user-id-help"></span>
-        <input type="text" id="user-id" class="form-control" value="<%- id %>" placeholder="Enter your ID">
+        <div class="content-input">
+          <input type="text" id="user-id" class="form-control" value="<%- id %>" placeholder="Enter your ID">
+        </div>
       </div>
-      <div class="content-item form-group" id="user-password-area">
-        <label for="user-password">パスワード</label>
+      <div class="content-item form-inline" id="user-password-area">
+        <div class="content-label">
+          <label for="user-password">パスワード</label>
+        </div>
         <span class="help-icon fa fa-question-circle" id="user-password-help"></span>
-        <input type="password" id="user-password" class="form-control" value="<%- password %>" placeholder="Enter your password">
+        <div class="content-input">
+          <input type="password" id="user-password" class="form-control" value="<%- password %>" placeholder="Enter your password">
+        </div>
       </div>
-      <!-- <div class="content-item" id="user-check-area">
+      <!-- <div class="content-item form-inline" id="user-check-area">
         <span class="checkbox">
           <label><input type="checkbox" id="user-check">ログインしたままにする</label>
         </span>
