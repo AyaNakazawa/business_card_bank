@@ -153,7 +153,6 @@
         <table class="table table-hover table-condensed">
           <thead>
             <tr>
-              <th></th>
               <th>氏名</th>
               <th>会社</th>
               <th>所属</th>
@@ -169,7 +168,6 @@
     <!-- card-tbody-template -->
     <script type="text/template" id="card-tbody-template">
       <tr class="card-<%- card['id'] %> card-main" id="card-<%- card['id'] %>-main">
-        <td><span class="fa fa-edit card-<%- card['id'] %>-edit"></span></td>
         <td><ruby>
           <rb><%- card['name'] %></rb>
           <rp>（</rp>
@@ -249,6 +247,15 @@
           </button>
         </div>
       </div>
+    </script>
+    <!-- ruby-template -->
+    <script type="text/template" id="ruby-template">
+      <ruby>
+        <rb><%- body %></rb>
+        <rp>（</rp>
+        <rt><%- ruby %></rt>
+        <rp>）</rp>
+      </ruby>
     </script>
     <!-- script -->
     <!-- error -->
