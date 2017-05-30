@@ -206,7 +206,7 @@ class CardEvent extends CommonEvent {
     if (_id != null) {
       $(`.card-${_id}-edit`).click(
         () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Edit');
+          this.CONTROLLER.editCard(_id);
         }
       );
     }
@@ -216,7 +216,7 @@ class CardEvent extends CommonEvent {
     if (_id != null) {
       $(`.card-${_id}-delete`).click(
         () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Delete');
+          this.CONTROLLER.deleteCard(_id);
         }
       );
     }
@@ -226,7 +226,7 @@ class CardEvent extends CommonEvent {
     if (_id != null) {
       $(`.card-${_id}-copy`).click(
         () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Copy');
+          this.CONTROLLER.copyCard(_id);
         }
       );
     }
@@ -236,8 +236,7 @@ class CardEvent extends CommonEvent {
     if (_id != null) {
       $(`.card-${_id}-close`).click(
         () => {
-          Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Close');
-          this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
+          this.CONTROLLER.closeCard(_id);
         }
       );
     }
@@ -300,5 +299,25 @@ class CardController extends CommonController {
     } else {
       this.VIEW.generateCardArea(this.MODEL.ALERT_WARNING, 'ログインしてください。', false);
     }
+  }
+  
+  editCard(_id = null) {
+    Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Edit');
+    
+  }
+  
+  deleteCard(_id = null) {
+    Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Delete');
+    
+  }
+  
+  copyCard(_id = null) {
+    Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Copy');
+    
+  }
+  
+  closeCard(_id = null) {
+    Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Close');
+    this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
   }
 }
