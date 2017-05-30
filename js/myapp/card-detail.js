@@ -20,8 +20,6 @@ class CardDetailModel extends CommonModel {
     this.CARD_DETAIL_SAVE_SELECTOR = '#card-detail-save';
     this.CARD_DETAIL_DELETE_SELECTOR = '#card-detail-delete';
     
-    this.HEADER_TEXT = '名刺';
-    
     this.ID = null;
     this.HASH = null;
     this.CARD = null;
@@ -47,7 +45,26 @@ class CardDetailView extends CommonView {
     _close = true
   ) {
     $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).empty();
-    $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).append(Content.getHeader(this.MODEL.HEADER_TEXT));
+    
+    let body = '';
+    let ruby = '';
+    if (this.MODEL.CARD == null) {
+      body = '名刺';
+    } else {
+      body = this.MODEL.CARD['name'];
+      ruby = this.MODEL.CARD['nameKana'];
+    }
+    $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).append(
+      Content.getHeader(
+        this.getTemplate(
+          this.MODEL.TEMPLATE_RUBY,
+          {
+            body: body,
+            ruby: ruby
+          }
+        )
+      )
+    );
     super.generateAlert(
       this.MODEL.CARD_DETAIL_AREA_SELECTOR,
       _alertType,
