@@ -34,7 +34,7 @@ class ScrollView extends CommonView {
   
   scroll() {
     Log.logClass('Scroll', this.MODEL.NAME);
-    this.MODEL.$BODY.animate(
+    $(this.MODEL.BODY).animate(
       {
         scrollTop: $(this.MODEL.SCROLL_SELECTOR).offset().top + this.MODEL.POSITION_OFFSET
       },
