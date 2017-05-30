@@ -303,17 +303,34 @@ class CardController extends CommonController {
   
   editCard(_id = null) {
     Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Edit');
-    
+    PS.CONTROLLER.CARD_DETAIL.openCard(
+      this.MODEL.ID,
+      this.MODEL.HASH,
+      this.MODEL.CARD[_id],
+      false
+    );
+    this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
   }
   
   deleteCard(_id = null) {
     Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Delete');
-    
+    PS.CONTROLLER.CARD_DETAIL.deleteCard(
+      this.MODEL.ID,
+      this.MODEL.HASH,
+      this.MODEL.CARD[_id]
+    );
+    this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
   }
   
   copyCard(_id = null) {
     Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Copy');
-    
+    PS.CONTROLLER.CARD_DETAIL.openCard(
+      this.MODEL.ID,
+      this.MODEL.HASH,
+      this.MODEL.CARD[_id],
+      true
+    );
+    this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
   }
   
   closeCard(_id = null) {
