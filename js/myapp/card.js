@@ -22,6 +22,7 @@ class CardModel extends CommonModel {
     this.CARD_EDIT_SELECTOR = '#card-submit-edit';
     this.CARD_COPY_SELECTOR = '#card-submit-copy';
     this.CARD_DELETE_SELECTOR = '#card-submit-delete';
+    this.CARD_REFRESH_SELECTOR = '#card-submit-refresh';
     
     this.TEMPLATE_CARD_TABLE_SELECTOR = '#card-table-template';
     this.TEMPLATE_CARD_TBODY_SELECTOR = '#card-tbody-template';
