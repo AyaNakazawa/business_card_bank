@@ -25,7 +25,7 @@ class CardModel extends CommonModel {
     this.ID = null;
     this.HASH = null;
     this.DOWNLOAD = null;
-    this.CARD = null;
+    this.CARDS = null;
     
     this.SELECT = null;
   }
@@ -60,8 +60,8 @@ class CardView extends CommonView {
         {}
       ));
       
-      $.each(this.MODEL.CARD, (_id, _val) => {
-        this.MODEL.CARD[_id][this.MODEL.ACTIVE] = false;
+      $.each(this.MODEL.CARDS, (_id, _val) => {
+        this.MODEL.CARDS[_id][this.MODEL.ACTIVE] = false;
         $(this.MODEL.CARD_TBODY_SELECTOR).append(this.getTemplate(
           this.MODEL.TEMPLATE_CARD_TBODY_SELECTOR,
           {card: _val}
@@ -102,13 +102,13 @@ class CardView extends CommonView {
         this.setCardPosition(_id);
         if (_type == this.MODEL.HOVER) {
           // ホバーにする
-          this.MODEL.CARD[_id][this.MODEL.HOVER] = true;
+          this.MODEL.CARDS[_id][this.MODEL.HOVER] = true;
         } else if (_type == this.MODEL.ACTIVE) {
           // アクティブにする
           this.MODEL.SELECT = _id;
           this.setCardActive(_id, true);
           // ホバー表示済みかで速度を変更
-          if (this.MODEL.CARD[_id][this.MODEL.HOVER]) {
+          if (this.MODEL.CARDS[_id][this.MODEL.HOVER]) {
             _speed = 0;
           } else {
             _speed = this.MODEL.VIEW_SPEED_MS;
@@ -118,11 +118,11 @@ class CardView extends CommonView {
       } else {
         if (_type == this.MODEL.HOVER) {
           // ホバーを解除
-          this.MODEL.CARD[_id][this.MODEL.HOVER] = false;
+          this.MODEL.CARDS[_id][this.MODEL.HOVER] = false;
         } else if (_type == this.MODEL.ACTIVE) {
           // アクティブを解除
           this.MODEL.SELECT = null;
-          this.MODEL.CARD[_id][this.MODEL.HOVER] = false;
+          this.MODEL.CARDS[_id][this.MODEL.HOVER] = false;
           this.setCardActive(_id, false);
         }
         $(`#card-${_id}-detail`).slideUp(_speed);
@@ -136,10 +136,10 @@ class CardView extends CommonView {
   ) {
     if (_id != null && _flg != null) {
       if (_flg) {
-        this.MODEL.CARD[_id][this.MODEL.ACTIVE] = true;
+        this.MODEL.CARDS[_id][this.MODEL.ACTIVE] = true;
         $(`#card-${_id}-main`).addClass(this.MODEL.ACTIVE);
       } else {
-        this.MODEL.CARD[_id][this.MODEL.ACTIVE] = false;
+        this.MODEL.CARDS[_id][this.MODEL.ACTIVE] = false;
         $(`#card-${_id}-main`).removeClass(this.MODEL.ACTIVE);
       }
     }
@@ -162,12 +162,12 @@ class CardEvent extends CommonEvent {
     if (_id != null) {
       $(`#card-${_id}-main`).click(
         () => {
-          if (this.MODEL.CARD[_id][this.MODEL.ACTIVE]) {
+          if (this.MODEL.CARDS[_id][this.MODEL.ACTIVE]) {
             // 既にアクティブなときは解除
             this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
           } else {
             // アクティブにする
-            $.each(this.MODEL.CARD, (_id2, _val2) => {
+            $.each(this.MODEL.CARDS, (_id2, _val2) => {
               // 他の項目を解除する
               if (_id2 != _id) {
                 this.VIEW.setDetailView(_id2, false, this.MODEL.ACTIVE);
@@ -193,7 +193,7 @@ class CardEvent extends CommonEvent {
         },
         () => {
           // アクティブでないとき
-          if (!this.MODEL.CARD[_id][this.MODEL.ACTIVE]) {
+          if (!this.MODEL.CARDS[_id][this.MODEL.ACTIVE]) {
             // ホバー解除
             this.VIEW.setDetailView(_id, false, this.MODEL.HOVER);
           }
@@ -285,7 +285,7 @@ class CardController extends CommonController {
           Log.logClassKey(this.NAME, 'ajax getCard', 'success');
           if (Object.keys(_data).length > 0) {
             this.MODEL.DOWNLOAD = true;
-            this.MODEL.CARD = _data;
+            this.MODEL.CARDS = _data;
             this.VIEW.generateCardArea(this.MODEL.ALERT_SUCCESS, `名刺データを取得しました。`);
           } else {
             this.VIEW.generateCardArea(this.MODEL.ALERT_INFO, '名刺データは存在しません。', false);
@@ -306,7 +306,7 @@ class CardController extends CommonController {
     PS.CONTROLLER.CARD_DETAIL.openCard(
       this.MODEL.ID,
       this.MODEL.HASH,
-      this.MODEL.CARD[_id],
+      this.MODEL.CARDS[_id],
       false
     );
     this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
@@ -317,7 +317,7 @@ class CardController extends CommonController {
     PS.CONTROLLER.CARD_DETAIL.deleteCard(
       this.MODEL.ID,
       this.MODEL.HASH,
-      this.MODEL.CARD[_id]
+      this.MODEL.CARDS[_id]
     );
     this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
   }
@@ -327,7 +327,7 @@ class CardController extends CommonController {
     PS.CONTROLLER.CARD_DETAIL.openCard(
       this.MODEL.ID,
       this.MODEL.HASH,
-      this.MODEL.CARD[_id],
+      this.MODEL.CARDS[_id],
       true
     );
     this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
