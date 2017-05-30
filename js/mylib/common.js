@@ -75,8 +75,9 @@ class CommonModel extends CommonClass {
     this.CURRENT = 'current';
     
     this.BODY = 'body';
-    this.LOADING_TEMPLATE = '#loading-template';
-    this.ALERT_TEMPLATE = '#alert-template';
+    this.TEMPLATE_LOADING = '#loading-template';
+    this.TEMPLATE_ALERT = '#alert-template';
+    this.TEMPLATE_RUBY = '#ruby-template';
   }
   
   // Add var to Instance
@@ -129,7 +130,7 @@ class CommonView extends CommonClass {
     }
     $(_selector).empty();
     $(_selector).append(this.getTemplate(
-      $(this.MODEL.LOADING_TEMPLATE),
+      $(this.MODEL.TEMPLATE_LOADING),
       {
         header: _header,
         message: _message
@@ -149,7 +150,7 @@ class CommonView extends CommonClass {
     }
     if (_message != null) {
       $(_selector).append(this.getTemplate(
-        $(this.MODEL.ALERT_TEMPLATE),
+        $(this.MODEL.TEMPLATE_ALERT),
         {
           type: _type,
           message: _message,
