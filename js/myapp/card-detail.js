@@ -245,8 +245,8 @@ class CardDetailController extends CommonController {
           // ログインしていない
           // カードの選択
           this.VIEW.generateCardDetailArea(
-            this.MODEL.ALERT_SUCCESS,
-            'ログインしてカードを選択してください。'
+            this.MODEL.ALERT_WARNING,
+            'カードを選択してください。'
           );
           PS.CONTROLLER.SWITCH.CARD_DETAIL.VIEW.setView(false);
         }
@@ -267,6 +267,13 @@ class CardDetailController extends CommonController {
           PS.CONTROLLER.SWITCH.CARD_DETAIL.VIEW.setView(true);
         }
       }
+    } else {
+      // 情報がない
+      this.VIEW.generateCardDetailArea(
+        this.MODEL.ALERT_WARNING,
+        'ログインしてください。'
+      );
+      PS.CONTROLLER.SWITCH.CARD_DETAIL.VIEW.setView(false);
     }
   }
   
