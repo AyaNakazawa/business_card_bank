@@ -91,19 +91,15 @@
         </div>
       </div>
     </script>
-    <!-- logined-template -->
-    <script type="text/template" id="logined-template">
-      <div class="content-item" id="logined-message">
-        <div class="content-label">
-          <label for="logined-id">ID</label>
-        </div>
-        <span class="help-icon fa fa-question-circle" id="logined-id-help"></span>
-        <div class="content-input">
-          <input type="text" id="logined-id" class="form-control" value="<%- id %>" disabled>
-        </div>
+    <!-- loading-template -->
+    <script type="text/template" id="loading-template">
+      <div class="content-header">
+        <%- header %>
+        <span class="fa fa-spinner loading-spinner"></span>
       </div>
-      <div class="content-item form-group" id="logined-logout-area">
-        <button class="btn btn-default" id="logout-submit"><i class="fa fa-sign-out" aria-hidden="true"></i> ログアウト</button>
+      <div class="content-item">
+        <%- message %>
+        <span class="loading-dot"></span>
       </div>
     </script>
     <!-- alert-template -->
@@ -116,6 +112,15 @@
         <% } %>
         <%- message %>
       </div>
+    </script>
+    <!-- ruby-template -->
+    <script type="text/template" id="ruby-template">
+      <ruby>
+        <rb><%- body %></rb>
+        <rp>（</rp>
+        <rt><%- ruby %></rt>
+        <rp>）</rp>
+      </ruby>
     </script>
     <!-- not-login-template -->
     <script type="text/template" id="not-login-template">
@@ -148,15 +153,19 @@
         <button class="btn btn-default" id="signup-submit"><i class="fa fa-user-plus" aria-hidden="true"></i> サインアップ</button>
       </div>
     </script>
-    <!-- loading-template -->
-    <script type="text/template" id="loading-template">
-      <div class="content-header">
-        <%- header %>
-        <span class="fa fa-spinner loading-spinner"></span>
+    <!-- logined-template -->
+    <script type="text/template" id="logined-template">
+      <div class="content-item" id="logined-message">
+        <div class="content-label">
+          <label for="logined-id">ID</label>
+        </div>
+        <span class="help-icon fa fa-question-circle" id="logined-id-help"></span>
+        <div class="content-input">
+          <input type="text" id="logined-id" class="form-control" value="<%- id %>" disabled>
+        </div>
       </div>
-      <div class="content-item">
-        <%- message %>
-        <span class="loading-dot"></span>
+      <div class="content-item form-group" id="logined-logout-area">
+        <button class="btn btn-default" id="logout-submit"><i class="fa fa-sign-out" aria-hidden="true"></i> ログアウト</button>
       </div>
     </script>
     <!-- card-table-template -->
@@ -279,15 +288,6 @@
           </button>
         </div>
       </div>
-    </script>
-    <!-- ruby-template -->
-    <script type="text/template" id="ruby-template">
-      <ruby>
-        <rb><%- body %></rb>
-        <rp>（</rp>
-        <rt><%- ruby %></rt>
-        <rp>）</rp>
-      </ruby>
     </script>
     <!-- card-detail-template -->
     <script type="text/template" id="card-detail-template">
