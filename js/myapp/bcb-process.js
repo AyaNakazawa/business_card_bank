@@ -66,31 +66,32 @@ class BCBProcess extends CommonProcess {
   }
   
   initController() {
-    this.CONTROLLER = {};
-    this.CONTROLLER.SWITCH = {};
+    this.CONTROLLER = {
+      CARD_DETAIL: new CardDetailController(),
+      CARD: new CardController(),
+      USER: new UserController()
+    };
     
-    this.CONTROLLER.CARD_DETAIL = new CardDetailController();
-    this.CONTROLLER.CARD = new CardController();
-    this.CONTROLLER.USER = new UserController();
-    
-    this.CONTROLLER.SWITCH.DESC = new SwitchController({
-      TEMPLATE: 'desc'
-    });
-    this.CONTROLLER.SWITCH.USER = new SwitchController({
-      TEMPLATE: 'user',
-      currentView: true,
-      LS_KEY: 'none'
-    });
-    this.CONTROLLER.SWITCH.CARD = new SwitchController({
-      TEMPLATE: 'card',
-      currentView: false,
-      LS_KEY: 'none'
-    });
-    this.CONTROLLER.SWITCH.CARD_DETAIL = new SwitchController({
-      NAME: 'Card Detail Switch',
-      SWITCH_SELECTOR: '#card-detail-area',
-      currentView: false
-    });
+    this.CONTROLLER.SWITCH = {
+      DESC: new SwitchController({
+        TEMPLATE: 'desc'
+      }),
+      USER: new SwitchController({
+        TEMPLATE: 'user',
+        currentView: true,
+        LS_KEY: 'none'
+      }),
+      CARD: new SwitchController({
+        TEMPLATE: 'card',
+        currentView: false,
+        LS_KEY: 'none'
+      }),
+      CARD_DETAIL: new SwitchController({
+        NAME: 'Card Detail Switch',
+        SWITCH_SELECTOR: '#card-detail-area',
+        currentView: false
+      })
+    };
   }
   
   show() {
