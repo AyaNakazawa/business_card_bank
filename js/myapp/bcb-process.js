@@ -115,5 +115,7 @@ class BCBProcess extends CommonProcess {
   
   show() {
     $('main').slideDown(300);
+    Log.log();
+    Log.logClass(this.NAME, 'Start');
   }
 }
