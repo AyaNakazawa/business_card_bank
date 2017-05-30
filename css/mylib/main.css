@@ -120,10 +120,6 @@ main {
   margin: 0;
 }
 
-.content .form-group {
-  margin-left: 160px;
-}
-
 .content .help-icon {
   line-height: 22px;
   padding: 6px;
@@ -212,6 +208,11 @@ main {
   
   .content-item .content-input input {
     width: 100%;
+  }
+  
+  .content .form-group {
+    margin-left: 160px;
+    width: auto;
   }
 }
 
