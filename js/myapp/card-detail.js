@@ -49,7 +49,7 @@ class CardDetailView extends CommonView {
     let body = '';
     let ruby = '';
     if (this.MODEL.CARD == null) {
-      body = '名刺';
+      body = '新規作成';
     } else {
       body = this.MODEL.CARD['name'];
       ruby = this.MODEL.CARD['nameKana'];
