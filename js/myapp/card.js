@@ -380,6 +380,7 @@ class CardController extends CommonController {
       });
     } else {
       this.VIEW.generateCardArea(this.MODEL.ALERT_WARNING, 'ログインしてください。', false);
+      PS.CONTROLLER.SWITCH.CARD.VIEW.setView(false);
       this.MODEL.INITIALIZE = true;
     }
   }
