@@ -92,6 +92,25 @@ class BCBProcess extends CommonProcess {
         currentView: false
       })
     };
+    
+    this.CONTROLLER.SCROLL = {
+      DESC: new ScrollController({
+        NAME: 'Desc Switch',
+        SCROLL_SELECTOR: '#desc-area'
+      }),
+      USER: new ScrollController({
+        NAME: 'User Switch',
+        SCROLL_SELECTOR: '#user-area'
+      }),
+      CARD: new ScrollController({
+        NAME: 'Card Switch',
+        SCROLL_SELECTOR: '#card-area'
+      }),
+      CARD_DETAIL: new ScrollController({
+        NAME: 'Card Detail Switch',
+        SCROLL_SELECTOR: '#card-detail-area'
+      })
+    };
   }
   
   show() {
