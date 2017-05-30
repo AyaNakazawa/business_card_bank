@@ -179,6 +179,37 @@ class CardEvent extends CommonEvent {
     super(_initSetting);
   }
   
+  setOnEvent() {
+    super.setOn(
+      'click',
+      this.MODEL.CARD_ADD_SELECTOR,
+      () => {
+        this.CONTROLLER.addCard();
+      }
+    );
+    super.setOn(
+      'click',
+      this.MODEL.CARD_EDIT_SELECTOR,
+      () => {
+        this.CONTROLLER.editCard(this.MODEL.SELECT);
+      }
+    );
+    super.setOn(
+      'click',
+      this.MODEL.CARD_COPY_SELECTOR,
+      () => {
+        this.CONTROLLER.copyCard(this.MODEL.SELECT);
+      }
+    );
+    super.setOn(
+      'click',
+      this.MODEL.CARD_DELETE_SELECTOR,
+      () => {
+        this.CONTROLLER.deleteCard(this.MODEL.SELECT);
+      }
+    );
+  }
+  
   setCardClick(_id = null) {
     if (_id != null) {
       $(`#card-${_id}-main`).click(
