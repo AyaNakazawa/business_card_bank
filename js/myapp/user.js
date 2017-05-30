@@ -121,7 +121,15 @@ class UserEvent extends CommonEvent {
       this.CONTROLLER.MODEL.SIGNUP_TRIGGER,
       this.CONTROLLER.MODEL.SIGNUP_SELECTOR,
       () => {
-        this.CONTROLLER.submitSignup();
+        new ConfirmController({
+          CONFIRM_ID: 'confirm-submit-signup',
+          CONFIRM_TITLE: 'サインアップ',
+          CONFIRM_MESSAGE: `ユーザーをサインアップしてもよろしいですか？`,
+          AUTO_OPEN: true,
+          FUNCTION_YES: () => {
+            this.CONTROLLER.submitSignup();
+          }
+        });
       }
     );
     super.setOn(
