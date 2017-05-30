@@ -74,7 +74,7 @@ class CommonModel extends CommonClass {
     this.DISPLAY_NONE = 'display-none';
     this.CURRENT = 'current';
     
-    this.BODY = 'body';
+    this.BODY = 'html, body';
     this.TEMPLATE_LOADING = '#loading-template';
     this.TEMPLATE_ALERT = '#alert-template';
     this.TEMPLATE_RUBY = '#ruby-template';
