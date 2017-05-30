@@ -221,6 +221,13 @@ class CardEvent extends CommonEvent {
         this.CONTROLLER.deleteCard(this.MODEL.SELECT);
       }
     );
+    super.setOn(
+      'click',
+      this.MODEL.CARD_REFRESH_SELECTOR,
+      () => {
+        this.CONTROLLER.downloadCard();
+      }
+    );
   }
   
   setCardClick(_id = null) {
