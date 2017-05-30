@@ -18,6 +18,11 @@ class CardModel extends CommonModel {
     this.CARD_AREA_SELECTOR = '#card-area';
     this.CARD_TBODY_SELECTOR = '#card-tbody';
     
+    this.CARD_ADD_SELECTOR = '#card-submit-add';
+    this.CARD_EDIT_SELECTOR = '#card-submit-edit';
+    this.CARD_COPY_SELECTOR = '#card-submit-copy';
+    this.CARD_DELETE_SELECTOR = '#card-submit-delete';
+    
     this.TEMPLATE_CARD_TABLE_SELECTOR = '#card-table-template';
     this.TEMPLATE_CARD_TBODY_SELECTOR = '#card-tbody-template';
     this.TEMPLATE_CARD_HOVER_SELECTOR = '#card-hover-template';
