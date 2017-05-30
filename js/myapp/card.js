@@ -57,9 +57,17 @@ class CardView extends CommonView {
     let template = null;
     if (this.MODEL.DOWNLOAD) {
       Log.logClass(this.NAME, 'Cards is found');
+      
+      let dataExists = null;
+      if (this.MODEL.CARDS == null) {
+        dataExists = false;
+      } else {
+        dataExists = true;
+      }
+      
       $(this.MODEL.CARD_AREA_SELECTOR).append(this.getTemplate(
         this.MODEL.TEMPLATE_CARD_TABLE_SELECTOR,
-        {}
+        {dataExists: dataExists}
       ));
       
       $.each(this.MODEL.CARDS, (_id, _val) => {
