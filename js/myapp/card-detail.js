@@ -73,7 +73,6 @@ class CardDetailView extends CommonView {
     );
     if (this.CARD == null) {
       // カードがある場合
-      Log.logObj(this.MODEL.CARD);
       $(this.MODEL.CARD_DETAIL_AREA_SELECTOR).append(this.getTemplate(
         this.MODEL.TEMPLATE_CARD_DETAIL_SELECTOR,
         {
