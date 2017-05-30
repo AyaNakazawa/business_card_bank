@@ -122,6 +122,9 @@ class CardView extends CommonView {
           // アクティブにする
           this.MODEL.SELECT = _id;
           this.setCardActive(_id, true);
+          $(this.MODEL.CARD_EDIT_SELECTOR).prop('disabled', false);
+          $(this.MODEL.CARD_COPY_SELECTOR).prop('disabled', false);
+          $(this.MODEL.CARD_DELETE_SELECTOR).prop('disabled', false);
           // ホバー表示済みかで速度を変更
           if (this.MODEL.CARDS[_id][this.MODEL.HOVER]) {
             _speed = 0;
@@ -139,6 +142,9 @@ class CardView extends CommonView {
           this.MODEL.SELECT = null;
           this.MODEL.CARDS[_id][this.MODEL.HOVER] = false;
           this.setCardActive(_id, false);
+          $(this.MODEL.CARD_EDIT_SELECTOR).prop('disabled', true);
+          $(this.MODEL.CARD_COPY_SELECTOR).prop('disabled', true);
+          $(this.MODEL.CARD_DELETE_SELECTOR).prop('disabled', true);
         }
         $(`#card-${_id}-detail`).slideUp(_speed);
       }
