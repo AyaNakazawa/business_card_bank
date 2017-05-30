@@ -27,6 +27,8 @@ class CardModel extends CommonModel {
     this.DOWNLOAD = null;
     this.CARDS = null;
     
+    this.INITIALIZE = true;
+    
     this.SELECT = null;
   }
 }
@@ -261,7 +263,7 @@ class CardController extends CommonController {
     this.downloadCard();
   }
   
-  setUser(_id = null, _hash = null) {
+  setUser(_id = this.MODEL.ID, _hash = this.MODEL.HASH) {
     this.MODEL.ID = _id;
     this.MODEL.HASH = _hash;
     
@@ -283,21 +285,31 @@ class CardController extends CommonController {
         dataType: 'json',
         success: (_data) => {
           Log.logClassKey(this.NAME, 'ajax getCard', 'success');
+          this.MODEL.DOWNLOAD = true;
           if (Object.keys(_data).length > 0) {
-            this.MODEL.DOWNLOAD = true;
             this.MODEL.CARDS = _data;
-            this.VIEW.generateCardArea(this.MODEL.ALERT_SUCCESS, `名刺データを取得しました。`);
+            if (this.MODEL.INITIALIZE) {
+              this.VIEW.generateCardArea(this.MODEL.ALERT_SUCCESS, `名刺データを取得しました。`);
+              
+            } else {
+              this.VIEW.generateCardArea(this.MODEL.ALERT_INFO, `名刺データを更新しました。`);
+            }
+            this.MODEL.INITIALIZE = false;
+            
           } else {
+            this.MODEL.CARDS = null;
             this.VIEW.generateCardArea(this.MODEL.ALERT_INFO, '名刺データは存在しません。', false);
           }
         },
         error: () => {
           Log.logClassKey(this.NAME, 'ajax getCard', 'failed');
           this.VIEW.generateCardArea(this.MODEL.ALERT_DANGER, 'ajax通信に失敗しました。', false);
+          this.MODEL.INITIALIZE = true;
         }
       });
     } else {
       this.VIEW.generateCardArea(this.MODEL.ALERT_WARNING, 'ログインしてください。', false);
+      this.MODEL.INITIALIZE = true;
     }
   }
   
