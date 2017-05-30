@@ -103,7 +103,23 @@ class CardView extends CommonView {
     _id = null
   ) {
     if (_id != null) {
-      $(`#card-${_id}-detail`).css('top', ($(`#card-${_id}-main`).offset().top + $(`#card-${_id}-main`).height()) + 'px');
+      $(`#card-${_id}-detail`).css(
+        'top', (
+          $(`#card-${_id}-main`).offset().top + $(`#card-${_id}-main`).height()
+        ) + 'px'
+      );
+      const cardTop = $(`#card-${_id}-main`).offset().top + $(`#card-${_id}-main`).height();
+      const cardHeight = $(`#card-${_id}-detail`).height();
+      const cardBottom = cardTop + cardHeight;
+      const bodyBottom = $('body').height();
+      Log.logClassKey(this.NAME, 'card top', cardTop);
+      Log.logClassKey(this.NAME, 'card height', cardHeight);
+      Log.logClassKey(this.NAME, 'card bottom', cardBottom);
+      Log.logClassKey(this.NAME, 'body bottom', bodyBottom);
+      if (cardBottom > bodyBottom) {
+        $('body').height(cardBottom);
+        Log.logClassKey(this.NAME, 'body', cardBottom);
+      }
     }
   }
   
