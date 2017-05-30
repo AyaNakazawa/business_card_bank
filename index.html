@@ -161,6 +161,24 @@
     </script>
     <!-- card-table-template -->
     <script type="text/template" id="card-table-template">
+      <div class="content-item">
+        <button type="button" class="btn btn-default" id="card-submit-add">
+          <span class="fa fa-plus-circle"></span>
+          新規作成
+        </button>
+        <button type="button" class="btn btn-default" id="card-submit-edit" disabled>
+          <span class="fa fa-edit"></span>
+          編集
+        </button>
+        <button type="button" class="btn btn-default" id="card-submit-copy" disabled>
+          <span class="fa fa-clone"></span>
+          コピー
+        </button>
+        <button type="button" class="btn btn-default" id="card-submit-delete" disabled>
+          <span class="fa fa-trash"></span>
+          削除
+        </button>
+      </div>
       <div class="table-responsive">
         <table class="table table-hover table-condensed">
           <thead>
