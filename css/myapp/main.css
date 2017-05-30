@@ -19,6 +19,7 @@ nav * {
   padding: 8px;
   position: absolute;
   border: 2px solid #eee;
+  z-index: 20;
 }
 
 #card-area .card-hover label {
