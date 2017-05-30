@@ -15,6 +15,7 @@ class ConfirmModel extends CommonModel {
       CONFIRM_MESSAGE: 'content',
       EVENT_TRIGGER: 'click',
       EVENT_SELECTOR: null,
+      AUTO_OPEN: false,
       DESTROY_TIME_MS: 250,
       YES: 'Yes',
       NO: 'No',
@@ -25,13 +26,15 @@ class ConfirmModel extends CommonModel {
   ) {
     super(_initSetting);
     
+    this.GENERATE_SELECTOR = '#confirm-view';
+    this.TEMPLATE_SELECTOR = '#confirm-view-template';
+  }
+  
+  updateSelector() {
     this.CONFIRM_ID_SELECTOR = `#${this.CONFIRM_ID}`;
     this.CONFIRM_ID_SELECTOR_YES = `#${this.CONFIRM_ID}-yes`;
     this.CONFIRM_ID_SELECTOR_NO = `#${this.CONFIRM_ID}-no`;
     this.CONFIRM_ID_SELECTOR_CLOSE = `#${this.CONFIRM_ID}-close`;
-    
-    this.GENERATE_SELECTOR = '#confirm-view';
-    this.TEMPLATE_SELECTOR = '#confirm-view-template';
   }
 }
 
@@ -90,13 +93,17 @@ class ConfirmEvent extends CommonEvent {
   }
   
   setOnOpen() {
-    super.setOn(
-      this.MODEL.EVENT_TRIGGER,
-      this.MODEL.EVENT_SELECTOR,
-      () => {
-        this.CONTROLLER.openConfirm();
-      }
-    );
+    if (this.MODEL.AUTO_OPEN) {
+      this.CONTROLLER.openConfirm();
+    } else {
+      super.setOn(
+        this.MODEL.EVENT_TRIGGER,
+        this.MODEL.EVENT_SELECTOR,
+        () => {
+          this.CONTROLLER.openConfirm();
+        }
+      );
+    }
   }
   
   setOnYesClick() {
@@ -130,10 +137,12 @@ class ConfirmEvent extends CommonEvent {
   }
   
   setOffOpen() {
-    super.setOff(
-      this.MODEL.EVENT_TRIGGER,
-      this.MODEL.EVENT_SELECTOR
-    );
+    if (!this.MODEL.AUTO_OPEN) {
+      super.setOff(
+        this.MODEL.EVENT_TRIGGER,
+        this.MODEL.EVENT_SELECTOR
+      );
+    }
   }
   
   setOffYesClick() {
@@ -177,12 +186,14 @@ class ConfirmController extends CommonController {
   }
   
   initConfirm() {
+    this.MODEL.updateSelector();
     this.VIEW.generateModal();
     this.EVENT.setEvent(true);
   }
   
   openConfirm() {
     Log.logClassKey(this.NAME, this.MODEL.CONFIRM_TITLE, 'Open', Log.ARROW_INPUT);
+    Log.logClass(this.NAME, this.MODEL.CONFIRM_ID_SELECTOR);
     $(this.MODEL.CONFIRM_ID_SELECTOR).modal();
   }
   
