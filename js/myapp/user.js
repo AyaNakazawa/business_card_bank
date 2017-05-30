@@ -263,7 +263,6 @@ class UserController extends CommonController {
     this.MODEL.PASSWORD = null;
     PS.CONTROLLER.CARD.setUser(null, null);
     PS.CONTROLLER.CARD_DETAIL.openCard(null, null, null);
-    PS.CONTROLLER.SWITCH.CARD.VIEW.setView(false);
     this.VIEW.generateUserArea(
       'success',
       'ログアウトしました。'
