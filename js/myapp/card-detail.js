@@ -374,7 +374,7 @@ class CardDetailController extends CommonController {
         CONFIRM_MESSAGE: `${_card.name}(${_card.companyName}) さんの名刺を本当に削除しますか？`,
         AUTO_OPEN: true,
         YES: 'はい',
-        NO: 'NO',
+        NO: 'いいえ',
         FUNCTION_YES: () => {
           this.saveCard(
             _id,
