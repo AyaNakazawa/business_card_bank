@@ -19,10 +19,10 @@ header {
   margin: 40px 60px 0;
   text-align: left;
   @include border-c(bottom);
-}
-
-header * {
-  font-weight: bold;
+  
+  & * {
+    font-weight: bold;
+  }
 }
 
 // footer
@@ -38,48 +38,53 @@ footer {
   background: $main-back;
   margin-bottom: 0;
   border: 0;
-}
-
-.navbar .navbar-nav * {
-  @include transition;
-}
-
-.navbar-default .navbar-nav li {
-  cursor: pointer;
-  margin: 0 10px;
-  @include border-s(bottom, 2px, transparent);
-}
-
-.navbar-default .navbar-nav li:hover {
-  @include border-s(bottom, 2px, $border-color-passive);
-}
-
-.navbar-default .navbar-nav li.active {
-  @include border-s(bottom, 2px, $border-color-active);
-}
-
-.navbar-default .navbar-nav li.active:hover {
-  @include border-s(bottom, 2px, $border-color-passive);
-}
-
-.navbar-default .navbar-nav li.active > a {
-  background: transparent;
-  color: $main-color-active;
-}
-
-.navbar-default .navbar-nav li.active > a:hover {
-  background: transparent;
-  color: $main-color-passive;
+  
+  * {
+    @include transition;
+  }
+  
+  &.navbar-default {
+    
+    .navbar-nav {
+      li {
+        cursor: pointer;
+        margin: 0 10px;
+        @include border-s(bottom, 2px, transparent);
+        
+        &:hover {
+          @include border-s(bottom, 2px, $border-color-passive);
+        }
+        
+        &.active {
+          @include border-s(bottom, 2px, $border-color-active);
+          
+          &:hover {
+            @include border-s(bottom, 2px, $border-color-passive);
+          }
+          
+          a {
+            background: transparent;
+            color: $main-color-active;
+            
+            &:hover {
+              background: transparent;
+              color: $main-color-passive;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // common
 
 a {
   @include transition;
-}
-
-a:hover {
-  text-decoration: none;
+  
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .display-none {
@@ -96,8 +101,8 @@ img {
 
 .btn {
   @include transition;
-}
-
-.btn * {
-  @include transition;
+  
+  * {
+    @include transition;
+  }
 }

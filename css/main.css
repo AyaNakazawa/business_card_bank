@@ -12,9 +12,8 @@ header {
   margin: 40px 60px 0;
   text-align: left;
   border-bottom: 1px solid #ddd; }
-
-header * {
-  font-weight: bold; }
+  header * {
+    font-weight: bold; }
 
 footer {
   margin: 40px 60px;
@@ -24,41 +23,33 @@ footer {
   background: #fff;
   margin-bottom: 0;
   border: 0; }
-
-.navbar .navbar-nav * {
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s; }
-
-.navbar-default .navbar-nav li {
-  cursor: pointer;
-  margin: 0 10px;
-  border-bottom: 2px solid transparent; }
-
-.navbar-default .navbar-nav li:hover {
-  border-bottom: 2px solid #ccc; }
-
-.navbar-default .navbar-nav li.active {
-  border-bottom: 2px solid #666; }
-
-.navbar-default .navbar-nav li.active:hover {
-  border-bottom: 2px solid #ccc; }
-
-.navbar-default .navbar-nav li.active > a {
-  background: transparent;
-  color: #111; }
-
-.navbar-default .navbar-nav li.active > a:hover {
-  background: transparent;
-  color: #666; }
+  .navbar * {
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s; }
+  .navbar.navbar-default .navbar-nav li {
+    cursor: pointer;
+    margin: 0 10px;
+    border-bottom: 2px solid transparent; }
+    .navbar.navbar-default .navbar-nav li:hover {
+      border-bottom: 2px solid #ccc; }
+    .navbar.navbar-default .navbar-nav li.active {
+      border-bottom: 2px solid #666; }
+      .navbar.navbar-default .navbar-nav li.active:hover {
+        border-bottom: 2px solid #ccc; }
+      .navbar.navbar-default .navbar-nav li.active a {
+        background: transparent;
+        color: #111; }
+        .navbar.navbar-default .navbar-nav li.active a:hover {
+          background: transparent;
+          color: #666; }
 
 a {
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s; }
-
-a:hover {
-  text-decoration: none; }
+  a:hover {
+    text-decoration: none; }
 
 .display-none {
   display: none; }
@@ -73,11 +64,10 @@ img {
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s; }
-
-.btn * {
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s; }
+  .btn * {
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s; }
 
 main {
   width: 100%;
@@ -261,6 +251,7 @@ nav * {
   padding: 8px;
   position: absolute;
   border: 1px solid #ddd;
+  border-radius: 0 0 4px 4px;
   z-index: 20; }
   #card-area .card-hover label {
     width: 140px;
