@@ -66,10 +66,10 @@ class SwitchView extends CommonView {
     
     if (_view != null) {
       if (_view) {
-        $(this.MODEL.TRIGGER_SELECTOR).addClass(this.MODEL.CURRENT);
+        $(this.MODEL.TRIGGER_SELECTOR).addClass(this.MODEL.ACTIVE);
         $(this.MODEL.SWITCH_SELECTOR).show(_speed);
       } else {
-        $(this.MODEL.TRIGGER_SELECTOR).removeClass(this.MODEL.CURRENT);
+        $(this.MODEL.TRIGGER_SELECTOR).removeClass(this.MODEL.ACTIVE);
         $(this.MODEL.SWITCH_SELECTOR).hide(_speed);
       }
       
