@@ -20,6 +20,12 @@ $app-back: #f8f8f8;
 
 // function
 
+@mixin transition($type:all, $time:.5s) {
+  -webkit-transition: $type $time;
+  -o-transition: $type $time;
+  transition: $type $time;
+}
+
 @mixin margin-auto($top:$none, $bottom:$none) {
   @if $bottom != $none {
     margin: $top auto $bottom;
