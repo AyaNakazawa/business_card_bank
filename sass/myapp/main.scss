@@ -1,13 +1,18 @@
+@charset "utf-8";
+
+@import "../define/_define.scss";
+
+// common
 
 body {
-  background: #f8f8f8;
+  background: $app-back;
 }
 
 nav * {
-  background: #f8f8f8;
+  background: $app-back;
 }
 
-/* card-area */
+// card-area
 
 #card-area .card-main {
   cursor: pointer;
@@ -15,11 +20,11 @@ nav * {
 
 #card-area .card-hover {
   background: #fdfdfd;
-  margin: 0 auto;
+  @include margin-auto(0px);
   padding: 8px;
   position: absolute;
-  border: 2px solid #eee;
-  z-index: 20;
+  @include border-s(all, 2px, #eee);
+  z-index: $z-card-hover;
 }
 
 #card-area .card-hover label {
@@ -40,5 +45,5 @@ nav * {
 }
 
 #card-area .card-hover .btn {
-  width: 25%;
+  width: (100% / 4);
 }
