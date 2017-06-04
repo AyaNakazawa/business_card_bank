@@ -21,6 +21,13 @@ $border-color: #ddd;
 $border-color-active: #666;
 $border-color-passive: #ccc;
 
+// size
+
+$size-mobile: 0px;
+$size-tablet: 768px;
+$size-medium: 992px;
+$size-large: 1200px;
+
 // content
 
 $content-label-side: 160px;
@@ -115,5 +122,11 @@ $app-back: #f8f8f8;
     border-left: $size $style $color;
   } @else if $type == right {
     border-right: $size $style $color;
+  }
+}
+
+@mixin media($width:$size-mobile) {
+  @media (min-width: $width) {
+    @content
   }
 }
