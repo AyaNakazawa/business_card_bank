@@ -23,6 +23,7 @@ nav * {
     padding: 8px;
     position: absolute;
     @include border-c();
+    border-radius: 0 0 $border-radius-size $border-radius-size;
     z-index: $z-card-hover;
     
     label {
