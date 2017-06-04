@@ -48,6 +48,20 @@ $app-back: #f8f8f8;
   }
 }
 
+@mixin border-s($type:all, $size:$border-size, $color:$border-color) {
+  @if $type == all {
+    border: $size $border-style $color;
+  } @else if $type == top {
+    border-top: $size $border-style $color;
+  } @else if $type == bottom {
+    border-bottom: $size $border-style $color;
+  } @else if $type == left {
+    border-left: $size $border-style $color;
+  } @else if $type == right {
+    border-right: $size $border-style $color;
+  }
+}
+
 @mixin border($type:all, $size:$border-size, $style:$border-style, $color:$border-color) {
   @if $type == all {
     border: $size $style $color;
