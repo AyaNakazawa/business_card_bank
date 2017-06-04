@@ -1,7 +1,9 @@
 @charset "utf-8";
 
-/* Medium desktop */
+@import "../define/_define.scss";
 
-@media (min-width: 992px) {
+// Medium desktop
+
+@include media($size-medium) {
   
 }
