@@ -1,3 +1,22 @@
-/* Tablet */
+@media (min-width: 768px) {
+  .content-item .content-label {
+    width: 120px;
+    line-height: 34px;
+    text-align: right;
+    position: relative; }
+
+  .content-item .content-input {
+    width: 100%;
+    margin-left: -160px;
+    padding-left: 160px;
+    position: relative;
+    float: right; }
+
+  .content-item .content-input input {
+    width: 100%; }
+
+  .content .form-group {
+    width: auto;
+    margin-left: 160px; } }
 
 /*# sourceMappingURL=tablet.css.map */
