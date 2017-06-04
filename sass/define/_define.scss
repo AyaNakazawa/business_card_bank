@@ -17,3 +17,16 @@ $content-label-side: 160px;
 // app
 
 $app-back: #f8f8f8;
+
+// function
+
+@mixin margin-auto($top:$none, $bottom:$none) {
+  @if $bottom != $none {
+    margin: $top auto $bottom;
+  } @else if $top != $none {
+    margin: $top auto;
+  } @else {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
