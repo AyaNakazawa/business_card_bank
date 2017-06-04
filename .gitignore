@@ -1,4 +1,4 @@
 /temp/
 /downloads/
 /.sass-cache/
-/css/*/*.map
+*.css.map
