@@ -1,34 +1,33 @@
 @charset "utf-8";
 
-/* Large desktop */
+@import "../define/_define.scss";
 
-@media (min-width: 1200px) {
+// Large desktop
+
+@include media($size-large) {
   
-  /* header */
+  // header
   
   header {
     width: 1062px;
-    margin-left: auto;
-    margin-right: auto;
+    @include margin-auto;
   }
   
-  /* footer */
+  // footer
   
   footer {
     width: 1062px;
-    margin-left: auto;
-    margin-right: auto;
+    @include margin-auto;
   }
   
-  /* nav */
+  // nav
   
   .navbar {
     width: 1182px;
-    margin-left: auto;
-    margin-right: auto;
+    @include margin-auto;
   }
   
-  /* content */
+  // content
   
   .content {
     width: 1064px;
