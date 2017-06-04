@@ -76,70 +76,60 @@ main {
   background: #fff;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd; }
-
-.content {
-  width: 90%;
-  margin: 10px auto;
-  padding: 10px;
-  overflow: hidden;
-  border: 1px solid #ddd;
-  border-radius: 4px; }
-
-.content-item {
-  width: 100%;
-  padding: 8px;
-  overflow: hidden; }
-
-.content-item li {
-  margin: 8px; }
-
-.content-header {
-  width: 100%;
-  margin-bottom: 8px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5em; }
-
-.content-header button {
-  margin-left: 8px; }
-
-.content-item-name {
-  width: 100%;
-  padding-bottom: 8px;
-  text-align: center;
-  border-bottom: 1px solid #ddd; }
-
-.content-item-keys {
-  width: 100%;
-  padding: 8px 16px; }
-
-.content-item-key {
-  margin-bottom: 8px; }
-
-.content-item-key:last-child {
-  margin-bottom: 0; }
-
-.content-item .content-label {
-  display: inline-table; }
-
-.content-item .content-label label {
-  margin: 0; }
-
-.content .help-icon {
-  line-height: 22px;
-  padding: 6px;
-  cursor: pointer;
-  position: relative;
-  z-index: 10; }
-
-.content-item .checkbox {
-  display: inline-table; }
-
-.content .loading-spinner {
-  -webkit-animation: infinite-rotate 2s linear infinite;
-  -moz-animation: infinite-rotate 2s linear infinite;
-  animation: infinite-rotate 2s linear infinite; }
-
+  main .content {
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 4px; }
+    main .content .content-item {
+      width: 100%;
+      padding: 8px;
+      overflow: hidden; }
+      main .content .content-item li {
+        margin: 8px; }
+      main .content .content-item .content-item-name {
+        width: 100%;
+        padding-bottom: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd; }
+      main .content .content-item .content-item-keys {
+        width: 100%;
+        padding: 8px 16px; }
+        main .content .content-item .content-item-keys .content-item-key {
+          margin-bottom: 8px; }
+          main .content .content-item .content-item-keys .content-item-key:last-child {
+            margin-bottom: 0; }
+      main .content .content-item .content-label {
+        display: inline-table; }
+        main .content .content-item .content-label label {
+          margin: 0; }
+      main .content .content-item .checkbox {
+        display: inline-table; }
+    main .content .content-header {
+      width: 100%;
+      margin-bottom: 8px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5em; }
+      main .content .content-header button {
+        margin-left: 8px; }
+    main .content .help-icon {
+      line-height: 22px;
+      padding: 6px;
+      cursor: pointer;
+      position: relative;
+      z-index: 10; }
+    main .content .loading-spinner {
+      -webkit-animation: infinite-rotate 2s linear infinite;
+      -moz-animation: infinite-rotate 2s linear infinite;
+      animation: infinite-rotate 2s linear infinite; }
+    main .content .loading-dot::after {
+      content: '';
+      -webkit-animation: dotting 3s linear infinite;
+      -moz-animation: dotting 3s linear infinite;
+      animation: dotting 3s linear infinite; }
 @-webkit-keyframes infinite-rotate {
   0% {
     transform: rotate(0deg); }
@@ -155,12 +145,6 @@ main {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
-.content .loading-dot::after {
-  content: '';
-  -webkit-animation: dotting 3s linear infinite;
-  -moz-animation: dotting 3s linear infinite;
-  animation: dotting 3s linear infinite; }
-
 @-webkit-keyframes dotting {
   25% {
     content: '.'; }

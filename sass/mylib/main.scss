@@ -9,112 +9,125 @@ main {
   background: $main-back;
   @include border-c(top);
   @include border-c(bottom);
-}
-
-// content
-
-.content {
-  width: 90%;
-  @include margin-auto(10px);
-  padding: 10px;
-  overflow: hidden;
-  @include border-c();
-  border-radius: $border-radius-size;
-}
-
-.content-item {
-  width: 100%;
-  padding: 8px;
-  overflow: hidden;
-}
-
-.content-item li {
-  margin: 8px;
-}
-
-.content-header {
-  width: 100%;
-  margin-bottom: 8px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5em;
-}
-
-.content-header button {
-  margin-left: 8px;
-}
-
-.content-item-name {
-  width: 100%;
-  padding-bottom: 8px;
-  text-align: center;
-  @include border-c(bottom);
-}
-
-.content-item-keys {
-  width: 100%;
-  padding: 8px 16px;
-}
-.content-item-key {
-  margin-bottom: 8px;
-}
-
-.content-item-key:last-child {
-  margin-bottom: 0;
-}
-
-.content-item .content-label {
-  display: inline-table;
-}
-
-.content-item .content-label label {
-  margin: 0;
-}
-
-.content .help-icon {
-  line-height: 22px;
-  padding: 6px;
-  cursor: pointer;
-  position: relative;
-  z-index: $z-help-icon;
-}
-
-.content-item .checkbox {
-  display: inline-table;
-}
-
-// animation
-
-// loading-spinner
-
-.content .loading-spinner {
-  @include animation($animation-rotate 2s linear infinite);
-}
-
-@include keyframes($animation-rotate) {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-// loading-dot
-
-.content .loading-dot::after {
-  content: '';
-  @include animation($animation-dotting 3s linear infinite);
-}
-
-@include keyframes($animation-dotting) {
-  25% {
-    content: '.';
-  }
-  50% {
-    content: '..';
-  }
-  75% {
-    content: '...';
+  
+  // content
+  
+  .content {
+    width: 90%;
+    @include margin-auto(10px);
+    padding: 10px;
+    overflow: hidden;
+    @include border-c();
+    border-radius: $border-radius-size;
+    
+    // item
+    
+    .content-item {
+      width: 100%;
+      padding: 8px;
+      overflow: hidden;
+      
+      li {
+        margin: 8px;
+      }
+      
+      // name
+      
+      .content-item-name {
+        width: 100%;
+        padding-bottom: 8px;
+        text-align: center;
+        @include border-c(bottom);
+      }
+      
+      // keys
+      
+      .content-item-keys {
+        width: 100%;
+        padding: 8px 16px;
+        
+        .content-item-key {
+          margin-bottom: 8px;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      
+      // label
+      
+      .content-label {
+        display: inline-table;
+        
+        label {
+          margin: 0;
+        }
+      }
+      
+      // checkbox
+      
+      .checkbox {
+        display: inline-table;
+      }
+    }
+    
+    // header
+    
+    .content-header {
+      width: 100%;
+      margin-bottom: 8px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5em;
+      
+      button {
+        margin-left: 8px;
+      }
+    }
+    
+    // help
+    
+    .help-icon {
+      line-height: 22px;
+      padding: 6px;
+      cursor: pointer;
+      position: relative;
+      z-index: $z-help-icon;
+    }
+    
+    // animation
+    
+    .loading-spinner {
+      @include animation($animation-rotate 2s linear infinite);
+    }
+    
+    .loading-dot::after {
+      content: '';
+      @include animation($animation-dotting 3s linear infinite);
+    }
+    
+    // keyframes
+    
+    @include keyframes($animation-rotate) {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @include keyframes($animation-dotting) {
+      25% {
+        content: '.';
+      }
+      50% {
+        content: '..';
+      }
+      75% {
+        content: '...';
+      }
+    }
   }
 }
