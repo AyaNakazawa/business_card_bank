@@ -1,6 +1,8 @@
 @charset "utf-8";
 
- /*debug */
+@import "../define/_define.scss";
+
+// debug
 
 body:before {
   content: '- Mobile -';
@@ -11,17 +13,19 @@ body:before {
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
+@include media($size-tablet) {
   body:before {
     content: '- Tablet -';
   }
 }
-@media (min-width: 992px) {
+
+@include media($size-medium) {
   body:before {
     content: '- Medium desktop -';
   }
 }
-@media (min-width: 1200px) {
+
+@include media($size-large) {
   body:before {
     content: '- Large desktop -';
   }
