@@ -48,6 +48,12 @@ $app-back: #f8f8f8;
   }
 }
 
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -moz-animation: $animation;
+  animation: $animation;
+}
+
 @mixin border-c($type:all, $color:$border-color) {
   @if $type == all {
     border: $border-size $border-style $color;
