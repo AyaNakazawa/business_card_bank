@@ -255,27 +255,22 @@ nav * {
 
 #card-area .card-main {
   cursor: pointer; }
-
 #card-area .card-hover {
   background: #fdfdfd;
   margin: 0px auto;
   padding: 8px;
   position: absolute;
-  border: 2px solid #eee;
+  border: 1px solid #ddd;
   z-index: 20; }
-
-#card-area .card-hover label {
-  width: 140px;
-  text-align: right; }
-
-#card-area .card-hover label::after {
-  content: ':'; }
-
-#card-area .card-hover .btn-group {
-  width: 100%;
-  text-align: center; }
-
-#card-area .card-hover .btn {
-  width: 25%; }
+  #card-area .card-hover label {
+    width: 140px;
+    text-align: right; }
+  #card-area .card-hover label::after {
+    content: ':'; }
+  #card-area .card-hover .btn-group {
+    width: 100%;
+    text-align: center; }
+    #card-area .card-hover .btn-group .btn {
+      width: 25%; }
 
 /*# sourceMappingURL=main.css.map */

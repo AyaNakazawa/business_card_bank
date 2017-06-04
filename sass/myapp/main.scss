@@ -12,36 +12,35 @@ nav * {
 
 // card-area
 
-#card-area .card-main {
-  cursor: pointer;
-}
-
-#card-area .card-hover {
-  background: #fdfdfd;
-  @include margin-auto(0px);
-  padding: 8px;
-  position: absolute;
-  @include border-s(all, 2px, #eee);
-  z-index: $z-card-hover;
-}
-
-#card-area .card-hover label {
-  width: 140px;
-  text-align: right;
-}
-
-#card-area .card-hover span {
-}
-
-#card-area .card-hover label::after {
-  content: ':';
-}
-
-#card-area .card-hover .btn-group {
-  width: 100%;
-  text-align: center;
-}
-
-#card-area .card-hover .btn {
-  width: (100% / 4);
+#card-area {
+  .card-main {
+    cursor: pointer;
+  }
+  
+  .card-hover {
+    background: #fdfdfd;
+    @include margin-auto(0px);
+    padding: 8px;
+    position: absolute;
+    @include border-c();
+    z-index: $z-card-hover;
+    
+    label {
+      width: 140px;
+      text-align: right;
+    }
+    
+    label::after {
+      content: ':';
+    }
+    
+    .btn-group {
+      width: 100%;
+      text-align: center;
+      
+      .btn {
+        width: (100% / 4);
+      }
+    }
+  }
 }
