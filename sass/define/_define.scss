@@ -47,3 +47,17 @@ $app-back: #f8f8f8;
     margin-right: auto;
   }
 }
+
+@mixin border($type:all, $size:$border-size, $style:$border-style, $color:$border-color) {
+  @if $type == all {
+    border: $size $style $color;
+  } @else if $type == top {
+    border-top: $size $style $color;
+  } @else if $type == bottom {
+    border-bottom: $size $style $color;
+  } @else if $type == left {
+    border-left: $size $style $color;
+  } @else if $type == right {
+    border-right: $size $style $color;
+  }
+}
