@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+/* Large desktop */
+
+@media (min-width: 1200px) {
+  
+  /* header */
+  
+  header {
+    width: 1062px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* footer */
+  
+  footer {
+    width: 1062px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* nav */
+  
+  .navbar {
+    width: 1182px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* content */
+  
+  .content {
+    width: 1064px;
+  }
+}

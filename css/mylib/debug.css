@@ -1,28 +1,20 @@
-@charset "utf-8";
-
- /*debug */
-
+/*debug */
 body:before {
   content: '- Mobile -';
   position: fixed;
   top: 8px;
   left: 8px;
   z-index: 9999;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 @media (min-width: 768px) {
   body:before {
-    content: '- Tablet -';
-  }
-}
+    content: '- Tablet -'; } }
 @media (min-width: 992px) {
   body:before {
-    content: '- Medium desktop -';
-  }
-}
+    content: '- Medium desktop -'; } }
 @media (min-width: 1200px) {
   body:before {
-    content: '- Large desktop -';
-  }
-}
+    content: '- Large desktop -'; } }
+
+/*# sourceMappingURL=debug.css.map */

@@ -1,0 +1,44 @@
+
+body {
+  background: #f8f8f8;
+}
+
+nav * {
+  background: #f8f8f8;
+}
+
+/* card-area */
+
+#card-area .card-main {
+  cursor: pointer;
+}
+
+#card-area .card-hover {
+  background: #fdfdfd;
+  margin: 0 auto;
+  padding: 8px;
+  position: absolute;
+  border: 2px solid #eee;
+  z-index: 20;
+}
+
+#card-area .card-hover label {
+  width: 140px;
+  text-align: right;
+}
+
+#card-area .card-hover span {
+}
+
+#card-area .card-hover label::after {
+  content: ':';
+}
+
+#card-area .card-hover .btn-group {
+  width: 100%;
+  text-align: center;
+}
+
+#card-area .card-hover .btn {
+  width: 25%;
+}

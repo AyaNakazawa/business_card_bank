@@ -1,17 +1,12 @@
-
 body {
-  background: #f8f8f8;
-}
+  background: #f8f8f8; }
 
 nav * {
-  background: #f8f8f8;
-}
+  background: #f8f8f8; }
 
 /* card-area */
-
 #card-area .card-main {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 #card-area .card-hover {
   background: #fdfdfd;
@@ -19,26 +14,20 @@ nav * {
   padding: 8px;
   position: absolute;
   border: 2px solid #eee;
-  z-index: 20;
-}
+  z-index: 20; }
 
 #card-area .card-hover label {
   width: 140px;
-  text-align: right;
-}
-
-#card-area .card-hover span {
-}
+  text-align: right; }
 
 #card-area .card-hover label::after {
-  content: ':';
-}
+  content: ':'; }
 
 #card-area .card-hover .btn-group {
   width: 100%;
-  text-align: center;
-}
+  text-align: center; }
 
 #card-area .card-hover .btn {
-  width: 25%;
-}
+  width: 25%; }
+
+/*# sourceMappingURL=main.css.map */
