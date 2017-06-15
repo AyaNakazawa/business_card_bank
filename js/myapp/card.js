@@ -82,6 +82,32 @@ class CardView extends CommonView {
       
       $.each(this.MODEL.CARDS, (_id, _val) => {
         this.MODEL.CARDS[_id][this.MODEL.ACTIVE] = false;
+        
+        let cardData = '';
+        cardData += ', ' + _val['name'];
+        cardData += ', ' + _val['nameKana'];
+        cardData += ', ' + _val['companyName'];
+        cardData += ', ' + _val['companyNameKana'];
+        cardData += ', ' + _val['department'];
+        cardData += ', ' + _val['post'];
+        cardData += ', ' + _val['telephone'];
+        cardData += ', ' + _val['registerDate'];
+        cardData += ', ' + _val['updateDate'];
+        cardData += ', ' + _val['zipCode'];
+        cardData += ', ' + _val['address1'];
+        cardData += ', ' + _val['address2'];
+        cardData += ', ' + _val['fax'];
+        cardData += ', ' + _val['cellphone'];
+        cardData += ', ' + _val['mail'];
+        cardData += ', ' + _val['url'];
+        cardData += ', ' + _val['note'];
+        
+        Log.logClass('cardData', cardData);
+        Log.logClass('this.MODEL.SEARCH', this.MODEL.SEARCH);
+        if (cardData.indexOf(this.MODEL.SEARCH) == -1) {
+          return true;
+        }
+        
         $(this.MODEL.CARD_TBODY_SELECTOR).append(this.getTemplate(
           this.MODEL.TEMPLATE_CARD_TBODY_SELECTOR,
           {card: _val}
