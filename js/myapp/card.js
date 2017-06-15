@@ -438,4 +438,8 @@ class CardController extends CommonController {
     Log.logClassKey(`${this.NAME}:${_id}`, 'Click', 'Close');
     this.VIEW.setDetailView(_id, false, this.MODEL.ACTIVE, this.MODEL.VIEW_SPEED_MS);
   }
+  
+  getSearchString() {
+    this.MODEL.SEARCH = $(this.MODEL.CARD_SEARCH_TEXT_SELECTOR).text();
+  }
 }
