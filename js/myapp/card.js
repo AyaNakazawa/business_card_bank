@@ -256,7 +256,7 @@ class CardEvent extends CommonEvent {
       'click',
       this.MODEL.CARD_REFRESH_SELECTOR,
       () => {
-        this.MODEL.SEARCH = '';
+        this.CONTROLLER.clearSearchString();
         this.CONTROLLER.downloadCard();
       }
     );
