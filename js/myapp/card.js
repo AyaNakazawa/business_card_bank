@@ -479,4 +479,8 @@ class CardController extends CommonController {
     this.MODEL.SEARCH = $(this.MODEL.CARD_SEARCH_TEXT_SELECTOR).val();
     Log.logClassKey(`${this.NAME}`, 'Search', this.MODEL.SEARCH, Log.ARROW_INPUT);
   }
+  
+  clearSearchString() {
+    this.MODEL.SEARCH = '';
+  }
 }
