@@ -474,6 +474,6 @@ class CardController extends CommonController {
   }
   
   getSearchString() {
-    this.MODEL.SEARCH = $(this.MODEL.CARD_SEARCH_TEXT_SELECTOR).text();
+    this.MODEL.SEARCH = $(this.MODEL.CARD_SEARCH_TEXT_SELECTOR).val();
   }
 }
