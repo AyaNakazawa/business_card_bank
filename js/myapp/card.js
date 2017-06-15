@@ -264,7 +264,11 @@ class CardEvent extends CommonEvent {
       this.MODEL.CARD_SEARCH_TEXT_SELECTOR,
       () => {
         this.CONTROLLER.getSearchString();
-        this.VIEW.generateCardArea(this.MODEL.ALERT_SUCCESS, `「${this.MODEL.SEARCH}」で検索しました。`);
+        if (this.MODEL.SEARCH.length > 0) {
+          this.VIEW.generateCardArea(this.MODEL.ALERT_SUCCESS, `「${this.MODEL.SEARCH}」で検索しました。`);
+        } else {
+          this.VIEW.generateCardArea(this.MODEL.ALERT_SUCCESS, `名刺データを取得しました。`);
+        }
       }
     );
   }
