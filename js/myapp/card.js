@@ -382,6 +382,8 @@ class CardController extends CommonController {
   downloadCard(_id = this.MODEL.ID, _hash = this.MODEL.HASH) {
     this.MODEL.DOWNLOAD = false;
     
+    this.clearSearchString();
+    
     this.VIEW.generateLoading(this.MODEL.CARD_AREA_SELECTOR, '通信中', `ユーザーID ${_id} の名刺データを取得中`);
     
     if (_id != null && _hash != null) {
