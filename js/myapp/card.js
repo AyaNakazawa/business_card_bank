@@ -266,7 +266,7 @@ class CardEvent extends CommonEvent {
       this.MODEL.CARD_SEARCH_TEXT_SELECTOR,
       () => {
         this.CONTROLLER.getSearchString();
-        this.VIEW.generateCardArea(this.MODEL.ALERT_SUCCESS, `検索しました。`);
+        this.VIEW.generateCardArea(this.MODEL.ALERT_SUCCESS, `${this.MODEL.SEARCH} で検索しました。`);
       }
     );
   }
