@@ -77,7 +77,10 @@ class CardView extends CommonView {
       
       $(this.MODEL.CARD_AREA_SELECTOR).append(this.getTemplate(
         this.MODEL.TEMPLATE_CARD_TABLE_SELECTOR,
-        {dataExists: dataExists}
+        {
+          dataExists: dataExists,
+          search: this.MODEL.SEARCH
+        }
       ));
       
       $.each(this.MODEL.CARDS, (_id, _val) => {
