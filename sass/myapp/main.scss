@@ -13,6 +13,10 @@ nav * {
 // card-area
 
 #card-area {
+  #card-search {
+    display: inline-table;
+  }
+  
   .card-main {
     cursor: pointer;
   }
