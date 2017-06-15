@@ -224,6 +224,8 @@ body {
 nav * {
   background: #f8f8f8; }
 
+#card-area #card-search {
+  display: inline-table; }
 #card-area .card-main {
   cursor: pointer; }
 #card-area .card-hover {
