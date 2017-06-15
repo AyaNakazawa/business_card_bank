@@ -28,10 +28,14 @@ class CardModel extends CommonModel {
     this.TEMPLATE_CARD_TBODY_SELECTOR = '#card-tbody-template';
     this.TEMPLATE_CARD_HOVER_SELECTOR = '#card-hover-template';
     
+    this.CARD_SEARCH_TEXT_SELECTOR = '#card-search-text';
+    
     this.ID = null;
     this.HASH = null;
     this.DOWNLOAD = null;
     this.CARDS = null;
+    
+    this.SEARCH = '';
     
     this.INITIALIZE = true;
     
