@@ -105,8 +105,6 @@ class CardView extends CommonView {
         cardData += ', ' + _val['url'];
         cardData += ', ' + _val['note'];
         
-        Log.logClass('cardData', cardData);
-        Log.logClass('this.MODEL.SEARCH', this.MODEL.SEARCH);
         if (cardData.indexOf(this.MODEL.SEARCH) == -1) {
           return true;
         }
@@ -478,5 +476,6 @@ class CardController extends CommonController {
   
   getSearchString() {
     this.MODEL.SEARCH = $(this.MODEL.CARD_SEARCH_TEXT_SELECTOR).val();
+    Log.logClassKey(`${this.NAME}`, 'Search', this.MODEL.SEARCH, Log.ARROW_INPUT);
   }
 }
