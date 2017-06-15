@@ -232,6 +232,14 @@ class CardEvent extends CommonEvent {
         this.CONTROLLER.downloadCard();
       }
     );
+    super.setOn(
+      'change',
+      this.MODEL.CARD_SEARCH_TEXT_SELECTOR,
+      () => {
+        this.CONTROLLER.getSearchString();
+        this.VIEW.generateCardArea(this.MODEL.ALERT_SUCCESS, `検索しました。`);
+      }
+    );
   }
   
   setCardClick(_id = null) {
