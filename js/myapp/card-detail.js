@@ -26,6 +26,9 @@ class CardDetailModel extends CommonModel {
     this.CARD = null;
     this.COPY = false;
     
+    this.MODEL.PICTURE1EXIST = 0;
+    this.MODEL.PICTURE2EXIST = 0;
+    
     this.CARD_EDIT = null;
     
     this.TYPE_ADD = 'add';
@@ -335,7 +338,9 @@ class CardDetailController extends CommonController {
         telephone: _card['telephone'],
         updateDate: (new Date()).getString(),
         url: _card['url'],
-        zipCode: _card['zipCode']
+        zipCode: _card['zipCode'],
+        picture1exist: this.MODEL.PICTURE1EXIST,
+        picture2exist: this.MODEL.PICTURE2EXIST
       },
       success: (_data) => {
         Log.logClassKey(this.NAME, 'ajax saveCard', 'success');
