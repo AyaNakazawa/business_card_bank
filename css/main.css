@@ -241,6 +241,14 @@ nav * {
     text-align: right; }
   #card-area .card-hover label::after {
     content: ':'; }
+  #card-area .card-hover .card-image-area {
+    padding: 8px;
+    display: inline-block; }
+    #card-area .card-hover .card-image-area .card-image {
+      width: 240px;
+      height: auto;
+      padding: 2px;
+      border: 1px solid #ddd; }
   #card-area .card-hover .btn-group {
     width: 100%;
     text-align: center; }
