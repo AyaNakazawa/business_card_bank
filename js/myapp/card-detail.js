@@ -26,8 +26,8 @@ class CardDetailModel extends CommonModel {
     this.CARD = null;
     this.COPY = false;
     
-    this.PICTURE_EXIST_1 = 0;
-    this.PICTURE_EXIST_2 = 0;
+    this.PICTURE_NAME_1 = 0;
+    this.PICTURE_NAME_2 = 0;
     
     this.CARD_EDIT = null;
     
@@ -339,8 +339,8 @@ class CardDetailController extends CommonController {
         updateDate: (new Date()).getString(),
         url: _card['url'],
         zipCode: _card['zipCode'],
-        pictureExist1: this.MODEL.PICTURE_EXIST_1,
-        pictureExist2: this.MODEL.PICTURE_EXIST_2
+        pictureName1: this.MODEL.PICTURE_NAME_1,
+        pictureName2: this.MODEL.PICTURE_NAME_2
       },
       success: (_data) => {
         Log.logClassKey(this.NAME, 'ajax saveCard', 'success');
