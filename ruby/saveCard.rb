@@ -42,6 +42,8 @@ else
   _updateDate = objCgi['updateDate'].strip
   _url = objCgi['url'].strip
   _zipCode = objCgi['zipCode'].strip
+  _picture1exist = objCgi['picture1exist'].strip
+  _picture2exist = objCgi['picture2exist'].strip
 end
 
 result = ''
@@ -53,9 +55,9 @@ userId = db.execute(query)
 if userId.length > 0 then
   
   if _type == 'update' then
-    query = "UPDATE Card SET address1 = '#{_address1}', address2 = '#{_address2}', cellphone = '#{_cellphone}', companyName = '#{_companyName}', companyNameKana = '#{_companyNameKana}', department = '#{_department}', fax = '#{_fax}', mail = '#{_mail}', name = '#{_name}', nameKana = '#{_nameKana}', note = '#{_note}', post = '#{_post}', telephone = '#{_telephone}', updateDate = '#{_updateDate}', url = '#{_url}', zipCode = '#{_zipCode}' WHERE id = #{_id};"
+    query = "UPDATE Card SET address1 = '#{_address1}', address2 = '#{_address2}', cellphone = '#{_cellphone}', companyName = '#{_companyName}', companyNameKana = '#{_companyNameKana}', department = '#{_department}', fax = '#{_fax}', mail = '#{_mail}', name = '#{_name}', nameKana = '#{_nameKana}', note = '#{_note}', post = '#{_post}', telephone = '#{_telephone}', updateDate = '#{_updateDate}', url = '#{_url}', zipCode = '#{_zipCode}', picture1exist = '#{_picture1exist}', picture2exist = '#{_picture2exist}' WHERE id = #{_id};"
   elsif _type == 'add' then
-    query = "INSERT INTO Card( address1, address2, cellphone, companyName, companyNameKana, department, fax, mail, name, nameKana, note, post, registerDate, telephone, updateDate, url, userId, zipCode) VALUES( '#{_address1}', '#{_address2}', '#{_cellphone}', '#{_companyName}', '#{_companyNameKana}', '#{_department}', '#{_fax}', '#{_mail}', '#{_name}', '#{_nameKana}', '#{_note}', '#{_post}', '#{_registerDate}', '#{_telephone}', '#{_updateDate}', '#{_url}', #{userId[0][0]}, '#{_zipCode}');"
+    query = "INSERT INTO Card( address1, address2, cellphone, companyName, companyNameKana, department, fax, mail, name, nameKana, note, post, registerDate, telephone, updateDate, url, userId, zipCode, picture1exist, picture2exist) VALUES( '#{_address1}', '#{_address2}', '#{_cellphone}', '#{_companyName}', '#{_companyNameKana}', '#{_department}', '#{_fax}', '#{_mail}', '#{_name}', '#{_nameKana}', '#{_note}', '#{_post}', '#{_registerDate}', '#{_telephone}', '#{_updateDate}', '#{_url}', #{userId[0][0]}, '#{_zipCode}', '#{_picture1exist}', '#{_picture2exist}');"
   end
   
   db.execute(query)
