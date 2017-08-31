@@ -42,8 +42,8 @@ else
   _updateDate = objCgi['updateDate'].strip
   _url = objCgi['url'].strip
   _zipCode = objCgi['zipCode'].strip
-  _pictureExist1 = objCgi['pictureExist1'].strip
-  _pictureExist2 = objCgi['pictureExist2'].strip
+  _pictureName1 = objCgi['pictureName1'].strip
+  _pictureName2 = objCgi['pictureName2'].strip
 end
 
 result = ''
@@ -55,9 +55,9 @@ userId = db.execute(query)
 if userId.length > 0 then
   
   if _type == 'update' then
-    query = "UPDATE Card SET address1 = '#{_address1}', address2 = '#{_address2}', cellphone = '#{_cellphone}', companyName = '#{_companyName}', companyNameKana = '#{_companyNameKana}', department = '#{_department}', fax = '#{_fax}', mail = '#{_mail}', name = '#{_name}', nameKana = '#{_nameKana}', note = '#{_note}', post = '#{_post}', telephone = '#{_telephone}', updateDate = '#{_updateDate}', url = '#{_url}', zipCode = '#{_zipCode}', pictureExist1 = '#{_pictureExist1}', pictureExist2 = '#{_pictureExist2}' WHERE id = #{_id};"
+    query = "UPDATE Card SET address1 = '#{_address1}', address2 = '#{_address2}', cellphone = '#{_cellphone}', companyName = '#{_companyName}', companyNameKana = '#{_companyNameKana}', department = '#{_department}', fax = '#{_fax}', mail = '#{_mail}', name = '#{_name}', nameKana = '#{_nameKana}', note = '#{_note}', post = '#{_post}', telephone = '#{_telephone}', updateDate = '#{_updateDate}', url = '#{_url}', zipCode = '#{_zipCode}', pictureName1 = '#{_pictureName1}', pictureName2 = '#{_pictureName2}' WHERE id = #{_id};"
   elsif _type == 'add' then
-    query = "INSERT INTO Card( address1, address2, cellphone, companyName, companyNameKana, department, fax, mail, name, nameKana, note, post, registerDate, telephone, updateDate, url, userId, zipCode, pictureExist1, pictureExist2) VALUES( '#{_address1}', '#{_address2}', '#{_cellphone}', '#{_companyName}', '#{_companyNameKana}', '#{_department}', '#{_fax}', '#{_mail}', '#{_name}', '#{_nameKana}', '#{_note}', '#{_post}', '#{_registerDate}', '#{_telephone}', '#{_updateDate}', '#{_url}', #{userId[0][0]}, '#{_zipCode}', '#{_pictureExist1}', '#{_pictureExist2}');"
+    query = "INSERT INTO Card( address1, address2, cellphone, companyName, companyNameKana, department, fax, mail, name, nameKana, note, post, registerDate, telephone, updateDate, url, userId, zipCode, pictureName1, pictureName2) VALUES( '#{_address1}', '#{_address2}', '#{_cellphone}', '#{_companyName}', '#{_companyNameKana}', '#{_department}', '#{_fax}', '#{_mail}', '#{_name}', '#{_nameKana}', '#{_note}', '#{_post}', '#{_registerDate}', '#{_telephone}', '#{_updateDate}', '#{_url}', #{userId[0][0]}, '#{_zipCode}', '#{_pictureName1}', '#{_pictureName2}');"
   end
   
   db.execute(query)
