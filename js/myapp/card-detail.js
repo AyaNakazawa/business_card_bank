@@ -123,6 +123,8 @@ class CardDetailView extends CommonView {
       url: $('#detail-url').val(),
       userId: $('#detail-user-id').val(),
       zipCode: $('#detail-zip-code').val(),
+      imagename1: $('#detail-image1 .upload-file-name').val(),
+      imagename2: $('#detail-image2 .upload-file-name').val(),
       registerDate: (new Date()).getString(),
       updateDate: (new Date()).getString()
     }
