@@ -396,4 +396,8 @@ class CardDetailController extends CommonController {
       });
     }
   }
+  
+  openImagePreview() {
+    
+  }
 }
