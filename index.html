@@ -306,6 +306,22 @@
         <span>:</span>
         <input type="file" class="detail-upload">
         <div class="content-input input-group" id="detail-image1">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default detail-image-preview">
+              <img src="image/<%- card['imageName1'] %>">
+            </button>
+            <button type="button" class="btn btn-default detail-choose-file">
+              <span class="fa fa-file"></span>
+              画像選択
+            </button>
+          </span>
+          <input type="text" class="form-control" placeholder="アップロードする画像を選択してください" readonly>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default detail-upload-file">
+              <span class="fa fa-upload"></span>
+              アップロード
+            </button>
+          </span>
         </div>
       </div>
       <div class="content-item form-inline">
