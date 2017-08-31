@@ -339,8 +339,8 @@ class CardDetailController extends CommonController {
         updateDate: (new Date()).getString(),
         url: _card['url'],
         zipCode: _card['zipCode'],
-        imageName1: this.MODEL.IMAGE_NAME_1,
-        imageName2: this.MODEL.IMAGE_NAME_2
+        imageName1: _card['imageName1'],
+        imageName2: _card['imageName2']
       },
       success: (_data) => {
         Log.logClassKey(this.NAME, 'ajax saveCard', 'success');
