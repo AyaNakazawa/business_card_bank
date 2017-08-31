@@ -34,4 +34,17 @@
       }
     }
   }
+  
+  // card-detail-area
+  
+  #card-detail-area {
+    
+    .content-input {
+      .input-group-btn {
+        // 0ならfirefoxはOKだけどChromeはダメ
+        // 適当に1pxしたらChromeもいけた
+        width: 1px;
+      }
+    }
+  }
 }
