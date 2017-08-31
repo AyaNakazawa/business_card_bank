@@ -26,8 +26,8 @@ class CardDetailModel extends CommonModel {
     this.CARD = null;
     this.COPY = false;
     
-    this.IMAGE_NAME_1 = 0;
-    this.IMAGE_NAME_2 = 0;
+    this.IMAGE_NAME_1 = "";
+    this.IMAGE_NAME_2 = "";
     
     this.CARD_EDIT = null;
     
