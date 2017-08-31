@@ -155,7 +155,7 @@ class CardDetailEvent extends CommonEvent {
   setAddClick() {
     super.setOn(
       'click',
-      this.CONTROLLER.MODEL.CARD_DETAIL_ADD_SELECTOR,
+      this.MODEL.CARD_DETAIL_ADD_SELECTOR,
       () => {
         this.CONTROLLER.saveCard(
           this.MODEL.ID,
@@ -170,7 +170,7 @@ class CardDetailEvent extends CommonEvent {
   setSaveClick() {
     super.setOn(
       'click',
-      this.CONTROLLER.MODEL.CARD_DETAIL_SAVE_SELECTOR,
+      this.MODEL.CARD_DETAIL_SAVE_SELECTOR,
       () => {
         this.CONTROLLER.saveCard(
           this.MODEL.ID,
@@ -185,7 +185,7 @@ class CardDetailEvent extends CommonEvent {
   setDeleteClick() {
     super.setOn(
       'click',
-      this.CONTROLLER.MODEL.CARD_DETAIL_DELETE_SELECTOR,
+      this.MODEL.CARD_DETAIL_DELETE_SELECTOR,
       () => {
         this.CONTROLLER.deleteCard();
       }
@@ -195,7 +195,7 @@ class CardDetailEvent extends CommonEvent {
   setCloseClick() {
     super.setOn(
       'click',
-      this.CONTROLLER.MODEL.CARD_DETAIL_CLOSE_SELECTOR,
+      this.MODEL.CARD_DETAIL_CLOSE_SELECTOR,
       () => {
         PS.CONTROLLER.SCROLL.CARD.VIEW.scroll();
         PS.CONTROLLER.SWITCH.CARD_DETAIL.VIEW.setView(false);
