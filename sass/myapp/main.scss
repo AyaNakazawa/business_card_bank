@@ -42,6 +42,13 @@ nav * {
     .card-image-area {
       padding: 8px;
       display: inline-block;
+      
+      .card-image {
+        width: 240px;
+        height: auto;
+        padding: 2px;
+        border: 1px solid $border-color;
+      }
     }
     
     .btn-group {
