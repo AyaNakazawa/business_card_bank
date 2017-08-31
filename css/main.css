@@ -255,4 +255,7 @@ nav * {
     #card-area .card-hover .btn-group .btn {
       width: 25%; }
 
+#card-detail-area .detail-upload {
+  display: none; }
+
 /*# sourceMappingURL=main.css.map */
