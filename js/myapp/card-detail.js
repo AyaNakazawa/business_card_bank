@@ -21,6 +21,11 @@ class CardDetailModel extends CommonModel {
     this.CARD_DETAIL_DELETE_SELECTOR = '#detail-submit-delete';
     this.CARD_DETAIL_CLOSE_SELECTOR = '#detail-submit-close';
     
+    this.CARD_DETAIL_IMAGE_PREVIEW_SELECTOR = '.detail-image-preview';
+    this.CARD_DETAIL_CHOOSE_FILE_SELECTOR = '.detail-choose-file';
+    this.CARD_DETAIL_UPLOAD_FILE_SELECTOR = '.detail-upload-file';
+    this.CARD_DETAIL_FILE_NAME_SELECTOR = '.upload-file-name';
+    
     this.ID = null;
     this.HASH = null;
     this.CARD = null;
