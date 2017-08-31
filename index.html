@@ -306,9 +306,11 @@
         <span>:</span>
         <div class="content-input input-group" id="detail-image1">
           <span class="input-group-btn">
-            <button type="button" class="btn btn-default detail-image-preview">
-              <img src="image/<%- card['imageName1'] %>">
-            </button>
+            <% if (card['imageName1'].length > 0) { %>
+              <button type="button" class="btn btn-default detail-image-preview">
+                <img src="image/<%- card['imageName1'] %>">
+              </button>
+            <% } %>
             <button type="button" class="btn btn-default detail-choose-file">
               <span class="fa fa-file"></span>
               画像選択
@@ -331,9 +333,11 @@
         <span>:</span>
         <div class="content-input input-group" id="detail-image2">
           <span class="input-group-btn">
-            <button type="button" class="btn btn-default detail-image-preview">
-              <img src="image/<%- card['imageName2'] %>">
-            </button>
+            <% if (card['imageName2'].length > 0) { %>
+              <button type="button" class="btn btn-default detail-image-preview">
+                <img src="image/<%- card['imageName2'] %>">
+              </button>
+            <% } %>
             <button type="button" class="btn btn-default detail-choose-file">
               <span class="fa fa-file"></span>
               画像選択
