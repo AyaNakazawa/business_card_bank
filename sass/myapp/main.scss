@@ -69,4 +69,15 @@ nav * {
   .detail-upload {
     display: none;
   }
+  
+  button.detail-image-preview {
+    padding: 2px;
+    
+    img {
+      margin: 0;
+      padding: 0;
+      height: 28px;
+      width: auto;
+    }
+  }
 }
