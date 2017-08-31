@@ -219,6 +219,16 @@ class CardDetailEvent extends CommonEvent {
       }
     );
   }
+  
+  setChooseFileClick() {
+    super.setOn(
+      'click',
+      this.MODEL.CARD_DETAIL_CHOOSE_FILE_SELECTOR,
+      () => {
+        this.CONTROLLER.openChooseFile();
+      }
+    );
+  }
 }
 
 // ----------------------------------------------------------------
