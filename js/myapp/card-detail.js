@@ -404,4 +404,8 @@ class CardDetailController extends CommonController {
   openChooseFile() {
     // this.MODEL.CARD_DETAIL_FILE_NAME_SELECTOR
   }
+  
+  uploadImage() {
+    
+  }
 }
