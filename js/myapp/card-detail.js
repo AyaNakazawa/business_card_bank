@@ -229,6 +229,16 @@ class CardDetailEvent extends CommonEvent {
       }
     );
   }
+  
+  setUploadFileClick() {
+    super.setOn(
+      'click',
+      this.MODEL.CARD_DETAIL_UPLOAD_FILE_SELECTOR,
+      () => {
+        this.CONTROLLER.uploadImage();
+      }
+    );
+  }
 }
 
 // ----------------------------------------------------------------
