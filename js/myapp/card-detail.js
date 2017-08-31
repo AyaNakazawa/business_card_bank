@@ -338,7 +338,9 @@ class CardDetailController extends CommonController {
         telephone: _card['telephone'],
         updateDate: (new Date()).getString(),
         url: _card['url'],
-        zipCode: _card['zipCode']
+        zipCode: _card['zipCode'],
+        pictureExist1: this.MODEL.PICTURE_EXIST_1,
+        pictureExist2: this.MODEL.PICTURE_EXIST_2
       },
       success: (_data) => {
         Log.logClassKey(this.NAME, 'ajax saveCard', 'success');
