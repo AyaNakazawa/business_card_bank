@@ -400,4 +400,8 @@ class CardDetailController extends CommonController {
   openImagePreview() {
     
   }
+  
+  openChooseFile() {
+    // this.MODEL.CARD_DETAIL_FILE_NAME_SELECTOR
+  }
 }
