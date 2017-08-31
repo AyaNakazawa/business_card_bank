@@ -229,12 +229,12 @@
       <div class="card-<%- card['id'] %> card-hover" id="card-<%- card['id'] %>-detail" style="display:none;">
         <% if (card['imageName1'].length > 0) { %>
           <div class="card-image-area">
-            <img class="card-image" src="image/<% card['id'] %><%- card['imageName1'] %>">
+            <img class="card-image" src="image/<%- card['id'] %>_<%- card['imageName1'] %>">
           </div>
         <% } %>
         <% if (card['imageName2'].length > 0) { %>
           <div class="card-image-area">
-            <img class="card-image" src="image/<% card['id'] %><%- card['imageName2'] %>">
+            <img class="card-image" src="image/<%- card['id'] %>_<%- card['imageName2'] %>">
           </div>
         <% } %>
         <div>
@@ -308,7 +308,7 @@
           <span class="input-group-btn">
             <% if (card['imageName1'].length > 0) { %>
               <button type="button" class="btn btn-default detail-image-preview">
-                <img src="image/<% card['id'] %><%- card['imageName1'] %>">
+                <img src="image/<%- card['id'] %>_<%- card['imageName1'] %>">
               </button>
             <% } %>
             <button type="button" class="btn btn-default detail-choose-file">
@@ -335,7 +335,7 @@
           <span class="input-group-btn">
             <% if (card['imageName2'].length > 0) { %>
               <button type="button" class="btn btn-default detail-image-preview">
-                <img src="image/<% card['id'] %><%- card['imageName2'] %>">
+                <img src="image/<%- card['id'] %>_<%- card['imageName2'] %>">
               </button>
             <% } %>
             <button type="button" class="btn btn-default detail-choose-file">
