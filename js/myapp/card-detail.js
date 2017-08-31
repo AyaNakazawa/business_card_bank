@@ -209,6 +209,16 @@ class CardDetailEvent extends CommonEvent {
       }
     );
   }
+  
+  setImagePreviewClick() {
+    super.setOn(
+      'click',
+      this.MODEL.CARD_DETAIL_IMAGE_PREVIEW_SELECTOR,
+      () => {
+        this.CONTROLLER.openImagePreview();
+      }
+    );
+  }
 }
 
 // ----------------------------------------------------------------
