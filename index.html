@@ -229,12 +229,12 @@
       <div class="card-<%- card['id'] %> card-hover" id="card-<%- card['id'] %>-detail" style="display:none;">
         <% if (card['imageName1'].length > 0) { %>
           <div class="card-image-area">
-            <img class="card-image" src="image/card['imageName1']">
+            <img class="card-image" src="image/<%- card['imageName1'] %>">
           </div>
         <% } %>
         <% if (card['imageName2'].length > 0) { %>
           <div class="card-image-area">
-            <img class="card-image" src="image/card['imageName2']">
+            <img class="card-image" src="image/<%- card['imageName2'] %>">
           </div>
         <% } %>
         <div>
