@@ -182,7 +182,10 @@ main {
     position: relative;
     float: right; }
     .content .content-item .content-input input {
-      width: 100%; } }
+      width: 100%; }
+
+  #card-detail-area .content-input .input-group-btn {
+    width: 1px; } }
 @media (min-width: 1200px) {
   header {
     width: 1062px;
@@ -257,5 +260,12 @@ nav * {
 
 #card-detail-area .detail-upload {
   display: none; }
+#card-detail-area button.detail-image-preview {
+  padding: 2px; }
+  #card-detail-area button.detail-image-preview img {
+    margin: 0;
+    padding: 0;
+    height: 28px;
+    width: auto; }
 
 /*# sourceMappingURL=main.css.map */
