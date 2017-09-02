@@ -214,8 +214,8 @@ class CardDetailEvent extends CommonEvent {
     super.setOn(
       'click',
       this.MODEL.CARD_DETAIL_IMAGE_PREVIEW_SELECTOR,
-      () => {
-        this.CONTROLLER.openImagePreview();
+      function () {
+        PS.CONTROLLER.CARD_DETAIL.openImagePreview($(this).parent().parent().attr("id"));
       }
     );
   }
@@ -224,8 +224,8 @@ class CardDetailEvent extends CommonEvent {
     super.setOn(
       'click',
       this.MODEL.CARD_DETAIL_CHOOSE_FILE_SELECTOR,
-      () => {
-        this.CONTROLLER.openChooseFile();
+      function () {
+        PS.CONTROLLER.CARD_DETAIL.openChooseFile($(this).parent().parent().attr("id"));
       }
     );
   }
@@ -234,8 +234,8 @@ class CardDetailEvent extends CommonEvent {
     super.setOn(
       'click',
       this.MODEL.CARD_DETAIL_UPLOAD_FILE_SELECTOR,
-      () => {
-        this.CONTROLLER.uploadImage();
+      function () {
+        PS.CONTROLLER.CARD_DETAIL.uploadImage($(this).parent().parent().attr("id"));
       }
     );
   }
