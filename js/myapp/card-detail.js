@@ -446,7 +446,18 @@ class CardDetailController extends CommonController {
     
   }
   
-  openChooseFile() {
+  openChooseFile(
+    _selector = null
+  ) {
+    if (_selector == null) {
+      Log.logCaution("openChooseFile", "set selector of first argument");
+      return;
+    }
+    Log.logClassKey(
+      "Card Detail Controller",
+      `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`,
+      "Open file chooser"
+    );
     // this.MODEL.CARD_DETAIL_FILE_NAME_SELECTOR
   }
   
