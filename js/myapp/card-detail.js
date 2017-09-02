@@ -431,7 +431,18 @@ class CardDetailController extends CommonController {
     }
   }
   
-  openImagePreview() {
+  openImagePreview(
+    _selector = null
+  ) {
+    if (_selector == null) {
+      Log.logCaution("openImagePreview", "set selector of first argument");
+      return;
+    }
+    Log.logClassKey(
+      "Card Detail Controller",
+      `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`,
+      "Open image preview"
+    );
     
   }
   
