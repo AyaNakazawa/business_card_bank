@@ -29,6 +29,7 @@ class CardDetailModel extends CommonModel {
     this.ID = null;
     this.HASH = null;
     this.CARD = null;
+    this.ADD = true;
     this.COPY = false;
     
     this.IMAGE_NAME_1 = "";
@@ -101,10 +102,12 @@ class CardDetailView extends CommonView {
         this.MODEL.TEMPLATE_CARD_DETAIL_SELECTOR,
         {
           card: {
+            imageName1: "",
+            imageName2: "",
             registerDate: (new Date()).getString(),
             updateDate: (new Date()).getString()
           },
-          add: true
+          add: this.MODEL.ADD
         }
       ));
     }
