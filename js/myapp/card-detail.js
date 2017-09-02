@@ -461,7 +461,18 @@ class CardDetailController extends CommonController {
     // this.MODEL.CARD_DETAIL_FILE_NAME_SELECTOR
   }
   
-  uploadImage() {
+  uploadImage(
+    _selector = null
+  ) {
+    if (_selector == null) {
+      Log.logCaution("uploadImage", "set selector of first argument");
+      return;
+    }
+    Log.logClassKey(
+      "Card Detail Controller",
+      `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`,
+      "Upload image"
+    );
     
   }
 }
