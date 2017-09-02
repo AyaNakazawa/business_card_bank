@@ -157,6 +157,10 @@ class CardDetailEvent extends CommonEvent {
     this.setSaveClick();
     this.setDeleteClick();
     this.setCloseClick();
+    
+    this.setImagePreviewClick();
+    this.setChooseFileClick();
+    this.setUploadFileClick();
   }
   
   setAddClick() {
