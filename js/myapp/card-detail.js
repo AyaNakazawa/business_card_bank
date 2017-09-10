@@ -487,6 +487,12 @@ class CardDetailController extends CommonController {
       _uploadFlg
     );
     
+    let _file = new FormData();
+    _file.append(
+      'file',
+      $(`#detail-image${_selectorId} ${this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR}`).prop('files')[0]
+    );
+    
   }
   
   choosedFile(
