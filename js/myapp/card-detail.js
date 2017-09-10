@@ -37,6 +37,9 @@ class CardDetailModel extends CommonModel {
     this.IMAGE_NAME_1 = "";
     this.IMAGE_NAME_2 = "";
     
+    this.ADD_IMAGE_1 = false;
+    this.ADD_IMAGE_2 = false;
+    
     this.CARD_EDIT = null;
     
     this.TYPE_ADD = 'add';
