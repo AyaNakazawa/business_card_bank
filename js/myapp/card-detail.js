@@ -503,5 +503,24 @@ class CardDetailController extends CommonController {
     Log.logClassKey('Choosed file', `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`, filename);
     $(`#${_selector} ${this.MODEL.CARD_DETAIL_FILE_NAME_SELECTOR}`).val(filename);
     
+    if (filename.length == 0) {
+      Log.logClass('Card Detail Controller', 'Upload cancel');
+      if (_selector.slice(-1) == '1') {
+        ADD_IMAGE_1 = false;
+        
+      } else {
+        ADD_IMAGE_2 = false;
+        
+      }
+    } else {
+      Log.logClass('Card Detail Controller', 'Make a upload flg');
+      if (_selector.slice(-1) == '1') {
+        ADD_IMAGE_1 = true;
+        
+      } else {
+        ADD_IMAGE_2 = true;
+        
+      }
+    }
   }
 }
