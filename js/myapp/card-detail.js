@@ -455,6 +455,21 @@ class CardDetailController extends CommonController {
       "Open image preview"
     );
     
+    let imageName = '';
+    if (_selector.slice(-1) == '1') {
+      imageName = this.MODEL.CARD['imageName1']
+    } else {
+      imageName = this.MODEL.CARD['imageName2']
+    }
+    
+    new ConfirmController({
+      CONFIRM_ID: 'image-preview',
+      CONFIRM_TITLE: 'プレビュー',
+      IMAGE_URL: `image/${imageName}`,
+      AUTO_OPEN: true,
+      TYPE: ConfirmModel.TYPE_1BUTTON,
+      YES: '閉じる'
+    });
   }
   
   openChooseFile(
