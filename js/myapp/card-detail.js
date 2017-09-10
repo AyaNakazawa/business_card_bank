@@ -250,6 +250,13 @@ class CardDetailEvent extends CommonEvent {
   }
   
   setChooseFile() {
+    super.setOn(
+      'change',
+      this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR,
+      function () {
+        PS.CONTROLLER.CARD_DETAIL.choosedFile($(this).parent().attr("id"));
+      }
+    );
   }
 }
 
