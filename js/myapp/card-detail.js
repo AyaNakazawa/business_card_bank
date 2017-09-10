@@ -493,6 +493,27 @@ class CardDetailController extends CommonController {
       $(`#detail-image${_selectorId} ${this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR}`).prop('files')[0]
     );
     
+    if (_uploadFlg) {
+      $.ajax({
+        url: 'ruby/uploadImage.rb',
+        type : "POST",
+        data: _file,
+        processData : false,
+        contentType : false,
+        success: (_data) => {
+          Log.logClassKey(this.NAME, 'ajax uploadImage', 'success');
+          Log.logClass('upload return', _data);
+        },
+        error: () => {
+          Log.logClassKey(this.NAME, 'ajax uploadImage', 'failed');
+          this.VIEW.generateCardDetailArea(
+            this.MODEL.ALERT_DANGER,
+            'ajax通信に失敗しました。',
+            false
+          );
+        }
+      });
+    }
   }
   
   choosedFile(
