@@ -73,11 +73,20 @@
               </button>
               <h4 class="modal-title"><%- confirmTitle %></h4>
             </div>
-            <div class="modal-body"><%- confirmMessage %></div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-yes"><%- yes %></button>
-              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-no"><%- no %></button>
-            </div>
+            <% if (confirmMessage.length > 0) { %>
+              <div class="modal-body"><%- confirmMessage %></div>
+            <% } %>
+            <% if (imageUrl.length > 0) { %>
+              <img class="modal-body" src="<%- imageUrl %>" style="width:100%; height:auto;">
+            <% } %>
+            <% if (type >= 1) { %>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-yes"><%- yes %></button>
+                <% if (type >= 2) { %>
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-no"><%- no %></button>
+                <% } %>
+              </div>
+            <% } %>
           </div>
         </div>
       </div>
