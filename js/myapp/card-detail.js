@@ -166,6 +166,7 @@ class CardDetailEvent extends CommonEvent {
     this.setImagePreviewClick();
     this.setChooseFileClick();
     this.setUploadFileClick();
+    this.setChooseFile();
   }
   
   setAddClick() {
