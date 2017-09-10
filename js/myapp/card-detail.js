@@ -239,16 +239,6 @@ class CardDetailEvent extends CommonEvent {
     );
   }
   
-  setUploadFileClick() {
-    super.setOn(
-      'click',
-      this.MODEL.CARD_DETAIL_UPLOAD_FILE_SELECTOR,
-      function () {
-        PS.CONTROLLER.CARD_DETAIL.uploadImage($(this).parent().parent().attr("id"));
-      }
-    );
-  }
-  
   setChooseFile() {
     super.setOn(
       'change',
