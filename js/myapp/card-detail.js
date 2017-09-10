@@ -248,6 +248,9 @@ class CardDetailEvent extends CommonEvent {
       }
     );
   }
+  
+  setChooseFile() {
+  }
 }
 
 // ----------------------------------------------------------------
