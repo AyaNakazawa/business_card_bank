@@ -22,6 +22,7 @@ class ConfirmModel extends CommonModel {
       AUTO_OPEN: false,
       DESTROY_TIME_MS: 250,
       TYPE: 2,
+      IMAGE_URL: '',
       YES: 'Yes',
       NO: 'No',
       FUNCTION_YES: () => {},
@@ -64,7 +65,8 @@ class ConfirmView extends CommonView {
         confirmMessage: this.MODEL.CONFIRM_MESSAGE,
         yes: this.MODEL.YES,
         no: this.MODEL.NO,
-        type: this.MODEL.TYPE
+        type: this.MODEL.TYPE,
+        imageUrl: this.MODEL.IMAGE_URL
       }
     ));
   }
