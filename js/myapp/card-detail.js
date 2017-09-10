@@ -364,8 +364,8 @@ class CardDetailController extends CommonController {
       return;
     }
     
-    this.CONTROLLER.uploadImage(this.MODEL.UPLOAD_IMAGE_1);
-    this.CONTROLLER.uploadImage(this.MODEL.UPLOAD_IMAGE_2);
+    this.CONTROLLER.uploadImage(1, this.MODEL.UPLOAD_IMAGE_1);
+    this.CONTROLLER.uploadImage(2, this.MODEL.UPLOAD_IMAGE_2);
     
     $.ajax({
       url: 'ruby/saveCard.rb',
@@ -474,6 +474,7 @@ class CardDetailController extends CommonController {
   }
   
   uploadImage(
+    _selectorId = null
     _uploadFlg = null
   ) {
     if (_uploadFlg == null) {
