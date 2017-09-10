@@ -6,6 +6,10 @@
 // Model
 
 class ConfirmModel extends CommonModel {
+  static get TYPE_0BUTTON() { return 0; }
+  static get TYPE_1BUTTON() { return 1; }
+  static get TYPE_2BUTTON() { return 2; }
+
   constructor(
     _initSetting = {
       NAME: 'Confirm Object',
