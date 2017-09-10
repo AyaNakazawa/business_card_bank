@@ -510,19 +510,19 @@ class CardDetailController extends CommonController {
     if (filename.length == 0) {
       Log.logClass('Card Detail Controller', 'Upload cancel');
       if (_selector.slice(-1) == '1') {
-        ADD_IMAGE_1 = false;
+        this.MODEL.ADD_IMAGE_1 = false;
         
       } else {
-        ADD_IMAGE_2 = false;
+        this.MODEL.ADD_IMAGE_2 = false;
         
       }
     } else {
       Log.logClass('Card Detail Controller', 'Make a upload flg');
       if (_selector.slice(-1) == '1') {
-        ADD_IMAGE_1 = true;
+        this.MODEL.ADD_IMAGE_1 = true;
         
       } else {
-        ADD_IMAGE_2 = true;
+        this.MODEL.ADD_IMAGE_2 = true;
         
       }
     }
