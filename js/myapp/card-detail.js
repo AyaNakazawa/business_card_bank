@@ -506,5 +506,8 @@ class CardDetailController extends CommonController {
       "Choosed file"
     );
     
+    $(`#${_selector} ${this.MODEL.CARD_DETAIL_FILE_NAME_SELECTOR}`).val(
+      $(`#${_selector} ${this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR}`).val().replace(/\\/g, '/').replace(/.*\//, '')
+    );
   }
 }
