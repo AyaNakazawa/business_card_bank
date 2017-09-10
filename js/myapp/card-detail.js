@@ -477,14 +477,14 @@ class CardDetailController extends CommonController {
     _selectorId = null,
     _uploadFlg = null
   ) {
-    if (_uploadFlg == null) {
+    if (_selectorId == null || _uploadFlg == null) {
       Log.logCaution("uploadImage", "set upload flag of first argument");
       return;
     }
     Log.logClassKey(
-      "Card Detail Controller",
-      `CARD: ${this.MODEL.CARD["id"]}: ${_uploadFlg}`,
-      "Upload image"
+      "Upload image",
+      `CARD: ${this.MODEL.CARD["id"]}: ${_selectorId}`,
+      _uploadFlg
     );
     
   }
