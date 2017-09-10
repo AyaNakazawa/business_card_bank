@@ -352,6 +352,9 @@ class CardDetailController extends CommonController {
     _type = null
   ) {
     
+    this.CONTROLLER.uploadImage(1, this.MODEL.UPLOAD_IMAGE_1);
+    this.CONTROLLER.uploadImage(2, this.MODEL.UPLOAD_IMAGE_2);
+    
     if (_type == this.MODEL.TYPE_ADD) {
       this.VIEW.generateLoading($(this.MODEL.CARD_DETAIL_AREA_SELECTOR),'名刺追加中',  `名刺を追加中`);
     } else if (_type == this.MODEL.TYPE_UPDATE) {
@@ -363,9 +366,6 @@ class CardDetailController extends CommonController {
     if (!this.checkValidate(_card)) {
       return;
     }
-    
-    this.CONTROLLER.uploadImage(1, this.MODEL.UPLOAD_IMAGE_1);
-    this.CONTROLLER.uploadImage(2, this.MODEL.UPLOAD_IMAGE_2);
     
     $.ajax({
       url: 'ruby/saveCard.rb',
