@@ -474,7 +474,7 @@ class CardDetailController extends CommonController {
   }
   
   uploadImage(
-    _selectorId = null
+    _selectorId = null,
     _uploadFlg = null
   ) {
     if (_uploadFlg == null) {
