@@ -63,7 +63,8 @@ class ConfirmView extends CommonView {
         confirmTitle: this.MODEL.CONFIRM_TITLE,
         confirmMessage: this.MODEL.CONFIRM_MESSAGE,
         yes: this.MODEL.YES,
-        no: this.MODEL.NO
+        no: this.MODEL.NO,
+        type: this.MODEL.TYPE
       }
     ));
   }
