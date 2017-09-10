@@ -492,4 +492,7 @@ class CardDetailController extends CommonController {
     );
     
   }
+  
+  choosedFile() {
+  }
 }
