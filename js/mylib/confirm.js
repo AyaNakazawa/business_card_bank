@@ -21,6 +21,7 @@ class ConfirmModel extends CommonModel {
       EVENT_SELECTOR: null,
       AUTO_OPEN: false,
       DESTROY_TIME_MS: 250,
+      TYPE: 2,
       YES: 'Yes',
       NO: 'No',
       FUNCTION_YES: () => {},
