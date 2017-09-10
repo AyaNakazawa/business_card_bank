@@ -16,7 +16,7 @@ class ConfirmModel extends CommonModel {
       DESTROY: true,
       CONFIRM_ID: 'confirm-id',
       CONFIRM_TITLE: 'title',
-      CONFIRM_MESSAGE: 'content',
+      CONFIRM_MESSAGE: '',
       EVENT_TRIGGER: 'click',
       EVENT_SELECTOR: null,
       AUTO_OPEN: false,
