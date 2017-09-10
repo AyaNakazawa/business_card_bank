@@ -495,6 +495,7 @@ class CardDetailController extends CommonController {
       "Choosed file"
     );
     
+    Log.logClassKey('Choosed file', `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`, $(`#${_selector} ${this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR}`).val().replace(/\\/g, '/').replace(/.*\//, ''));
     $(`#${_selector} ${this.MODEL.CARD_DETAIL_FILE_NAME_SELECTOR}`).val(
       $(`#${_selector} ${this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR}`).val().replace(/\\/g, '/').replace(/.*\//, '')
     );
