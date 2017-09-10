@@ -26,6 +26,8 @@ class CardDetailModel extends CommonModel {
     this.CARD_DETAIL_UPLOAD_FILE_SELECTOR = '.detail-upload-file';
     this.CARD_DETAIL_FILE_NAME_SELECTOR = '.upload-file-name';
     
+    this.CARD_DETAIL_UPLOAD_SELECTOR = '.detail-upload';
+    
     this.ID = null;
     this.HASH = null;
     this.CARD = null;
