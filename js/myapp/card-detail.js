@@ -463,7 +463,8 @@ class CardDetailController extends CommonController {
       `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`,
       "Open file chooser"
     );
-    // this.MODEL.CARD_DETAIL_FILE_NAME_SELECTOR
+    
+    $(`#${_selector} ${this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR}`).click();
   }
   
   uploadImage(
