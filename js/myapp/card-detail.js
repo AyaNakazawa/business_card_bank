@@ -451,7 +451,7 @@ class CardDetailController extends CommonController {
     }
     Log.logClassKey(
       "Card Detail Controller",
-      `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`,
+      `CARD: ${_selector}`,
       "Open image preview"
     );
     
@@ -481,7 +481,7 @@ class CardDetailController extends CommonController {
     }
     Log.logClassKey(
       "Card Detail Controller",
-      `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`,
+      `CARD: ${_selector}`,
       "Open file chooser"
     );
     
@@ -498,7 +498,7 @@ class CardDetailController extends CommonController {
     }
     Log.logClassKey(
       "Upload image",
-      `CARD: ${this.MODEL.CARD["id"]}: ${_selectorId}`,
+      `CARD: ${_selectorId}`,
       _uploadFlg
     );
     
@@ -540,13 +540,13 @@ class CardDetailController extends CommonController {
     }
     Log.logClassKey(
       "Card Detail Controller",
-      `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`,
+      `CARD: ${_selector}`,
       "Choosed file"
     );
     
     
     const filename = $(`#${_selector} ${this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR}`).val().replace(/\\/g, '/').replace(/.*\//, '');
-    Log.logClassKey('Choosed file', `CARD: ${this.MODEL.CARD["id"]}: ${_selector}`, filename);
+    Log.logClassKey('Choosed file', `CARD: ${_selector}`, filename);
     $(`#${_selector} ${this.MODEL.CARD_DETAIL_FILE_NAME_SELECTOR}`).val(filename);
     
     if (filename.length == 0) {
