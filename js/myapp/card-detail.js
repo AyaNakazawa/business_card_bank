@@ -501,14 +501,14 @@ class CardDetailController extends CommonController {
       `CARD: ${_selectorId}`,
       _uploadFlg
     );
-    
-    let _file = new FormData();
-    _file.append(
-      'file',
-      $(`#detail-image${_selectorId} ${this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR}`).prop('files')[0]
-    );
-    
     if (_uploadFlg) {
+      
+      let _file = new FormData();
+      _file.append(
+        'file',
+        $(`#detail-image${_selectorId} ${this.MODEL.CARD_DETAIL_UPLOAD_SELECTOR}`).prop('files')[0]
+      );
+      
       $.ajax({
         url: 'ruby/uploadImage.rb',
         type : "POST",
